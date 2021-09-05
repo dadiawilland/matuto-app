@@ -1,9 +1,10 @@
 import React, {useState, useEffect} from 'react'
-import styles from './Register.style'
+import styles from './Payment.style'
 import bg from '../../assets/sign-in-bg.png'
 import { StyleRoot } from 'radium'
 import {NavLink} from 'react-router-dom'
 import ProcessButton from '../../components/Buttons/ProcessButton'
+import PaymentButton from '../../components/Buttons/PaymentButton'
 import AltLoginButton from '../../components/Buttons/AltLoginButton'
 import TextInput from '../../components/TextInput/TextInput'
 
@@ -24,21 +25,18 @@ const Payment = () => {
         //     <div style={styles().containerRight}>
                 <div style={styles().containerForm}>
                     <span style={styles().formTitleFont}>Register to Matuto</span>
-                    <div style={styles().containerInputFieldRow}>
-                        <TextInput style={{...styles().containerInputField, ...styles().containerInputFieldSml}} type="text" name="firstName" label="First Name"/>
-                        <TextInput style={{...styles().containerInputField, ...styles().containerInputFieldSml}} type="text" name="lastName" label="Last Name"/>
+                    <span style={styles().paymentTitleFont}>Payment Information</span>
+                    <div style={styles().containerPaymentBtnRow}>
+                        <PaymentButton src={'icon-creditcard.png'} text={'Creditcard'} style={styles().containerPaymentBtn}/>
+                        <PaymentButton src={'icon-gcash.png'} text={'GCash'} style={styles().containerPaymentBtn}/>
                     </div>
-                    <TextInput style={styles().containerInputField} type="text" name="emailAddress" label="Email Address"/>
-                    <TextInput style={styles().containerInputField} type="text" name="contactNumber" label="Contact Number"/>
-                    <TextInput style={styles().containerInputField} type="password" name="password" label="Password"/>
-                    <TextInput style={styles().containerInputField} type="password" name="password" label="Confirm Password"/>
-                    {/* <div style={styles().containerCheckbox}>
-                        <input style={styles().checkboxField} type="checkbox"/>
-                        <span style={styles().checkboxFieldFont}>Keep me logged in</span>
-                    </div> */}
+                    <TextInput style={styles().containerInputField} type="text" name="nameOnCard" label="Name on Card"/>
+                    <TextInput style={styles().containerInputField} type="text" name="cardNumber" label="Card Number"/>
+                    <div style={styles().containerInputFieldRow}>
+                        <TextInput style={{...styles().containerInputField, ...styles().containerInputFieldSml}} type="password" name="cvv" label="CVV"/>
+                        <TextInput style={{...styles().containerInputField, ...styles().containerInputFieldSml}} type="password" name="expiryDate" label="Expiry Date"/>
+                    </div>
                     <ProcessButton btnLabel="Next" style={styles().containerButton}/>
-                    {/* <AltLoginButton src={'icon-google.png'} text={'Sign in with Google'} style={styles().containerButton}/>
-                    <AltLoginButton src={'icon-fb.png'} text={'Sign in with Facebook'} style={styles().containerButton}/> */}
                 </div>
         //     </div>
         // </div>

@@ -39,6 +39,16 @@ const styles = () => ({
         margin: '0 auto',
         marginBottom: 9
     },
+    containerPaymentBtn: {
+        alignSelf: 'center',
+        margin: '0 auto',
+        marginBottom: 9,
+        marginRight: 9
+    },
+    containerPaymentBtnRow: {
+        display: 'flex',
+        flexDirection: 'row',
+    },
     containerBreak: {
         display: 'flex',
         justifyContent: 'space-between',
@@ -98,6 +108,12 @@ const styles = () => ({
     signUpLinkFont: {
         color: colors.red2,
     },
+    paymentTitleFont: {
+        fontSize: 12,
+        height: 20,
+        fontWeight: 200,
+        color: colors.black2
+    }
 })
 
 export default styles

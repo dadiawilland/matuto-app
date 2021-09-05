@@ -7,6 +7,7 @@ const colors = {
     black2: "#141414",
     gray: "#E8E8EA",
     gray2: "#979797",
+    yellow: "#EEBF6E",
     transparent: "#ffffff00",
   };
   

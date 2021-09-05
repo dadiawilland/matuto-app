@@ -15,7 +15,7 @@ const Header = () => {
             <div style={styles().containerHeader}>
                 <div>
                     <NavLink to="/">
-                        {(location == ('/signIn' || '/signUp')) ?
+                        {(location == ('/signIn' || '/register')) ?
                         (<img style={styles().imgLogo} src={logoWhite} alt="Matuto logo white"/>)
                         :
                         (<img style={styles().imgLogo} src={logo} alt="Matuto logo"/>)}
@@ -23,7 +23,7 @@ const Header = () => {
                 </div>
                 <div style={styles().containerBtn}>
                     {
-                        (location == ('/signIn' || '/signUp')) ?
+                        (location == ('/signIn' || '/register')) ?
                         (
                             <div>
                                 <NavLink style={styles().containerLink} to="/">
@@ -40,8 +40,8 @@ const Header = () => {
                                 <NavLink style={styles().containerLink} to="/signIn">
                                     <span style={styles().btnFont} key="signIn">Sign In</span>
                                 </NavLink>
-                                <NavLink style={styles().containerLink} to="/signUp">
-                                    <span style={styles().btnFont} key="signUp">Sign Up</span>
+                                <NavLink style={styles().containerLink} to="/register">
+                                    <span style={styles().btnFont} key="register">Register</span>
                                 </NavLink>
                             </div>
                         )
