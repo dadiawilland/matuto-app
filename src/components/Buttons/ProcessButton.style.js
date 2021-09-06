@@ -1,7 +1,7 @@
 import colors from "../../helpers/colors"
 
 const styles = () => ({
-    containerBtnSignIn: {
+    containerProcessBtn: {
         backgroundColor: colors.transparent,
         borderRadius: 20,
         display: 'flex',

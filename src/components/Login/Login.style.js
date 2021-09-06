@@ -1,22 +1,13 @@
 import colors from "../../helpers/colors"
-import bg from '../../assets/home-bg.jpg'
 
 const styles = () => ({
     containerForm: {
         backgroundColor: colors.white,
-        // height: 300,
         display: 'flex',
-        alignSelf: 'center',
-        // justifyContent: 'center',
         flexDirection: 'column',
         paddingInline: 19,
         width: 300,
-    },
-    containerField: {
-        height: 52,
-        // borderRadius: 6,
-        flexDirection: 'column',
-        display: 'flex',
+        marginTop: 250
     },
     containerInputField: {
         marginBottom: 8
@@ -40,7 +31,6 @@ const styles = () => ({
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'space-between',
-        // width: '100%'
     },
     btnFont: {
         alignSelf: 'center',
@@ -75,11 +65,6 @@ const styles = () => ({
         color: colors.red2,
         fontWeight: 600,
         alignSelf: 'center',
-    },
-    inputFieldFont: {
-        fontSize: 12,
-        height: 20,
-        color: colors.black2
     },
     signUpFont: {
         fontSize: 12,

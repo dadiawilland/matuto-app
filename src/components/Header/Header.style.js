@@ -20,9 +20,27 @@ const styles = () => ({
         display: 'flex',
         alignSelf: 'center'
     },
+    containerIcon: {
+        backgroundColor: colors.red2,
+        width: 64,
+        height: 64,
+        borderRadius: 32,
+        display: 'flex',
+        justifyContent: 'center',
+        ':hover': {
+            backgroundColor: colors.red,
+            cursor: 'pointer'
+        },
+    },
     imgLogo: {
         height: 50,
         width: 50,
+        alignSelf: 'center'
+    },
+    imgIcon: {
+        height: 60,
+        width: 60,
+        borderRadius: 32,
         alignSelf: 'center'
     },
     btnFont: {

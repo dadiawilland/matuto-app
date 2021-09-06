@@ -1,5 +1,4 @@
 import colors from "../../helpers/colors"
-import bg from '../../assets/home-bg.jpg'
 
 const styles = () => ({
     containerSignIn: {

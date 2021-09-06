@@ -1,5 +1,4 @@
 import colors from "../../helpers/colors"
-import bg from '../../assets/home-bg.jpg'
 
 const styles = () => ({
     containerBtnAltLogin: {
@@ -26,13 +25,10 @@ const styles = () => ({
         display: 'inline-table'
     },
     imgIcon: {
-        // width: 12,
         alignSelf: 'center',
-        // filter: 'grayscale(100%)',
         height: 12,
         position: 'absolute',
         marginLeft: -18,
-        // right: 20,
         ':hover': {
             filter: 'none',
         },

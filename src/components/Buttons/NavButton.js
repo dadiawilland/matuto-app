@@ -1,17 +1,13 @@
-import React, {useState, useEffect} from 'react'
+import React from 'react'
 import styles from './NavButton.style'
 import {NavLink} from 'react-router-dom'
 import { StyleRoot } from 'radium'
 
-const NavButton = () => {
-
-    useEffect(() => {
-        console.log('asdasd')
-    });
+const NavButton = (props) => {
 
     return (
         <StyleRoot>
-            <NavLink to="/">
+            <NavLink style={{textDecoration: 'none'}} to={props.dest}>
                 <div key="help" style={styles().containerBtnSignIn}>
                     <span style={styles().btnFont}>Get Started</span>
                 </div>

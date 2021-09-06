@@ -1,11 +1,10 @@
 import React from "react";
 import {QueryClient, QueryClientProvider} from 'react-query'
-import {NavLink, BrowserRouter, Switch, Route} from 'react-router-dom'
+import { BrowserRouter, Switch, Route} from 'react-router-dom'
 import Home from "./containers/Home/Home"
-import SignIn from "./containers/SignIn/SignIn"
+import OnBoarding from "./containers/OnBoarding/OnBoarding"
 import Header from "./components/Header/Header";
 import colors from "./helpers/colors"
-import Radium from 'radium'
 const queryClient = new QueryClient()
 
 
@@ -22,8 +21,8 @@ const App = () => {
             <Route exact path='/'>
               <Home/>
             </Route>
-            <Route exact path='/signIn'>
-              <SignIn/>
+            <Route path={["/login", "/register", "/payment"]}>
+              <OnBoarding/>
             </Route>
           </Switch>
         </QueryClientProvider>

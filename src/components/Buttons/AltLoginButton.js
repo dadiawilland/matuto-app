@@ -1,20 +1,15 @@
-import React, {useState, useEffect} from 'react'
+import React from 'react'
 import styles from './AltLoginButton.style'
-import bg from '../../assets/icon-google.png'
 import {NavLink} from 'react-router-dom'
 import { StyleRoot } from 'radium'
 
 const AltLoginButton = (props) => {
 
-    // const photo = require(`../../assets/images/${obj.photo}`).default;
     const icon = require(`../../assets/${props.src}`).default;
-    useEffect(() => {
-        console.log(bg)
-    });
 
     return (
         <StyleRoot>
-            <NavLink to="/signIn">
+            <NavLink style={{textDecoration: 'none'}} to={props.dest}>
                 <div key="help" style={{...styles().containerBtnAltLogin, ...props.style}}>
                     <img key="img" style={styles().imgIcon} src={icon} alt="Sign in logo"/>
                     <span key="text" style={styles().btnFont}>{props.text}</span>

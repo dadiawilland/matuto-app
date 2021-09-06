@@ -1,18 +1,16 @@
-import React, {useState, useEffect} from 'react'
+import React from 'react'
 import styles from './ProcessButton.style'
-import {NavLink} from 'react-router-dom'
+import { NavLink, useLocation } from "react-router-dom";
 import { StyleRoot } from 'radium'
 
 const ProcessButton = (props) => {
 
-    useEffect(() => {
-        console.log('asdasd')
-    });
+    const location = useLocation().pathname
 
     return (
         <StyleRoot>
-            <NavLink to="/">
-                <div key="help" style={{...styles().containerBtnSignIn, ...props.style}}>
+            <NavLink style={{textDecoration: 'none'}} to={props.isNav ? props.dest : location}>
+                <div key="process" style={{...styles().containerProcessBtn, ...props.style}}>
                     <span style={styles().btnFont}>{props.btnLabel}</span>
                 </div>
             </NavLink>
