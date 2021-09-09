@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import logo from '../../assets/logo.png'
 import logoWhite from '../../assets/logo-white.png'
 import icon from '../../assets/icon-sample.png'
@@ -11,6 +11,7 @@ const Header = () => {
 
     const location = useLocation().pathname
     const onBoardingLocations = ['/login', '/register', '/payment']
+    const [isActive, setIsActive] = useState(false)
     // const icon = require(`../../assets/icon-sample.png`);
 
     const renderHeader = (loc) => {
@@ -36,8 +37,8 @@ const Header = () => {
                             </NavLink>
                         </div>);
             default:
-                return (<div style={styles().containerIcon}>
-                            <img key="img" style={styles().imgIcon} src={icon} alt="Sign in logo"/>
+                return (<div style={isActive ? styles().containerIconActive : styles().containerIcon}>
+                            <img onClick={() => setIsActive(!isActive)} key="img" style={isActive ? styles().imgIconActive : styles().imgIcon} src={icon} alt="Sign in logo"/>
                         </div>);
         }
     }
