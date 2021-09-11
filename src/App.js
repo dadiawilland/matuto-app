@@ -5,6 +5,7 @@ import Home from "./containers/Home/Home"
 import OnBoarding from "./containers/OnBoarding/OnBoarding"
 import Header from "./components/Header/Header";
 import colors from "./helpers/colors"
+import Top from "./containers/Top/Top"
 const queryClient = new QueryClient()
 
 
@@ -20,6 +21,9 @@ const App = () => {
           <Switch>
             <Route exact path='/'>
               <Home/>
+            </Route>
+            <Route exact path='/home'>
+              <Top/>
             </Route>
             <Route path={["/login", "/register", "/payment"]}>
               <OnBoarding/>

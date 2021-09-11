@@ -25,7 +25,7 @@ const Header = () => {
                                 <span style={styles().btnFont} key="contact">Contact</span>
                             </NavLink>
                         </div>);
-            case '/a':
+            case '/':
                 return (<div>
                             <NavLink style={styles().containerLink} to="/login">
                                 <span style={styles().btnFont} key="login">Login</span>
