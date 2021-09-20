@@ -25,6 +25,9 @@ const styles = () => ({
         margin: '0 auto',
         marginBottom: 9
     },
+    containerInputFields: {
+        marginBottom: 19
+    },
     formTitleFont: {
         paddingBlock: 12,
         marginBottom: 32,

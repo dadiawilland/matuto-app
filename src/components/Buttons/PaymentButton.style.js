@@ -5,6 +5,7 @@ const styles = () => ({
         backgroundColor: colors.transparent,
         borderRadius: 6,
         display: 'flex',
+        cursor: 'pointer',
         width: 'fit-content',
         paddingInline: 24,
         paddingBlock: 4,

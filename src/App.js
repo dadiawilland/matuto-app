@@ -22,10 +22,10 @@ const App = () => {
             <Route exact path='/'>
               <Home/>
             </Route>
-            <Route exact path='/home'>
+            <Route path={["/home", "/pricing", "/payment"]}>
               <Top/>
             </Route>
-            <Route path={["/login", "/register", "/payment"]}>
+            <Route path={["/login", "/register", "/payment-info"]}>
               <OnBoarding/>
             </Route>
           </Switch>

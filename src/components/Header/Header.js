@@ -10,13 +10,13 @@ import { NavLink, useLocation } from "react-router-dom";
 const Header = () => {
 
     const location = useLocation().pathname
-    const onBoardingLocations = ['/login', '/register', '/payment']
+    const onBoardingLocations = ['/login', '/register', '/payment-info']
 
     const renderHeader = (loc) => {
         switch(loc) {
             case '/login':
             case '/register':
-            case '/payment':
+            case '/payment-info':
               return  (<div>
                             <NavLink style={styles().containerLink} to="/">
                                 <span style={styles().btnFont} key="help">Help</span>

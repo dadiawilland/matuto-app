@@ -1,43 +1,48 @@
 import React from 'react'
 import styles from './Top.style'
+import CommonCard from '../../components/Cards/CommonCard'
+import NavCard from '../../components/Cards/NavCard'
+import PriceCard from '../../components/Cards/PriceCard'
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import NavButton from '../../components/Buttons/NavButton'
+import { StyleRoot } from 'radium'
+import FreeCourse from '../../components/FreeCourse/FreeCourse'
+import PriceList from '../../components/PriceList/PriceList'
+import Payment from '../../components/Payment/Payment'
+import { useLocation } from "react-router-dom";
 
 const Home = () => {
 
-    const responsive = {
-        superLargeDesktop: {
-            // the naming can be any, depends on you.
-            breakpoint: { max: 4000, min: 3000 },
-            items: 5
-        },
-        desktop: {
-            breakpoint: { max: 3000, min: 1024 },
-            items: 3
-        },
-        tablet: {
-            breakpoint: { max: 1024, min: 464 },
-            items: 2
-        },
-        mobile: {
-            breakpoint: { max: 464, min: 0 },
-            items: 1
+    const location = useLocation().pathname
+
+    const renderContent = (loc) => {
+        switch(loc) {
+            case '/home':
+                return <FreeCourse/>
+            case '/pricing':
+                return <PriceList/>
+            case '/payment':
+                return <Payment/>
+
         }
-    };
+    }
+
+    const renderHeader = (loc) => {
+        switch(loc) {
+            case '/home':
+                return 'Free Courses'
+            case '/pricing':
+                return 'Select Package'
+            case '/payment':
+                return 'Payment'
+
+        }
+    }
 
     return (
         <div style={styles().containerHome}>
-            <span style={styles().headerFont}>Free Courses</span>
-            {/* <span style={styles().headerFont}>Lifelong learning is a <br/> journey together.</span>
-            <span style={styles().subHeaderFont}>Hone and enhance your soft and hard skills through<br/> a gamified education and work-train program. Earn<br/> vouchers as you gain skills. Land a job. Provide<br/> opportunities and growth for your business and the community.</span>
-            <NavButton dest="register" /> */}
-            <Carousel responsive={responsive}>
-                <div>Item 1</div>
-                <div>Item 2</div>
-                <div>Item 3</div>
-                {/* <div>Item 4</div> */}
-            </Carousel>;
+            <span style={styles().headerFont}>{renderHeader(location)}</span>
+            {renderContent(location)}
         </div>
     )
 }

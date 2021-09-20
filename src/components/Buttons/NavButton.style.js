@@ -2,7 +2,7 @@ import colors from "../../helpers/colors"
 
 const styles = () => ({
     containerBtnSignIn: {
-        backgroundColor: colors.transparent,
+        backgroundColor: colors.red,
         borderRadius: 20,
         display: 'flex',
         justifyContent: 'center',
@@ -10,9 +10,9 @@ const styles = () => ({
         paddingInline: 24,
         paddingBlock: 8,
         border: '1px solid #EA5C55',
-        color: colors.red,
+        color: colors.white,
         ':hover': {
-            backgroundColor: colors.red,
+            backgroundColor: colors.red4,
             color: colors.white,
         },
     },

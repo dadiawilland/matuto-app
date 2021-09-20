@@ -3,7 +3,7 @@ import styles from './OnBoarding.style'
 import bg from '../../assets/sign-in-bg.png'
 import Login from '../../components/Login/Login'
 import Register from '../../components/Register/Register'
-import Payment from '../../components/Register/Payment'
+import PaymentInfo from '../../components/Register/PaymentInfo'
 import { useLocation } from "react-router-dom";
 
 const SignIn = () => {
@@ -14,8 +14,8 @@ const SignIn = () => {
         switch(loc) {
             case '/register':
               return <Register/>;
-            case '/payment':
-                return <Payment/>;
+            case '/payment-info':
+                return <PaymentInfo title={'Register to Matuto'} isRegistration={true}/>;
             default:
               return <Login/>;
           }

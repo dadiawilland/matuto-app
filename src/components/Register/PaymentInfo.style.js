@@ -20,6 +20,9 @@ const styles = () => ({
     containerInputFieldSml: {
         width: 'calc(50% - 9px)'
     },
+    containerInputFields: {
+        marginBottom: 19
+    },
     containerButton: {
         alignSelf: 'center',
         margin: '0 auto',
@@ -29,11 +32,18 @@ const styles = () => ({
         alignSelf: 'center',
         margin: '0 auto',
         marginBottom: 9,
-        marginRight: 9
+        marginRight: 18
     },
     containerPaymentBtnRow: {
         display: 'flex',
         flexDirection: 'row',
+    },
+    containerPriceField: {
+        backgroundColor: '#EA605940',
+        paddingBlock: 24,
+        paddingInline: 24,
+        borderRadius: 12,
+        marginBottom: 19,
     },
     formTitleFont: {
         paddingBlock: 12,
@@ -48,6 +58,11 @@ const styles = () => ({
         height: 20,
         fontWeight: 200,
         color: colors.black2
+    },
+    priceFieldFont: {
+        fontSize: 14,
+        color: colors.red,
+        fontWeight: 500
     }
 })
 
