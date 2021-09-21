@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { useSelector } from 'react-redux';
 import styles from './Payment.style'
 import CommonCard from '../../components/Cards/CommonCard'
 import NavCard from '../../components/Cards/NavCard'
@@ -9,6 +10,10 @@ import PaymentInfo from '../Register/PaymentInfo'
 const Payment = () => {
 
     const [isSelected, setisSelected] = useState(false);
+    const selectedPrice = useSelector((state) => state.price.selectedPrice);
+    useEffect(() => {
+        console.log(selectedPrice);
+    }, [selectedPrice]);
 
     return (
         <div style={styles().containerPayment}>
@@ -45,14 +50,7 @@ const Payment = () => {
             <ProcessButton isNav={false} btnLabel="Proceed" style={{...styles().containerButton,
                                                                           ...{display: isSelected ? 'flex' : 'flex'}}}/> */}
             <div style={styles().containerLeft}>
-                <PriceCard src={'icon-price-2.png'} title={'For Individuals'} price={'1,499 php'} description={'per month'} isAlwaysActive={true}
-                    content={`Full Access to Matuto's work-train program
-
-                                Gain vouchers as you unlock skilss
-
-                                Get a certificate and a badge upon course completion
-
-                                Access job openings at our partner companies`}/>
+                <PriceCard price={selectedPrice} isAlwaysActive={true}/>
             </div>
             <div style={styles().containerRight}>
                 <PaymentInfo title={'Bank Details'} isRegistration={false}/>
@@ -61,4 +59,4 @@ const Payment = () => {
     )
 }
 
-export default Payment
+export default Payment;

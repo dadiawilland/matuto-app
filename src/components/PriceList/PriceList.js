@@ -1,46 +1,46 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import { StyleRoot } from 'radium'
+import "react-multi-carousel/lib/styles.css";
 import styles from './PriceList.style'
 import CommonCard from '../../components/Cards/CommonCard'
 import NavCard from '../../components/Cards/NavCard'
 import PriceCard from '../../components/Cards/PriceCard'
-import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
-import { StyleRoot } from 'radium'
 import NavButton from '../../components/Buttons/NavButton'
+import { getPriceListAction } from '../../actions/priceActions';
 
 const PriceList = () => {
+    const dispatch = useDispatch();
+    const priceList = useSelector((state) => state.price.priceList);
+    const selectedPrice = useSelector((state) => state.price.selectedPrice);
 
     const [isSelected, setisSelected] = useState(false);
+    const [prices, setPrices] = useState([]);
+
+    useEffect(() => {
+        dispatch(getPriceListAction({}));
+    }, []);
+
+    useEffect(() => {
+        if (priceList) {
+            setPrices(priceList);
+        }
+    }, [priceList]);
+
+    useEffect(() => {
+        console.log(selectedPrice);
+    }, [selectedPrice]);
 
     return (
         <div style={styles().containerPriceList}>
             <div style={styles().containerCardContent}>
                 <StyleRoot>
                     <div style={styles().containerCardList}>
-                        <PriceCard src={'icon-price-1.png'} title={'For Enterprise'} price={'Custom Pricing'}
-                            content={`Tailor-fit gamified work-train program for you employees
-
-                                        Connect with Matuto graduates and potential employees
-
-                                        Post job openings
-
-                                        Gain a company ad slot`}/>
-                        <PriceCard src={'icon-price-2.png'} title={'For Individuals'} price={'1,499 php'} description={'per month'}
-                            content={`Full Access to Matuto's work-train program
-
-                                        Gain vouchers as you unlock skilss
-
-                                        Get a certificate and a badge upon course completion
-
-                                        Access job openings at our partner companies`}/>
-                        <PriceCard src={'icon-price-3.png'} title={'For Team'} price={'1,499 php'} description={'per month and per employee'}
-                            content={`Empower employees to enhance and master soft and hard skills through a gamified program
-
-                                        Track employee progress realtime
-
-                                        Create a more effective and efficient workplace
-
-                                        Post Job openings`}/>
+                        {prices?.map((price, i) => {
+                            return (
+                                <PriceCard key={i} price={price}/>
+                            );
+                        })}
                     </div>
                 </StyleRoot>
             </div>
