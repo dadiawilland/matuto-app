@@ -39,7 +39,7 @@ const styles = () => ({
         flexDirection: 'row',
     },
     containerPriceField: {
-        backgroundColor: '#EA605940',
+        backgroundColor: colors.red2 + 40,
         paddingBlock: 24,
         paddingInline: 24,
         borderRadius: 12,

@@ -1,5 +1,4 @@
 import colors from "../../helpers/colors"
-import bg from '../../assets/home-bg.jpg'
 
 const styles = () => ({
     containerCardList: {
@@ -20,7 +19,7 @@ const styles = () => ({
         }
     },
     containerCardContent: {
-        marginTop: 120,
+        marginTop: 20,
         // flexGrow: 1,
         width: '100%',
         // width: 860,
