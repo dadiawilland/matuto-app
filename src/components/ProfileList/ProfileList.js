@@ -7,11 +7,23 @@ import DataTable from '../../components/DataTable/DataTable'
 import AdminCard from '../../components/Cards/AdminCard';
 import { StyleRoot } from 'radium'
 
-const Admin = () => {
+const ProfileList = () => {
     return (
         <StyleRoot>
             <div style={styles().containerCardContent}>
                     <div style={styles().containerCardList}>
+                        <AdminCard/>
+                        <AdminCard/>
+                        <AdminCard/>
+                        <AdminCard/>
+                        <AdminCard/>
+                        <AdminCard/>
+                        <AdminCard/>
+                        <AdminCard/>
+                        <AdminCard/>
+                        <AdminCard/>
+                        <AdminCard/>
+                        <AdminCard/>
                         <AdminCard/>
                         <AdminCard/>
                         <AdminCard/>
@@ -24,4 +36,4 @@ const Admin = () => {
     )
 }
 
-export default Admin
+export default ProfileList

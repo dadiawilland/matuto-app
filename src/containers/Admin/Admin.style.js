@@ -6,7 +6,7 @@ const styles = () => ({
         display: 'flex',
         // paddingInline: 62,
         flexDirection: 'row',
-        minHeight: 1080,
+        minHeight: '100vh',
         // backgroundColor: '#000000'
         backgroundColor: colors.white2
     },

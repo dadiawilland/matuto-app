@@ -7,7 +7,7 @@ const styles = () => ({
         display: 'flex',
         flexDirection: 'row',
         // alignSelf: 'center'
-        width: 1080,
+        width: 1176,
         flexWrap: 'wrap',
         '@media screen and (max-width: 1300px)': {
             maxWidth: 882,

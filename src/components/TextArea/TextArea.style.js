@@ -2,12 +2,12 @@ import colors from "../../helpers/colors"
 
 const styles = () => ({
     containerField: {
-        height: 52,
+        height: 96,
         flexDirection: 'column',
         display: 'flex',
     },
     containerInputField: {
-        height: 32,
+        height: 96,
         borderRadius: 6,
         border: 0,
         fontSize: 12,

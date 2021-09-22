@@ -24,8 +24,7 @@ const styles = () => ({
         width: '100%',
         // width: 860,
         display: 'flex',
-        justifyContent: 'center'
-
+        justifyContent: 'center',
         // justifyContent: 'space-evenly's
     },
 })

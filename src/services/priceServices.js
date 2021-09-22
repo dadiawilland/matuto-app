@@ -13,7 +13,7 @@ export const getPriceListService = (request) => {
     return {
         status: 200,
         data: {
-            prices: [
+            price: [
                 {id: 1, type: 'ENTERPRISE', logo: 'icon-price-1.png', title: 'For Enterprise', price: 'Custom', description: `Tailor-fit gamified work-train program for you employees
 
                 Connect with Matuto graduates and potential employees

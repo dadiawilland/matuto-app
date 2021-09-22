@@ -9,6 +9,10 @@ import ProfileList from '../../components/ProfileList/ProfileList'
 import { StyleRoot } from 'radium'
 import RegisterButton from '../../components/Buttons/RegisterButton';
 import AdminHeader from '../../components/Header/AdminHeader';
+import TextInput from '../../components/TextInput/TextInput';
+import TextArea from '../../components/TextArea/TextArea';
+import ProcessButton from '../../components/Buttons/ProcessButton';
+import AdminModal from '../../components/Modal/AdminModal';
 
 const Admin = () => {
 
@@ -24,6 +28,7 @@ const Admin = () => {
                 <ProfileList/>
                 {/* <DataTable/> */}
             </div>
+            {/* <AdminModal/> */}
         </div>
     )
 }

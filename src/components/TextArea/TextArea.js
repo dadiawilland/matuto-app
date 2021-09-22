@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import styles from './TextInput.style'
+import styles from './TextArea.style'
 import colors from "../../helpers/colors"
 
-const TextInput = (props) => {
+const TextArea = (props) => {
 
     const [val, setVal] = useState('');
     const [isActive, setisActive] = useState(false)
@@ -10,7 +10,7 @@ const TextInput = (props) => {
     return (
         <div style={{...styles().containerField, ...props.style}}>
             <span style={styles().inputFieldFont}>{props.label}</span>
-            <input type={props.type} 
+            <textarea type={props.type} 
                     onChange={(e) => setVal(e.target.value)}
                     onFocus={() => setisActive(true)}
                     onBlur={() => setisActive(false)}  
@@ -21,4 +21,4 @@ const TextInput = (props) => {
     )
 }
 
-export default TextInput 
+export default TextArea 

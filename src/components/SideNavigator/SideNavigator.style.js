@@ -4,11 +4,11 @@ const styles = () => ({
     containerSideNav: {
         minWidth: 160,
         backgroundColor: colors.gray4,
-        height: '100%',
+        // height: '100%',
         borderRight: '1px solid #E8E8EA',
         display: 'flex',
         // justifyContent: 'center',
-        minHeight: 1080,
+        minHeight: '100vh',
         flexDirection: 'column'
     },
     containerIcon: {

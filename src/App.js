@@ -52,7 +52,7 @@ const styles = () => ({
     backgroundColor: colors.white,
     width: '100%',
     height: '100%',
-    minHeight: 1080
+    minHeight: '100vh'
   }
 })
 
