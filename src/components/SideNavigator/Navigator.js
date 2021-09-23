@@ -1,19 +1,20 @@
 import React, { useState } from 'react'
 import styles from './Navigator.style'
-import logoWhite from '../../assets/logo-white.png'
+import {NavLink} from 'react-router-dom'
 import { StyleRoot } from 'radium'
 
 const Navigator = (props) => {
-
-    const icon = require(`../../assets/${props.src}`).default;
-    const [isActive, setIsActive] = useState(false);
-
+    const { src, title, name, onClick, isActive, dest } = props;
+    const icon = require(`../../assets/${src}`).default;
+    
     return (
             <StyleRoot>
-                <div onClick={() => setIsActive(!isActive)} style={styles().containerNavBtn}>
-                    <img style={styles(isActive).navBtnImg} src={icon} alt="Matuto logo"/>
-                    <span style={styles(isActive).fontNavBtn}>{props.name}</span>
-                </div>
+                <NavLink onClick={() => onClick()} style={{textDecoration: 'none'}} to={dest}>
+                    <div style={styles().containerNavBtn}>
+                        <img style={styles(isActive).navBtnImg} src={icon} alt="Matuto logo"/>
+                        <span style={styles(isActive).fontNavBtn}>{title}</span>
+                    </div>
+                </NavLink>
             </StyleRoot>
     )
 }

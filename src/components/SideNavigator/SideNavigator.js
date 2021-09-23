@@ -1,12 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styles from './SideNavigator.style'
 import logoWhite from '../../assets/logo-white.png'
 import Navigator from './Navigator'
+import { ADMIN } from '../../constants/adminConstants';
 
 const SideNavigator = () => {
 
     // const icon = require(`../../assets/${props.src}`).default;
     const icon = require(`../../assets/icon-career-market.png`).default;
+    const [selectedNavigation, setSelectedNavigation] = useState(ADMIN.NAVIGATION_TABS[0].name);
+
+
 
     return (
             <div style={styles().containerSideNav}>
@@ -14,10 +18,14 @@ const SideNavigator = () => {
                     <img style={styles().imgLogo} src={logoWhite} alt="Matuto logo"/>
                 </div>
                 <div style={styles().containerNavBtnList}>
-                    <Navigator src={'icon-career-market.png'} name={'Career Market'}/>
-                    <Navigator src={'icon-student-center.png'} name={'Student Center'}/>
-                    <Navigator src={'icon-recruitment.png'} name={'Recruitment'}/>
-                    <Navigator src={'icon-partners.png'} name={'Partners'}/>
+                    {ADMIN.NAVIGATION_TABS.map((nav) => {
+                        return (
+                            <Navigator dest={nav.url} isActive={selectedNavigation === nav.name} 
+                                        onClick={()=> setSelectedNavigation(nav.name)} 
+                                        name={nav.name} src={nav.icon} title={nav.title}
+                            />
+                        );
+                    })}
                 </div>
             </div>
     )

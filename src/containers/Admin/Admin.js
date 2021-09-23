@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import { useLocation } from "react-router-dom";
 import styles from './Admin.style'
 import SideNavigator from '../../components/SideNavigator/SideNavigator'
 import SearchBar from '../../components/Search/SearchBar'
@@ -15,17 +16,40 @@ import ProcessButton from '../../components/Buttons/ProcessButton';
 import AdminModal from '../../components/Modal/AdminModal';
 
 const Admin = () => {
-
-    // const icon = require(`../../assets/${props.src}`).default;
+    const [headerText, setHeaderText] = useState('Career Market');
+    const [content, setContent] = useState(<ProfileList />);
     const icon = require(`../../assets/icon-career-market.png`).default;
+    const location = useLocation().pathname;
+
+    useEffect(() => {
+        switch(location) {
+            case '/admin':
+            case '/admin-career':
+                setContent(<ProfileList/>);
+                setHeaderText('Career Market');
+                return;
+            case '/admin-student':
+                setContent(<ProfileList/>);
+                setHeaderText('Student Center');
+                return;
+            case '/admin-recruitment':
+                setContent(<ProfileList/>);
+                setHeaderText('Recruitment');
+                return;
+            case '/admin-partner':
+                setContent(<ProfileList/>);
+                setHeaderText('Partners');
+                return;
+        }
+    }, [location])
 
     return (
         <div style={styles().containerAdmin}>
             <SideNavigator/>
             <div style={styles().containerContent}>
-                <AdminHeader/>
+                <AdminHeader title={headerText}/>
                 <SearchBar/>
-                <ProfileList/>
+                {content}
                 {/* <DataTable/> */}
             </div>
             <AdminModal/>

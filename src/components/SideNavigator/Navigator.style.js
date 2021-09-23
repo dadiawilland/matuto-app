@@ -13,6 +13,7 @@ const styles = (isActive) => ({
         filter: isActive ? 'none' : 'brightness(0) invert(0)'
     },
     fontNavBtn: {
+        userSelect: 'none',
         fontSize: 12,
         color: isActive ? colors.red : colors.black2
     }

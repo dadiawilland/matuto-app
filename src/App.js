@@ -29,7 +29,7 @@ const App = () => {
             <Route exact path='/'>
               <Home/>
             </Route>
-            <Route exact path='/admin'>
+            <Route path={['/admin', '/admin-student', '/admin-career', '/admin-recruitment', '/admin-partner']}>
               <Admin/>
             </Route>
             <Route path={["/home", "/pricing", "/payment"]}>

@@ -22,6 +22,7 @@ const PriceList = () => {
     }, []);
 
     useEffect(() => {
+        console.log(priceList);
         if (priceList) {
             setPrices(priceList);
         }

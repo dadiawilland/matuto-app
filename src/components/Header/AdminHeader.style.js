@@ -8,9 +8,11 @@ const styles = () => ({
     },
     titleImg: {
         width: 30,
-        marginRight: 13
+        marginRight: 13,
+        userSelect: 'none',
     },
     fontTitle: {
+        userSelect: 'none',
         fontSize: 22,
         color: colors.red,
         fontWeight: 500

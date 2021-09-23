@@ -11,7 +11,8 @@ import { StyleRoot } from 'radium'
 import RegisterButton from '../../components/Buttons/RegisterButton';
 import { toggleJobPostModal } from '../../actions/adminActions';
 
-const AdminHeader = () => {
+const AdminHeader = (props) => {
+    const { title } = props;
     const dispatch = useDispatch();
     // const icon = require(`../../assets/${props.src}`).default;
     const icon = require(`../../assets/icon-career-market.png`).default;
@@ -25,7 +26,7 @@ const AdminHeader = () => {
         <div style={styles().containerHeader}>
             <div style={styles().containerTitle}>
                 <img style={styles().titleImg} src={icon} alt="Matuto logo"/>
-                <span style={styles().fontTitle}>Career Market</span>
+                <span style={styles().fontTitle}>{title}</span>
             </div>
             <RegisterButton title={'Create Job Post'} onClick={() => dispatch(toggleJobPostModal())}/>
         </div>
