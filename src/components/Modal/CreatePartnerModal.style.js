@@ -1,12 +1,12 @@
 import colors from "../../helpers/colors"
 
-const styles = (isVisible) => ({
+const styles = () => ({
     containerModal: {
         position: 'fixed',
         width: '100%',
         height: '100%',
-        backgroundColor: isVisible ? colors.gray6: 'none',
-        display: isVisible ? 'flex' : 'none',
+        backgroundColor: colors.gray6,
+        display: 'flex',
         justifyContent: 'center'
     },
     containerForm: {

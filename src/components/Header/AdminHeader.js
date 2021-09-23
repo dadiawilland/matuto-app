@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux';
+import { useLocation } from "react-router-dom";
 import styles from './AdminHeader.style'
 import SideNavigator from '../../components/SideNavigator/SideNavigator'
 import SearchBar from '../../components/Search/SearchBar'
@@ -9,26 +10,53 @@ import AdminCard from '../../components/Cards/AdminCard';
 import ProfileList from '../../components/ProfileList/ProfileList'
 import { StyleRoot } from 'radium'
 import RegisterButton from '../../components/Buttons/RegisterButton';
-import { toggleJobPostModal } from '../../actions/adminActions';
+import { toggleJobPostModalAction, 
+        toggleCreatePartnerModalAction,
+        closeAdminModalsAction, 
+        setNavigationAction 
+    } from '../../actions/adminActions';
 
 const AdminHeader = (props) => {
-    const { title } = props;
     const dispatch = useDispatch();
-    // const icon = require(`../../assets/${props.src}`).default;
+    const location = useLocation().pathname;
+    const [title, setTitle] = useState('Career Market');
+    const [headerButton, setHeaderButton] = useState(null);
     const icon = require(`../../assets/icon-career-market.png`).default;
 
-
-    //insertHeader logic here. icon and title
-    //remove button on Career Market & Student Center
-
-
+    useEffect(() => {
+        dispatch(closeAdminModalsAction());
+        switch(location) {
+            case '/admin':
+            case '/admin-career':
+                dispatch(setNavigationAction('career'));
+                setTitle('Career Market');
+                setHeaderButton(null);
+                return;
+            case '/admin-student':
+                dispatch(setNavigationAction('student'));
+                setTitle('Student Center');
+                setHeaderButton(null);
+                return;
+            case '/admin-recruitment':
+                dispatch(setNavigationAction('recruitment'));
+                setTitle('Recruitment');
+                setHeaderButton(<RegisterButton title={'Create Job Post'} onClick={() => dispatch(toggleJobPostModalAction())}/>);
+                return;
+            case '/admin-partner':
+                dispatch(setNavigationAction('partner'));
+                setTitle('Partners');
+                setHeaderButton(<RegisterButton title={'Create Partner'} onClick={() => dispatch(toggleCreatePartnerModalAction())}/>);
+                return;
+        }
+    }, [location]);
+    
     return (
         <div style={styles().containerHeader}>
             <div style={styles().containerTitle}>
                 <img style={styles().titleImg} src={icon} alt="Matuto logo"/>
                 <span style={styles().fontTitle}>{title}</span>
             </div>
-            <RegisterButton title={'Create Job Post'} onClick={() => dispatch(toggleJobPostModal())}/>
+            {headerButton}
         </div>
     )
 }

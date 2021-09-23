@@ -117,4 +117,56 @@ export const FORM_FIELDS = {
             validators: { required: 'Enter qualification'}
         },
     ],
+    CREATE_PARTNER: [
+        {
+            subFields: [
+                {  
+                    name: 'businessType', type: 'text', label: 'Business Type', 
+                    validators: { required: 'Select Business Type'}
+                },
+                {  
+                    name: 'contactNumber', type: 'text', label: 'Contact Number', 
+                    validators: { required: 'Enter Contact Number'}
+                }
+            ]
+        },
+        {
+            subFields: [
+                {
+                    name: 'name', type: 'text', label: 'Name', 
+                    validators: { required: 'Enter name'}
+                },
+                {
+                    name: 'email', type: 'text', label: 'Email Address', 
+                    validators: { 
+                        required: 'Enter Email Address',
+                        pattern: {
+                            value:  /^\w+([.-]?\w+)@\w+([.-]?\w+)(.\w{2,3})+$/,
+                            message: 'Enter a valid email'
+                        }
+                    }
+                },
+            ]
+        },
+        {
+            subFields: [
+                {  
+                    name: 'industry', type: 'text', label: 'Industry', 
+                    validators: { required: 'Enter industry'}
+                },
+                {  
+                    name: 'subscriptionType', type: 'text', label: 'Subscription Type', 
+                    validators: { required: 'Select Subscription Type'}
+                },
+            ]
+        },
+        {
+            subFields: [
+                {
+                    name: 'location', type: 'text', label: 'Location', 
+                    validators: { required: 'Enter location'}
+                },
+            ]
+        },
+    ],
 }

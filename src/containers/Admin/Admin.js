@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { useSelector } from 'react-redux';
 import { useLocation } from "react-router-dom";
 import styles from './Admin.style'
 import SideNavigator from '../../components/SideNavigator/SideNavigator'
@@ -13,46 +14,41 @@ import AdminHeader from '../../components/Header/AdminHeader';
 import TextInput from '../../components/TextInput/TextInput';
 import TextArea from '../../components/TextArea/TextArea';
 import ProcessButton from '../../components/Buttons/ProcessButton';
-import AdminModal from '../../components/Modal/AdminModal';
+import JobPostModal from '../../components/Modal/JobPostModal';
+import CreatePartnerModal from '../../components/Modal/CreatePartnerModal';
 
 const Admin = () => {
+    const jobPostModalVisible = useSelector((state) => state.admin.jobPostModalVisible);
+    const createPartnerModalVisible = useSelector((state) => state.admin.createPartnerModalVisible);
     const [headerText, setHeaderText] = useState('Career Market');
     const [content, setContent] = useState(<ProfileList />);
     const icon = require(`../../assets/icon-career-market.png`).default;
     const location = useLocation().pathname;
 
-    useEffect(() => {
+    const renderContent = () => {
         switch(location) {
             case '/admin':
             case '/admin-career':
-                setContent(<ProfileList/>);
-                setHeaderText('Career Market');
-                return;
+                return <DataTable/>;
             case '/admin-student':
-                setContent(<ProfileList/>);
-                setHeaderText('Student Center');
-                return;
+                return <ProfileList/>;
             case '/admin-recruitment':
-                setContent(<ProfileList/>);
-                setHeaderText('Recruitment');
-                return;
+                return <ProfileList/>;
             case '/admin-partner':
-                setContent(<ProfileList/>);
-                setHeaderText('Partners');
-                return;
+                return <ProfileList/>;
         }
-    }, [location])
+    }
 
     return (
         <div style={styles().containerAdmin}>
             <SideNavigator/>
             <div style={styles().containerContent}>
-                <AdminHeader title={headerText}/>
+                <AdminHeader />
                 <SearchBar/>
-                {content}
-                {/* <DataTable/> */}
+                {renderContent()}
             </div>
-            <AdminModal/>
+            {jobPostModalVisible && <JobPostModal/>}
+            {createPartnerModalVisible && <CreatePartnerModal />}
         </div>
     )
 }

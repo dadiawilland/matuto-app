@@ -1,26 +1,25 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useForm, Controller } from "react-hook-form";
-import styles from './AdminModal.style'
-import SideNavigator from '../../components/SideNavigator/SideNavigator'
-import SearchBar from '../../components/Search/SearchBar'
+import styles from './JobPostModal.style'
+import SideNavigator from '../SideNavigator/SideNavigator'
+import SearchBar from '../Search/SearchBar'
 import makeStyles from "@material-ui/core/styles/makeStyles";
-import DataTable from '../../components/DataTable/DataTable'
-import AdminCard from '../../components/Cards/AdminCard';
-import ProfileList from '../../components/ProfileList/ProfileList'
+import DataTable from '../DataTable/DataTable'
+import AdminCard from '../Cards/AdminCard';
+import ProfileList from '../ProfileList/ProfileList'
 import { StyleRoot } from 'radium'
-import RegisterButton from '../../components/Buttons/RegisterButton';
-import AdminHeader from '../../components/Header/AdminHeader';
-import TextInput from '../../components/TextInput/TextInput';
-import TextArea from '../../components/TextArea/TextArea';
-import ProcessButton from '../../components/Buttons/ProcessButton';
-import CloseButton from '../../components/Buttons/CloseButton';
-import { toggleJobPostModal } from '../../actions/adminActions';
+import RegisterButton from '../Buttons/RegisterButton';
+import AdminHeader from '../Header/AdminHeader';
+import TextInput from '../TextInput/TextInput';
+import TextArea from '../TextArea/TextArea';
+import ProcessButton from '../Buttons/ProcessButton';
+import CloseButton from '../Buttons/CloseButton';
+import { toggleJobPostModalAction } from '../../actions/adminActions';
 import { FORM_FIELDS } from '../../constants/formConstants';
 
-const AdminModal = () => {
+const JobPostModal = () => {
     const dispatch = useDispatch();
-    const jobPostModalVisible = useSelector((state) => state.admin.jobPostModalVisible);
     const {formState: { errors }, handleSubmit, control, getValues, reset } = useForm({
         mode: 'onSubmit', 
         reValidateMode: 'onSubmit'
@@ -36,12 +35,12 @@ const AdminModal = () => {
 
     const closeModal = () => {
         reset();
-        dispatch(toggleJobPostModal());
+        dispatch(toggleJobPostModalAction());
     }
 
 
     return (
-            <div style={styles(jobPostModalVisible).containerModal}>
+            <div style={styles().containerModal}>
                 <div style={styles().containerForm}>
                     <span style={styles().fontModalTitle}>Create Job Post</span>
                     <CloseButton style={styles().closeButtonContainer} onClick={() => closeModal()}/>
@@ -93,4 +92,4 @@ const AdminModal = () => {
     )
 }
 
-export default AdminModal
+export default JobPostModal
