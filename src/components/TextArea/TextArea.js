@@ -3,7 +3,7 @@ import styles from './TextArea.style'
 import colors from "../../helpers/colors"
 
 const TextArea = (props) => {
-
+    const { value, onChange } = props;
     const [val, setVal] = useState('');
     const [isActive, setisActive] = useState(false)
 
@@ -11,10 +11,11 @@ const TextArea = (props) => {
         <div style={{...styles().containerField, ...props.style}}>
             <span style={styles().inputFieldFont}>{props.label}</span>
             <textarea type={props.type} 
-                    onChange={(e) => setVal(e.target.value)}
+                    value={value}
+                    onChange={onChange}
                     onFocus={() => setisActive(true)}
                     onBlur={() => setisActive(false)}  
-                    style={{...styles().containerInputField,
+                    style={{...props.error ? styles().inputFieldError : styles().containerInputField,
                         ...{backgroundColor: (isActive || val != '') ? colors.transparent : colors.gray5}}}
                     />
         </div>

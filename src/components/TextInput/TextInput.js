@@ -3,7 +3,7 @@ import styles from './TextInput.style'
 import colors from "../../helpers/colors"
 
 const TextInput = (props) => {
-    const { value, onChange, name } = props;
+    const { value, onChange } = props;
     const [val, setVal] = useState('');
     const [isActive, setisActive] = useState(false)
 

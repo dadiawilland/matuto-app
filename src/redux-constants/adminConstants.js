@@ -1,0 +1,3 @@
+export const ADMIN = {
+    TOGGLE_JOB_POST_MODAL: 'TOGGLE_JOB_POST_MODAL',
+}

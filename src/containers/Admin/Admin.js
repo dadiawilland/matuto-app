@@ -28,7 +28,7 @@ const Admin = () => {
                 <ProfileList/>
                 {/* <DataTable/> */}
             </div>
-            {/* <AdminModal/> */}
+            <AdminModal/>
         </div>
     )
 }

@@ -7,18 +7,23 @@ import logoWhite from '../../assets/logo-white.png'
 import { StyleRoot } from 'radium'
 
 const RegisterButton = (props) => {
-
+    const {onClick, title } = props;
     const [isActive, setisActive] = useState(false)
+
+    const handleButtonClick = () => {
+        setisActive(!isActive);
+        onClick();
+    };
 
     return (
         <StyleRoot>
-            <div onClick={() => setisActive(!isActive)} style={{...styles(isActive).containerSearchFilter, ...props.style}}>
+            <div onClick={() => handleButtonClick()} style={{...styles(isActive).containerSearchFilter, ...props.style}}>
                     <img style={styles().searchFilterIconImg} src={registerIcon} alt="Matuto logo"/>
-                    <span style={styles().fontSearchFilter}>Create Job Post</span>
+                    <span style={styles().fontSearchFilter}>{title}</span>
             </div>
         </StyleRoot>
 
-    )
+)
 }
 
 export default RegisterButton

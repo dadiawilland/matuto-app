@@ -1,15 +1,16 @@
 import colors from "../../helpers/colors"
 
-const styles = () => ({
+const styles = (isVisible) => ({
     containerModal: {
+        position: 'fixed',
         width: '100%',
         height: '100%',
-        backgroundColor: colors.gray2 + '20',
-        position: 'fixed',
-        display: 'flex',
+        backgroundColor: isVisible ? colors.gray6: 'none',
+        display: isVisible ? 'flex' : 'none',
         justifyContent: 'center'
     },
     containerForm: {
+        position: 'absolute',
         width: 800,
         height: 640,
         backgroundColor: colors.white2,
@@ -50,6 +51,14 @@ const styles = () => ({
         marginLeft: 588
         // marginLeft: 'auto'
         // left: 0
+    },
+    closeButtonContainer: {
+        top: 10,
+        right: 10,
+        position: 'absolute',
+    },
+    containerInputFieldSml: {
+        width: 'calc(50% - 9px)'
     },
 })
 

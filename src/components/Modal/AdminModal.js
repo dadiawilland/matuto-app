@@ -1,4 +1,6 @@
 import React from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import { useForm, Controller } from "react-hook-form";
 import styles from './AdminModal.style'
 import SideNavigator from '../../components/SideNavigator/SideNavigator'
 import SearchBar from '../../components/Search/SearchBar'
@@ -12,37 +14,80 @@ import AdminHeader from '../../components/Header/AdminHeader';
 import TextInput from '../../components/TextInput/TextInput';
 import TextArea from '../../components/TextArea/TextArea';
 import ProcessButton from '../../components/Buttons/ProcessButton';
+import CloseButton from '../../components/Buttons/CloseButton';
+import { toggleJobPostModal } from '../../actions/adminActions';
+import { FORM_FIELDS } from '../../constants/formConstants';
 
 const AdminModal = () => {
+    const dispatch = useDispatch();
+    const jobPostModalVisible = useSelector((state) => state.admin.jobPostModalVisible);
+    const {formState: { errors }, handleSubmit, control, getValues, reset } = useForm({
+        mode: 'onSubmit', 
+        reValidateMode: 'onSubmit'
+    });
 
-    // const icon = require(`../../assets/${props.src}`).default;
-    const icon = require(`../../assets/icon-career-market.png`).default;
+    const onSubmit = (data, e) => {
+        console.log(data);
+    }
+
+    const onError = (data, e) => {
+        console.log(data);
+    }
+
+    const closeModal = () => {
+        reset();
+        dispatch(toggleJobPostModal());
+    }
+
 
     return (
-            <div style={styles().containerModal}>
+            <div style={styles(jobPostModalVisible).containerModal}>
                 <div style={styles().containerForm}>
                     <span style={styles().fontModalTitle}>Create Job Post</span>
+                    <CloseButton style={styles().closeButtonContainer} onClick={() => closeModal()}/>
                     <div style={styles().containerFormBody}>
-                        <div style={styles().containerInputFieldRow}>
-                            <TextInput style={{...styles().containerInputField, ...styles().containerInputFieldSml}} type="text" name="firstName" label="First Name"/>
-                            <TextInput style={{...styles().containerInputField, ...styles().containerInputFieldSml}} type="text" name="lastName" label="Last Name"/>
-                        </div>
-                        <div style={styles().containerInputFieldRow}>
-                            <TextInput style={{...styles().containerInputField, ...styles().containerInputFieldSml}} type="text" name="firstName" label="First Name"/>
-                            <TextInput style={{...styles().containerInputField, ...styles().containerInputFieldSml}} type="text" name="lastName" label="Last Name"/>
-                        </div>
-                        <div style={styles().containerInputFieldRow}>
-                            <TextInput style={{...styles().containerInputField, ...styles().containerInputFieldSml}} type="text" name="firstName" label="First Name"/>
-                            <TextInput style={{...styles().containerInputField, ...styles().containerInputFieldSml}} type="text" name="lastName" label="Last Name"/>
-                        </div>
-                        <div style={styles().containerInputFieldRow}>
-                            <TextInput style={{...styles().containerInputField, ...styles().containerInputFieldSml}} type="text" name="firstName" label="First Name"/>
-                            <TextInput style={{...styles().containerInputField, ...styles().containerInputFieldSml}} type="text" name="lastName" label="Last Name"/>
-                        </div>
-                        <TextArea style={{...styles().containerInputField, ...styles().containerInputFieldSml}} type="text" name="firstName" label="First Name"/>
-                        <TextArea style={{...styles().containerInputField, ...styles().containerInputFieldSml}} type="text" name="firstName" label="First Name"/>
+                        {FORM_FIELDS.JOB_POST.map((formfield, i) => {
+                            if (formfield.subFields) {
+                                return (
+                                    <div key={i} style={styles().containerInputFieldRow}>
+                                        {formfield.subFields.map((subFormField, ii) => {
+                                            return (
+                                                <Controller
+                                                    key={ii}
+                                                    control={control}
+                                                    name={subFormField.name}
+                                                    rules={subFormField.validators}
+                                                    defaultValue=""
+                                                    render={({
+                                                        field: { onChange, value  }
+                                                        }) => 
+                                                        <TextInput onChange={onChange} val={value} style={{...styles().containerInputField, ...styles().containerInputFieldSml}} type={subFormField.type} 
+                                                            name={subFormField.name} label={subFormField.label} error={errors[subFormField.name]}/>
+                                                    }
+                                                />
+                                            );
+                                        })}
+                                    </div>
+                                );
+                            } else {
+                                return (        
+                                    <Controller
+                                        key={i}
+                                        control={control}
+                                        name={formfield.name}
+                                        rules={formfield.validators}
+                                        render={({
+                                            field: { onChange, value }
+                                            }) => 
+                                            <TextArea onChange={onChange} val={value} style={{...styles().containerInputField}} type={formfield.type} 
+                                                name={formfield.name} label={formfield.label} error={errors[formfield.name]}/>
+                                        }
+                                    />
+                                );
+                            }
+                        })}
                     </div>
-                    <ProcessButton isNav={false} btnLabel="Submit" style={styles().containerButton}/>
+                    <ProcessButton onClick={handleSubmit(onSubmit, onError)} isNav={false} btnLabel="Submit" style={styles().containerButton}/>
                 </div>
             </div>
     )

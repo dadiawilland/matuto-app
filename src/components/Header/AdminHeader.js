@@ -1,4 +1,5 @@
 import React from 'react'
+import { useDispatch } from 'react-redux';
 import styles from './AdminHeader.style'
 import SideNavigator from '../../components/SideNavigator/SideNavigator'
 import SearchBar from '../../components/Search/SearchBar'
@@ -8,9 +9,10 @@ import AdminCard from '../../components/Cards/AdminCard';
 import ProfileList from '../../components/ProfileList/ProfileList'
 import { StyleRoot } from 'radium'
 import RegisterButton from '../../components/Buttons/RegisterButton';
+import { toggleJobPostModal } from '../../actions/adminActions';
 
 const AdminHeader = () => {
-
+    const dispatch = useDispatch();
     // const icon = require(`../../assets/${props.src}`).default;
     const icon = require(`../../assets/icon-career-market.png`).default;
 
@@ -25,7 +27,7 @@ const AdminHeader = () => {
                 <img style={styles().titleImg} src={icon} alt="Matuto logo"/>
                 <span style={styles().fontTitle}>Career Market</span>
             </div>
-            <RegisterButton/>
+            <RegisterButton title={'Create Job Post'} onClick={() => dispatch(toggleJobPostModal())}/>
         </div>
     )
 }
