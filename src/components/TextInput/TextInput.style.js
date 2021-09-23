@@ -27,6 +27,19 @@ const styles = () => ({
         fontWeight: 200,
         color: colors.black2
     },
+    inputFieldError: {
+        height: 32,
+        borderRadius: 6,
+        fontSize: 12,
+        fontWeight: 500,
+        paddingLeft: 6,
+        paddingRight: 6,
+        color: colors.black2,
+        letterSpacing: 0.5,
+        fontFamily: 'Poppins',
+        border: '1px solid #E8E8EA',
+        borderColor: colors.red
+    }
 })
 
 export default styles
