@@ -4,12 +4,7 @@ import colors from "../../helpers/colors"
 
 const TextInput = (props) => {
     const { val, onChange } = props;
-    const [isActive, setisActive] = useState(false)
-
-    useEffect(() => {
-        console.log(val)
-        console.log(val == '')
-    }, [val])
+    const [isActive, setisActive] = useState(false);
 
     return (
         <div style={{...styles().containerField, ...props.style}}>

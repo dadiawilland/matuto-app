@@ -17,38 +17,12 @@ const Register = () => {
 
     const [val, setVal] = useState('');
 
-    const requestOptions = (credentials) => {
-        return ({
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(credentials)
-                // firstName: "Test3", 
-                // lastName: "Dadia", 
-                // username: "willand6", 
-                // password: "qwer1234", 
-                // emailAddress: "willanddadia6@gmail.com", 
-                // address: "Borongan City", 
-                // contactNumber: "09177055440", 
-                // userStatus: 1, 
-                // dateGraduated: "2021-09-23"
-            // })
-        })
-
-    }
-
+    
     const onSubmit = (data, e) => {
         history.push({
             pathname: '/payment-info',
             state: {account: data}
         })
-        
-        // fetch("http://localhost:3001/api/account/login", requestOptions(data))
-        // .then(res => res.json())
-        // .then(res => {
-        //     setVal(res)
-        // })
-
-        // console.log(val)
     }
 
     const onError = (data, e) => {
