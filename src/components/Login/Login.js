@@ -1,4 +1,5 @@
 import React, { useEffect, useState} from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { useForm, Controller  } from "react-hook-form";
 import styles from './Login.style'
 import {NavLink} from 'react-router-dom'
@@ -6,47 +7,34 @@ import ProcessButton from '../../components/Buttons/ProcessButton'
 import AltLoginButton from '../../components/Buttons/AltLoginButton'
 import TextInput from '../../components/TextInput/TextInput';
 import { FORM_FIELDS } from '../../constants/formConstants';
+import { loginAction } from '../../actions/accountActions';
 
 const Login = () => {
+    const dispatch = useDispatch();
     const {formState: { errors }, handleSubmit, control } = useForm({
         mode: 'onSubmit', 
         reValidateMode: 'onSubmit'
     });
+    const account = useSelector((state) => state.account.account);
+    const accountLoginError = useSelector((state) => state.account.accountLoginError);
 
-    const [val, setVal] = useState('');
-
-    const requestOptions = (credentials) => {
-        return ({
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(credentials)
-                // firstName: "Test3", 
-                // lastName: "Dadia", 
-                // username: "willand6", 
-                // password: "qwer1234", 
-                // emailAddress: "willanddadia6@gmail.com", 
-                // address: "Borongan City", 
-                // contactNumber: "09177055440", 
-                // userStatus: 1, 
-                // dateGraduated: "2021-09-23"
-            // })
-        })
-
-    }
 
     const onSubmit = (data, e) => {
-        fetch("http://localhost:3001/api/account/login", requestOptions(data))
-                .then(res => res.json())
-                .then(res => {
-                    setVal(res)
-                })
-
-        console.log(val)
+        dispatch(loginAction(data));
     }
 
     const onError = (data, e) => {
         console.log(data);
     }
+
+    useEffect(() => {
+        console.log(account);
+    }, [account]);
+
+    
+    useEffect(() => {
+        console.log(accountLoginError);
+    }, [accountLoginError]);
 
     return (
         <div style={styles().containerForm}>
