@@ -1,7 +1,7 @@
 import { call, put } from 'redux-saga/effects';
 import { PRICE } from '../redux-constants/priceConstants';
 
-import { getPriceListService } from '../services/priceServices';
+import { getPriceListService } from '../services/price.service';
 
 export function* getPriceListSaga(request) {
     try {

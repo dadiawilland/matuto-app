@@ -24,14 +24,53 @@ const Admin = () => {
     const [content, setContent] = useState(<ProfileList />);
     const icon = require(`../../assets/icon-career-market.png`).default;
     const location = useLocation().pathname;
+    const [searchResult, setSearchResult] = useState([]);
+    
+    useEffect(() => {
+
+        async function fetchMyAPI() {
+            let response = await registerAccount()
+            setSearchResult(response)
+        }
+    
+        fetchMyAPI()
+    }, [])
+    
+    const requestOptions = () => {
+        // if(addFields) {
+        //     for (const object of Object.entries(addFields)) {
+        //         console.log(object)
+        //         Object.assign(credentials, object[1])
+        //     }
+        // }
+        return ({
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json' },
+            // body: JSON.stringify(credentials)
+        })
+
+    }
+
+    function registerAccount() {
+        let resAccount = null;
+        return new Promise(resolve => {
+            fetch("http://localhost:3001/api/account/"+window.location.search, requestOptions())
+                .then(res => res.json())
+                .then(res => {
+                    resAccount = res
+                    console.log(resAccount)
+                    resolve(resAccount)
+                })
+        });
+    }
 
     const renderContent = () => {
         switch(location) {
             case '/admin':
             case '/admin-career':
-                return <DataTable/>;
+                return <DataTable data={searchResult}/>;
             case '/admin-student':
-                return <ProfileList/>;
+                return <DataTable/>;
             case '/admin-recruitment':
                 return <ProfileList/>;
             case '/admin-partner':

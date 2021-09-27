@@ -19,7 +19,7 @@ const styles = () => ({
     },
     containerFilterBtn: {
         marginRight: 16,
-        marginBlock: 8,
+        // marginBlock: 8,
     },
 })
 

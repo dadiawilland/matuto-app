@@ -1,4 +1,4 @@
-import React, { useEffect} from 'react';
+import React, { useEffect, useState} from 'react';
 import { useForm, Controller  } from "react-hook-form";
 import styles from './Login.style'
 import {NavLink} from 'react-router-dom'
@@ -13,8 +13,35 @@ const Login = () => {
         reValidateMode: 'onSubmit'
     });
 
+    const [val, setVal] = useState('');
+
+    const requestOptions = (credentials) => {
+        return ({
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(credentials)
+                // firstName: "Test3", 
+                // lastName: "Dadia", 
+                // username: "willand6", 
+                // password: "qwer1234", 
+                // emailAddress: "willanddadia6@gmail.com", 
+                // address: "Borongan City", 
+                // contactNumber: "09177055440", 
+                // userStatus: 1, 
+                // dateGraduated: "2021-09-23"
+            // })
+        })
+
+    }
+
     const onSubmit = (data, e) => {
-        console.log(data);
+        fetch("http://localhost:3001/api/account/login", requestOptions(data))
+                .then(res => res.json())
+                .then(res => {
+                    setVal(res)
+                })
+
+        console.log(val)
     }
 
     const onError = (data, e) => {
@@ -34,7 +61,7 @@ const Login = () => {
                         render={({
                             field: { onChange, value }
                             }) => 
-                            <TextInput onChange={onChange} val={value} style={styles().containerInputField} type={formfield.type} 
+                            <TextInput onChange={onChange} value={value} style={styles().containerInputField} type={formfield.type} 
                                 name={formfield.name} label={formfield.label} error={errors[formfield.name]}/>
                         }
                     />

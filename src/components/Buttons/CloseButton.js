@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from './CloseButton.style'
+import closeIcon from '../../assets/icon-close.png'
 import { StyleRoot } from 'radium'
 
 const CloseButton = (props) => {
@@ -8,7 +9,7 @@ const CloseButton = (props) => {
     return (
         <StyleRoot>
             <div onClick={()=> onClick()} style={{...styles().containerClosebtn, ...style}}>
-                <span style={styles().btnFont}>X</span>
+                <img key="asd" style={styles().filterIconImg} src={closeIcon} alt="Close Icon"/>
             </div>
         </StyleRoot>                          
     )

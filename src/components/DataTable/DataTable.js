@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import styles from './DataTable.style'
 import MaterialTable from "material-table";
 import makeStyles from "@material-ui/core/styles/makeStyles";
@@ -14,7 +14,13 @@ const useStyles = makeStyles({
     },
 });
 
-const DataTable = () => {
+const DataTable = (props) => {
+
+	useEffect(() => {
+		console.log('asdasdasdsd')
+		console.log(props.data)
+		console.log('fgdfgdfgdfgdf')
+	}, [])
     
     const classes = useStyles();
 
@@ -43,28 +49,20 @@ const DataTable = () => {
 				}}
 				style={styles().table}
 				columns={[
-					{ title: 'Name', field: 'name' },
-					{ title: 'Surname', field: 'surname' },
-					{ title: 'Birth Year', field: 'birthYear', type: 'numeric' },
-					{
-					title: 'Birth Place',
-					field: 'birthCity',
-					lookup: { 34: 'İstanbul', 63: 'Şanlıurfa' },
-					},
-				]}
-				data={[
-					// { name: 'Mehmet', surname: 'Baran', birthYear: 1987, birthCity: 63 },
-					{ name: '5125', surname: 'Baran', birthYear: 2017, birthCity: 34 },
-					{ name: 'Mehmet', surname: 'Baran', birthYear: 1987, birthCity: 63 },
-					{ name: 'Zerya Betül', surname: 'Baran', birthYear: 2017, birthCity: 34 },
-					{ name: 'Mehmet', surname: 'Baran', birthYear: 1987, birthCity: 63 },
-					{ name: 'Zerya Betül', surname: 'Baran', birthYear: 2017, birthCity: 34 },
-					{ name: 'Mehmet', surname: 'Baran', birthYear: 1987, birthCity: 63 },
-					{ name: 'Zerya Betül', surname: 'Baran', birthYear: 2017, birthCity: 34 },
-					{ name: 'Mehmet', surname: 'Baran', birthYear: 1987, birthCity: 63 },
-					{ name: 'Zerya Betül', surname: 'Baran', birthYear: 2017, birthCity: 34 },
+					{ title: '#', field: 'id' },
+					{ title: 'First Name', field: 'first_name' },
+					{ title: 'Last Name', field: 'last_name' },
+					{ title: 'Email Address', field: 'email_address' },
+					{ title: 'Contact Number', field: 'contact_number', type: 'numeric' },
+					{ title: 'User Status', field: 'user_status', type: 'numeric' },
 					
+					// {
+					// title: 'Birth Place',
+					// field: 'birthCity',
+					// lookup: { 34: 'İstanbul', 63: 'Şanlıurfa' },
+					// },
 				]}
+				data={props.data ? props.data : null}
 				options={{
 					rowStyle: styles().tableRow,
 					headerStyle: styles().tableHeader,

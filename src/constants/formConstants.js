@@ -21,7 +21,13 @@ export const FORM_FIELDS = {
     ],
     REGISTER: [
         {
-            name: 'email', type: 'text', label: 'Email Address', 
+            name: 'username', type: 'text', label: 'Username', 
+            validators: { 
+                required: 'Enter valid username',
+            }
+        },
+        {
+            name: 'emailAddress', type: 'text', label: 'Email Address', 
             validators: { 
                 required: 'Enter Email Address',
                 pattern: {
@@ -51,12 +57,24 @@ export const FORM_FIELDS = {
     ],
     PAYMENT_INFO: [
         {  
-            name: 'nameOnCard', type: 'text', label: 'Name on Card', 
+            name: 'name', type: 'text', label: 'Name on Card', 
             validators: { required: 'Enter name on card'}
         },
         {
-            name: 'cardNumber', type: 'text', label: 'Card Number', 
+            name: 'number', type: 'text', label: 'Card Number', 
             validators: { required: 'Enter card details'}
+        },
+        {
+            subFields: [
+                {  
+                    name: 'cvv', type: 'text', label: 'CVV', 
+                    validators: { required: 'Enter CVV'}
+                },
+                {  
+                    name: 'expiryDate', type: 'text', label: 'Expiry Date', 
+                    validators: { required: 'Enter Expiry Date'}
+                }
+            ]
         },
     ],
     JOB_POST: [

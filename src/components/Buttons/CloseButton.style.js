@@ -2,19 +2,18 @@ import colors from "../../helpers/colors"
 
 const styles = () => ({
     containerClosebtn: {
-        backgroundColor: colors.transparent,
+        backgroundColor: colors.red,
         borderRadius: 20,
         display: 'flex',
         justifyContent: 'center',
-        width: 'fit-content',
-        paddingInline: 10,
-        paddingBlock: 4,
+        height: 18,
+        width: 18,
+        borderRadius: 9,
+        // width: 'fit-content',
+        // paddingInline: 10,
+        // paddingBlock: 4,
         border: '1px solid #EA5C55',
         color: colors.red,
-        ':hover': {
-            backgroundColor: colors.red,
-            color: colors.white,
-        },
         cursor: 'pointer',
     },
     btnFont: {
@@ -23,7 +22,13 @@ const styles = () => ({
         textDecoration: 'none',
         display: 'inline-table',
         cursor: 'pointer',
-    }
+    },
+    filterIconImg: {
+        alignSelf: 'center',
+        height: 6,
+        filter: 'brightness(10) grayscale(100%)',
+        cursor: 'pointer',
+    },
 })
 
 export default styles
