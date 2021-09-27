@@ -21,7 +21,8 @@ const AdminHeader = (props) => {
     const location = useLocation().pathname;
     const [title, setTitle] = useState('Career Market');
     const [headerButton, setHeaderButton] = useState(null);
-    const icon = require(`../../assets/icon-career-market.png`).default;
+    const [iconImg, setIconImg] = useState('icon-career-market.png');
+    const icon = require(`../../assets/${iconImg}`).default;
 
     useEffect(() => {
         dispatch(closeAdminModalsAction());
@@ -31,21 +32,25 @@ const AdminHeader = (props) => {
                 dispatch(setNavigationAction('career'));
                 setTitle('Career Market');
                 setHeaderButton(null);
+                setIconImg('icon-career-market.png');
                 return;
             case '/admin-student':
                 dispatch(setNavigationAction('student'));
                 setTitle('Student Center');
                 setHeaderButton(null);
+                setIconImg('icon-student-center.png');
                 return;
             case '/admin-recruitment':
                 dispatch(setNavigationAction('recruitment'));
                 setTitle('Recruitment');
                 setHeaderButton(<RegisterButton title={'Create Job Post'} onClick={() => dispatch(toggleJobPostModalAction())}/>);
+                setIconImg('icon-recruitment.png');
                 return;
             case '/admin-partner':
                 dispatch(setNavigationAction('partner'));
                 setTitle('Partners');
                 setHeaderButton(<RegisterButton title={'Create Partner'} onClick={() => dispatch(toggleCreatePartnerModalAction())}/>);
+                setIconImg('icon-partners.png');
                 return;
         }
     }, [location]);

@@ -7,7 +7,8 @@ const styles = () => ({
         height: '100%',
         backgroundColor: colors.gray6,
         display: 'flex',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        zIndex: 9999999
     },
     containerForm: {
         position: 'absolute',

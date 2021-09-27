@@ -4,8 +4,11 @@ const styles = (isActive) => ({
     containerSearchFilter: {
         backgroundColor: colors.white2,
         width: 'fit-content',
-        paddingInline: 35.5,
-        paddingBlock: 7,
+        // paddingInline: 35.5,
+        // paddingBlock: 7,
+        height: 34,
+        width: 120,
+        justifyContent: 'center',
         // border: isActive ? '1px solid #FEFEFE' : '1px solid #97979750',
         borderRadius: 6,
         display: 'flex',
@@ -30,15 +33,15 @@ const styles = (isActive) => ({
     searchFilterIconImg: {
         alignSelf: 'center',
         height: 16,
-        position: 'absolute',
+        // position: 'absolute',
         filter: isActive ? 'none' : 'grayscale(100%)',
-        marginLeft: -24,
+        marginRight: 12,
     },
     fontSearchFilter: {
         alignSelf: 'center',
         fontSize: 12,
         textDecoration: 'none',
-        display: 'inline-table',
+        // display: 'inline-table',
         color: isActive ? colors.red : colors.gray2
     },
     itemList: {
@@ -46,7 +49,8 @@ const styles = (isActive) => ({
         height: 'fit-content',
         paddingTop: 3,
         paddingBottom: 1.5,
-        width: 100,
+        width: 120,
+        
         zIndex: 999999,
         backgroundColor: colors.white2,
         position: 'absolute',
@@ -69,8 +73,9 @@ const styles = (isActive) => ({
         cursor: 'pointer',
         display: 'flex',
         justifyContent: 'center',
-        paddingInline: 35,
-        paddingBlock: 5,
+        height: 34,
+        // paddingInline: 35,
+        // paddingBlock: 5,
         borderTop: '1px solid #EA5C5570',
             // borderBottom: '1px solid #EA5C5570',
         ':hover': {

@@ -8,12 +8,18 @@ import { StyleRoot } from 'radium'
 
 const FilterButton = (props) => {
 
+    const selectFilter = (opt) => {
+        setisActive(false)
+        props.onSelect(opt);            
+    }
+
     const [isActive, setisActive] = useState(false)
+    const [selected, setSelected] = useState()
     const [options, setOptions] = useState({
         option: [
           {
               id: 0,
-              title: 'First name',
+              title: 'First Name',
               selected: false,
               key: 'firstName'
           },
@@ -52,7 +58,7 @@ const FilterButton = (props) => {
             </div>
             <div style={styles(isActive).itemList}>
                 {options.option.map((option) => (
-                    <div key={option.id} style={styles(isActive).item}>
+                    <div onClick={() => selectFilter(option)} key={option.id} style={styles(isActive).item}>
                         <span key={option.key} style={styles(isActive).fontItem}>{option.title}</span>
                     </div>
                 ))}

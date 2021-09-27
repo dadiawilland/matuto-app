@@ -7,7 +7,7 @@ const styles = () => ({
         paddingInline: 8,
         marginRight: 8,
         marginBlock: 8,
-        paddingBlock: 7,
+        paddingBlock: 6,
         border: '1px solid #EA5C5570' ,
         borderRadius: 6,
         display: 'flex',

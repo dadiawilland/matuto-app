@@ -3,8 +3,8 @@ import colors from "../../helpers/colors"
 const styles = (isActive) => ({
     containerSearchInput: {
         backgroundColor: colors.white2,
-        width: 320,
-        height: 32,
+        width: 'fit-content',
+        height: 34,
         border: isActive ? '1px solid #97979770' : '1px solid #97979750',
         borderRadius: 6,
         display: 'flex',
@@ -12,7 +12,7 @@ const styles = (isActive) => ({
     },
     containerSearchField: {
         // height: '100%',
-        width: 292,
+        width: 192,
         borderRadius: 6,
         border: 0,
         fontSize: 12,
