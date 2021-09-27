@@ -55,7 +55,7 @@ const styles = () => ({
     },
     closeButtonContainer: {
         top: 10,
-        left: 10,
+        right: 10,
         position: 'absolute',
     },
     containerInputFieldSml: {

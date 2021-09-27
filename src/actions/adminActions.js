@@ -25,3 +25,43 @@ export const setNavigationAction = (route) => {
     }
 }
 
+export const createJobPostAction = (request) => {
+    return {
+        type: ADMIN.CREATE_JOBPOST_REQUEST,
+        data: request
+    }
+}
+
+export const clearJobPostSuccessAction = () => {
+    return {
+        type: ADMIN.CLEAR_JOBPOST_SUCCESS,
+    }
+}
+
+export const clearJobPostErrorAction = () => {
+    return {
+        type: ADMIN.CLEAR_JOBPOST_ERROR,
+    }
+}
+
+//
+export const createPartnerAction = (request) => {
+    return {
+        type: ADMIN.CREATE_PARTNER_REQUEST,
+        data: request
+    }
+}
+
+export const clearPartnerSuccessAction = () => {
+    return {
+        type: ADMIN.CLEAR_CREATE_PARTNER_SUCCESS,
+    }
+}
+
+export const clearPartnerErrorAction = () => {
+    return {
+        type: ADMIN.CLEAR_CREATE_PARTNER_ERROR,
+    }
+}
+
+

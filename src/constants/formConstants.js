@@ -81,11 +81,11 @@ export const FORM_FIELDS = {
         {
             subFields: [
                 {  
-                    name: 'jobTitle', type: 'text', label: 'Job Title', 
+                    name: 'title', type: 'text', label: 'Job Title', 
                     validators: { required: 'Enter Job Title'}
                 },
                 {  
-                    name: 'minimumLevel', type: 'text', label: 'Minimum Level', 
+                    name: 'minLevel', type: 'text', label: 'Minimum Level', 
                     validators: { required: 'Enter minimum level'}
                 }
             ]
@@ -97,7 +97,7 @@ export const FORM_FIELDS = {
                     validators: { required: 'Enter Job Level'}
                 },
                 {
-                    name: 'salaryGrade', type: 'text', label: 'Salary Grade', 
+                    name: 'salary', type: 'text', label: 'Salary Grade', 
                     validators: { required: 'Enter salary grade'}
                 },
             ]
@@ -127,7 +127,7 @@ export const FORM_FIELDS = {
             ]
         },
         {
-            name: 'jobDescription', type: 'text', label: 'Job Description', 
+            name: 'description', type: 'text', label: 'Job Description', 
             validators: { required: 'Enter salary grade'}
         },
         {
@@ -155,7 +155,7 @@ export const FORM_FIELDS = {
                     validators: { required: 'Enter name'}
                 },
                 {
-                    name: 'email', type: 'text', label: 'Email Address', 
+                    name: 'emailAddress', type: 'text', label: 'Email Address', 
                     validators: { 
                         required: 'Enter Email Address',
                         pattern: {
@@ -181,7 +181,7 @@ export const FORM_FIELDS = {
         {
             subFields: [
                 {
-                    name: 'location', type: 'text', label: 'Location', 
+                    name: 'address', type: 'text', label: 'Location', 
                     validators: { required: 'Enter location'}
                 },
             ]

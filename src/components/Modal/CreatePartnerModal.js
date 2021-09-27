@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useForm, Controller } from "react-hook-form";
-import styles from './JobPostModal.style'
+import styles from './CreatePartnerModal.style'
 import SideNavigator from '../SideNavigator/SideNavigator'
 import SearchBar from '../Search/SearchBar'
 import makeStyles from "@material-ui/core/styles/makeStyles";
@@ -15,7 +15,7 @@ import TextInput from '../TextInput/TextInput';
 import TextArea from '../TextArea/TextArea';
 import ProcessButton from '../Buttons/ProcessButton';
 import CloseButton from '../Buttons/CloseButton';
-import { toggleCreatePartnerModalAction } from '../../actions/adminActions';
+import { toggleCreatePartnerModalAction, createPartnerAction } from '../../actions/adminActions';
 import { FORM_FIELDS } from '../../constants/formConstants';
 
 const CreatePartnerModal = () => {
@@ -26,6 +26,7 @@ const CreatePartnerModal = () => {
     });
 
     const onSubmit = (data, e) => {
+        dispatch(createPartnerAction(data));
         console.log(data);
     }
 
