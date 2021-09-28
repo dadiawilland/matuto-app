@@ -24,6 +24,7 @@ const Login = () => {
     const onSubmit = (data, e) => {
         // console.log(data)
         // dispatch(loginAction(data));
+        console.log('updated')
         login(data)
     }
 
