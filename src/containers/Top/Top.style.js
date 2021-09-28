@@ -54,13 +54,14 @@ const styles = () => ({
         }
     },
     headerFont: {
-        fontSize: 48,
+        fontSize: 32,
         color: colors.red,
         lineHeight: 1.1,
         fontWeight: 500,
         position: 'absolute',
         top: 28,
         left: 98,
+        zIndex: 999999
     },
 })
 

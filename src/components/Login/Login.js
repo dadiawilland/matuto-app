@@ -49,7 +49,7 @@ const Login = () => {
                         render={({
                             field: { onChange, value }
                             }) => 
-                            <TextInput onChange={onChange} value={value} style={styles().containerInputField} type={formfield.type} 
+                            <TextInput onChange={onChange} val={value} style={styles().containerInputField} type={formfield.type} 
                                 name={formfield.name} label={formfield.label} error={errors[formfield.name]}/>
                         }
                     />

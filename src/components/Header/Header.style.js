@@ -11,10 +11,11 @@ const styles = () => ({
         position: 'absolute',
         top: 0,
         width: '100%',
-        boxSizing: 'border-box'
+        boxSizing: 'border-box',
+        zIndex: 999999
     },
     containerLink: {
-        textDecoration: 'none'
+        textDecoration: 'none',
     },
     containerBtn: {
         display: 'flex',

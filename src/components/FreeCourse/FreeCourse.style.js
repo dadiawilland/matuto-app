@@ -6,6 +6,7 @@ const styles = () => ({
         // width: '100%',
         display: 'flex',
         flexDirection: 'row',
+        marginTop: 120,
         // alignSelf: 'center'
         width: 1176,
         flexWrap: 'wrap',
@@ -20,7 +21,7 @@ const styles = () => ({
         }
     },
     containerCardContent: {
-        marginTop: 120,
+        // marginTop: 120,
         // flexGrow: 1,
         width: '100%',
         // width: 860,

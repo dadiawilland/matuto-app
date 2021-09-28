@@ -1,4 +1,4 @@
-import React from 'react'
+import Reactt, { useState, useEffect }  from 'react'
 import styles from './FreeCourse.style'
 import CommonCard from '../../components/Cards/CommonCard'
 import NavCard from '../../components/Cards/NavCard'
@@ -7,8 +7,27 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { StyleRoot } from 'radium'
 import NavButton from '../../components/Buttons/NavButton'
+import LessonModal from '../Modal/LessonModal'
+import LessonSubscribedModal from '../Modal/LessonSubscribedModal'
+import AssessmentModal from '../Modal/AssessmentModal'
+import AssessmentResultModal from '../Modal/AssessmentResultModal'
 
 const FreeCourse = () => {
+
+    const [isModalOpen, setIsModalOpen] = useState(true)
+
+    const handleCloseModal = () => {
+        setIsModalOpen(false)
+    }
+
+    const handleClick = () => {
+        setIsModalOpen(true)
+        //route to home subscribed
+    }
+
+    const handleSubmit = () => {
+        setIsModalOpen(false)
+    }
 
     return (
         <div style={styles().containerCardContent}>
@@ -18,16 +37,10 @@ const FreeCourse = () => {
                     <CommonCard src={'icon-free-subj-2.png'} title={'Business 101'} content={'The course objective of Business 101 is to gain an understanding of business management, including historical and current management theory, types of managers and roles of managers in an organization.'}/>
                     <CommonCard src={'icon-free-subj-3.png'} title={'English Grammar'} content={'English 101 is an introductory writing course; the course will cover all fundamental principles of writing, and will stress the three stages of the writing process (prewriting, writing, and rewriting).'}/>
                     <NavCard src={'icon-cross.png'} title={'Add more courses...'}/>
-                    {/* <PriceCard src={'icon-price-1.png'} title={'For Enterprise'} price={'Custom Pricing'}
-                                content={`Tailor-fit gamified work-train program for you employees
-
-                                            Connect with Matuto graduates and potential employees
-
-                                            Post job openings
-
-                                            Gain a company ad slot`}/> */}
                 </div>
+                
             </StyleRoot>
+            {isModalOpen ? <AssessmentResultModal onSubmit={handleSubmit} onClose={handleCloseModal}/> : null}
         </div>
     )
 }
