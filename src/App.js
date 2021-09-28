@@ -32,7 +32,7 @@ const App = () => {
             <Route path={['/admin', '/admin-student', '/admin-career', '/admin-recruitment', '/admin-partner']}>
               <Admin/>
             </Route>
-            <Route path={["/home", "/pricing", "/payment"]}>
+            <Route path={["/home", "/pricing", "/payment", "/on-boarding", "/home-subscribed", "/lesson"]}>
               <Top/>
             </Route>
             <Route path={["/login", "/register", "/payment-info"]}>
