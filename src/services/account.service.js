@@ -1,5 +1,8 @@
+// import { useHistory } from 'react-router-dom';
+
 export const accountLoginService = (request) => {
-    const endPoint = process.env.REACT_APP_API_URL+'/account/login';
+    // const history = useHistory();
+    const endPoint = 'https://matuto-api.herokuapp.com/api/account/login';
     return fetch(endPoint, {
         method: 'POST',
         headers: {
@@ -14,12 +17,13 @@ export const accountLoginService = (request) => {
             data: res[1],
         }));
     }).catch((error) =>{
+        // history.push('/pricing')
         console.log(error);
     });
 }
 
 export const registerAccountService = (request) => {
-    const endPoint = process.env.REACT_APP_API_URL+'/account/';
+    const endPoint = 'https://matuto-api.herokuapp.com/api/account/';
     return fetch(endPoint, {
         method: 'POST',
         headers: {
@@ -40,7 +44,7 @@ export const registerAccountService = (request) => {
 
 export const registerPaymentInfoService = (request) => {
     console.log(request);
-    const endPoint = process.env.REACT_APP_API_URL+'/payment-info/';
+    const endPoint = 'https://matuto-api.herokuapp.com/api/payment-info/';
     return fetch(endPoint, {
         method: 'POST',
         headers: {

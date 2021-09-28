@@ -1,5 +1,5 @@
 export const createJobPostService = (request) => {
-    const endPoint = process.env.REACT_APP_API_URL+'/job-post/';
+    const endPoint = 'https://matuto-api.herokuapp.com/api/job-post/';
     return fetch(endPoint, {
         method: 'POST',
         headers: {
@@ -19,7 +19,7 @@ export const createJobPostService = (request) => {
 };
 
 export const createPartnerService = (request) => {
-    const endPoint = process.env.REACT_APP_API_URL+'/partner/';
+    const endPoint = 'https://matuto-api.herokuapp.com/api/partner/';
     return fetch(endPoint, {
         method: 'POST',
         headers: {

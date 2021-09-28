@@ -9,6 +9,7 @@ import { useLocation } from "react-router-dom";
 import { FORM_FIELDS } from '../../constants/formConstants';
 import { registerAccountAction } from '../../actions/accountActions';
 import Register from './Register';
+import { useHistory } from 'react-router-dom';
 
 const PaymentInfo = (props) => {
     const dispatch = useDispatch();
@@ -17,14 +18,37 @@ const PaymentInfo = (props) => {
         mode: 'onSubmit', 
         reValidateMode: 'onSubmit'
     });
+    const history = useHistory();
 
     const onSubmit = (data, e) => {
-        data.paymentInfoType = 1;
-        dispatch(registerAccountAction({
-            account: location.state.account,
-            paymentInfo: data,
-        }));
+        // data.paymentInfoType = 1;
+        // dispatch(registerAccountAction({
+        //     account: location.state.account,
+        //     paymentInfo: data,
+        // }));
+        register(location.state.account)
     }
+
+    const register = (request) => {
+        const endPoint = 'https://matuto-api.herokuapp.com/api/account/';
+        return fetch(endPoint, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            }, 
+            body: JSON.stringify(request)
+        }).then((response) => {
+            const status = response.status;
+            const data = response.json();
+            return Promise.all([status, data]).then((res) => ({
+                status: res[0],
+                data: res[1],
+            }));
+        }).catch((error) =>{
+            history.push('/on-boarding')
+            console.log(error);
+        });
+    };
 
     const onError = (data, e) => {
         console.log(data);
