@@ -1,18 +1,21 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux';
 import styles from './Payment.style'
-import CommonCard from '../../components/Cards/CommonCard'
-import NavCard from '../../components/Cards/NavCard'
 import PriceCard from '../../components/Cards/PriceCard'
-import { StyleRoot } from 'radium'
-import ProcessButton from '../../components/Buttons/ProcessButton'
 import PaymentInfo from '../Register/PaymentInfo'
+import { useHistory } from 'react-router-dom';
+
 const Payment = () => {
 
+    const history = useHistory();
     const [isSelected, setisSelected] = useState(false);
     const selectedPrice = useSelector((state) => state.price.selectedPrice);
+
     useEffect(() => {
-        console.log(selectedPrice);
+        if(!selectedPrice.id) {
+            history.push('/pricing')
+        }
+
     }, [selectedPrice]);
 
     return (
@@ -21,7 +24,7 @@ const Payment = () => {
                 <PriceCard price={selectedPrice} isAlwaysActive={true}/>
             </div>
             <div style={styles().containerRight}>
-                <PaymentInfo title={'Bank Details'} isRegistration={false}/>
+                <PaymentInfo style={{marginTop: 0, alignSelf: 'center'}} title={'Bank Details'} amount={selectedPrice.price} isRegistration={false}/>
             </div> 
         </div>
     )

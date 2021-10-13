@@ -32,6 +32,16 @@ const styles = () => ({
         flexDirection: 'row',
         justifyContent: 'space-between',
     },
+    containerErrorMessage: {
+        width: '100%',
+        height: 'fit-content',
+        backgroundColor: colors.red6,
+        padding: 12,
+        borderRadius: 6,
+        fontSize: 12,
+        color: colors.red4,
+        
+    },
     btnFont: {
         alignSelf: 'center',
         fontSize: 12,

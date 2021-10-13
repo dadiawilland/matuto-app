@@ -13,3 +13,10 @@ export const registerAccountAction = (request) => {
         data: request,
     }
 }
+
+export const registerAccountOnlyAction = (request) => {
+    return {
+        type: ACCOUNT.REGISTER_ACCOUNT_ONLY_REQUEST,
+        data: request,
+    }
+}

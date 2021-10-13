@@ -7,7 +7,7 @@ const styles = () => ({
         display: 'flex',
         paddingInline: 62,
         flexDirection: 'column',
-        minHeight: 1080
+        minHeight: '100vh'
     },
     containerCard: {
         height: 400,

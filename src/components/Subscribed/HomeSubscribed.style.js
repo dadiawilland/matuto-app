@@ -28,7 +28,7 @@ const styles = (isOpen) => ({
         // flexGrow: 1,
         position: 'absolute',
         width: '100%',
-        height: 800,
+        height: '100vh',
         left: 0,
         top: 0,
         // width: 860,

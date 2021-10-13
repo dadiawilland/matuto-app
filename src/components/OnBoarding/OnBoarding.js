@@ -9,6 +9,7 @@ import ProcessButton from '../../components/Buttons/ProcessButton'
 import PaymentInfo from '../Register/PaymentInfo'
 import bg from '../../assets/on-boarding-bg.png'
 import OnBoardingModal from '../Modal/OnBoardingModal';
+import NavButton from '../Buttons/NavButton';
 import { useHistory } from 'react-router-dom';
 
 const OnBoarding = () => {
@@ -26,12 +27,8 @@ const OnBoarding = () => {
     }
 
     const handleClick = () => {
-        // if (isSubmitted) {
-        // }
-        console.log('asdads')
-        // else {
-            setIsModalOpen(true)
-        // }
+        setIsModalOpen(true)
+        
         //route to home subscribed
     }
     const handleClickNav = () => {
@@ -55,12 +52,11 @@ const OnBoarding = () => {
                     null
                     // <ProcessButton key={1} onClick={handleClick} isNav={false} btnLabel="Get started" style={styles().containerButton}/>
                 }
-                
-                {isSubmitted == false ?
-                    (<ProcessButton key={1} onClick={handleClick} isNav={false} btnLabel="Get started" style={styles().containerButton}/>)
-                :
-                    (<ProcessButton key={2} onClick={handleClickNav} isNav={true} dest={'/home-subscribed'} btnLabel="Let's Go!" style={styles().containerButton}/>)
                 }
+                {!isSubmitted ? 
+                <ProcessButton onClick={handleClick} isNav={false} btnLabel="Get started" style={styles().containerButton}/>
+                :
+                <NavButton title="Let's Go!" dest="home-subscribed" style={styles().containerButton}/>}
             </div>
             {isModalOpen ? <OnBoardingModal onSubmit={handleSubmit} onClose={handleCloseModal}/> : null}
         </div>

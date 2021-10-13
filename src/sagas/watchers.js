@@ -4,7 +4,7 @@ import { PRICE } from '../redux-constants/priceConstants';
 import { ACCOUNT } from '../redux-constants/accountConstants';
 import { ADMIN } from '../redux-constants/adminConstants';
 import { getPriceListSaga } from './priceSagas';
-import { registerAccountSaga, accountLoginSaga } from './accountSagas';
+import { registerAccountPaymentSaga, accountLoginSaga, registerAccountSaga } from './accountSagas';
 import { createJobPostSaga, createPartnerSaga } from './adminSagas';
 
 
@@ -13,7 +13,8 @@ export function* watchPrice() {
 }
 
 export function* watchAccount() {
-    yield takeLatest(ACCOUNT.REGISTER_REQUEST, registerAccountSaga);
+    yield takeLatest(ACCOUNT.REGISTER_ACCOUNT_ONLY_REQUEST, registerAccountSaga);
+    yield takeLatest(ACCOUNT.REGISTER_REQUEST, registerAccountPaymentSaga);
     yield takeLatest(ACCOUNT.LOGIN_REQUEST, accountLoginSaga);
 }
 

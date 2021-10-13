@@ -67,11 +67,11 @@ export const FORM_FIELDS = {
         {
             subFields: [
                 {  
-                    name: 'cvv', type: 'text', label: 'CVV', 
+                    name: 'cvv', type: 'password', label: 'CVV', 
                     validators: { required: 'Enter CVV'}
                 },
                 {  
-                    name: 'expiryDate', type: 'text', label: 'Expiry Date', 
+                    name: 'expiryDate', type: 'password', label: 'Expiry Date', 
                     validators: { required: 'Enter Expiry Date'}
                 }
             ]

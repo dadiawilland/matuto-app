@@ -45,6 +45,30 @@ const styles = () => ({
         borderRadius: 12,
         marginBottom: 19,
     },
+    containerSkipBtn: {
+        cursor: 'pointer',
+        backgroundColor: colors.gray,
+        borderRadius: 20,
+        display: 'flex',
+        justifyContent: 'center',
+        width: 'fit-content',
+        paddingInline: 24,
+        paddingBlock: 4,
+        color: colors.white,
+        alignSelf: 'center',
+        margin: '0 auto',
+        marginBottom: 9,
+        ':hover': {
+            backgroundColor: colors.gray3,
+        },
+    },
+    skipBtnFont: {
+        alignSelf: 'center',
+        fontSize: 10,
+        textDecoration: 'none',
+        display: 'inline-table',
+        color: colors.black2
+    },
     formTitleFont: {
         paddingBlock: 12,
         marginBottom: 32,
@@ -64,6 +88,7 @@ const styles = () => ({
         color: colors.red,
         fontWeight: 500
     }
+    
 })
 
 export default styles

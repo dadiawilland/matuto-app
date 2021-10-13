@@ -8,7 +8,7 @@ const styles = () => ({
         justifyContent: 'center',
         width: 'fit-content',
         paddingInline: 24,
-        paddingBlock: 8,
+        paddingBlock: 4,
         border: '1px solid #EA5C55',
         color: colors.white,
         ':hover': {

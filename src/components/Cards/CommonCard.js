@@ -10,6 +10,11 @@ const CommonCard = (props) => {
     const [isHovered, setisHovered] = useState(false);
     // const icon = require(`../../assets/icon-free-subj-1.png`).default;
 
+    const handleClick = () => {
+        props.handleClick()
+        //route to home subscribed
+    }
+
     return (
         <StyleRoot>
             <div onMouseEnter={() => setisHovered(true)} onMouseLeave={() => setisHovered(false)} style={styles().containerCard}>
@@ -21,7 +26,7 @@ const CommonCard = (props) => {
                     <div style={styles().containerFontContent}>
                         <span style={styles().fontContent}>{props.content}</span>
                     </div>
-                    <ProcessButton isNav={false} btnLabel="Start" style={{...styles().containerButton,
+                    <ProcessButton onClick={handleClick} isNav={false} btnLabel="Start" style={{...styles().containerButton,
                                                                           ...{display: isHovered ? 'flex' : 'none'}}}/>
                 </div>
             </div>

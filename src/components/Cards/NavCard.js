@@ -2,7 +2,6 @@ import React, { useState, useCallback } from 'react'
 import styles from './NavCard.style'
 import {NavLink} from 'react-router-dom'
 import { StyleRoot } from 'radium'
-import ProcessButton from '../Buttons/ProcessButton'
 import colors from "../../helpers/colors"
 import {navigateTo} from "../../utils/utils"
 import { useHistory } from 'react-router-dom';

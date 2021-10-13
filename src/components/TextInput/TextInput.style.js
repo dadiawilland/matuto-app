@@ -37,8 +37,10 @@ const styles = () => ({
         color: colors.black2,
         letterSpacing: 0.5,
         fontFamily: 'Poppins',
-        border: '1px solid #E8E8EA',
-        borderColor: colors.red
+        backgroundColor: colors.red6,
+        border: 'none',
+        borderBottom: '0.5px solid #E8694C',
+        // borderColor: colors.red
     }
 })
 

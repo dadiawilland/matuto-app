@@ -55,7 +55,7 @@ const HomeSubscribed = () => {
                         {title: 'Digital Marketing', level: 4, isDisabled: true}, 
                         {title: 'Internet and Web Application', level: 3, isDisabled: true}, 
                         {title: 'Customer Service and Front Office Operation', level: 2, isDisabled: true}, 
-                        {title: 'Business English and Communication', level: 1, isDisabled: false}]
+                        {title: 'Social Media Landscape and Platforms', level: 1, isDisabled: false}]
 
     return (
         <div style={styles().containerCardContent}>
