@@ -24,7 +24,7 @@ const AssessmentResultModal = (props) => {
                 <CloseButton style={styles().containerCloseButton} onClick={() => closeModal()}/>
                 <div style={styles().containerTitle}>
                     <img style={styles().imgTitle} src={lessonIcon} alt="Matuto logo white"/>
-                    <p style={styles().fontTitle}><span style={styles().fontTitle}>Customer</span><span style={styles().fontTitle}>Service</span><span style={styles().fontTitle}>Basics</span></p>
+                    <p style={styles().fontTitle}><span style={styles().fontTitle}>Social Media</span><span style={styles().fontTitle}>Landscape and</span><span style={styles().fontTitle}>Platforms</span></p>
                 </div>
                 <span style={styles().fontSubTitle}>Assessment 2</span>
                 <div style={styles().containerResult}>

@@ -13,7 +13,7 @@ const styles = () => ({
         paddingLeft: 62,
         paddingRight: 62,
         flexDirection: 'column',
-        minHeight: 1080
+        minHeight: '100vh'
     },
     headerFont: {
         fontSize: 48,

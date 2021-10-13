@@ -1,25 +1,76 @@
 import colors from "../../helpers/colors"
 import bg from '../../assets/home-subscribed-bg.png'
 
-const styles = (isOpen) => ({
+const styles = (isDisabled) => ({
     containerHome: {
         display: 'flex',
-        backgroundImage: `url(${bg})`,
+       
+
+        flexDirection: 'column',
+        alignItems: 'center',
+        height: '100%',
+        width: '100%',
+        backgroundImage: `url(${bg}) `,
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
-        flexDirection: 'column',
-        alignItems: 'center',
-        height: 800,
-        width: 1640,
+        // width: 1366,
+        // '@media screen and (max-width: 1366px)': {
+            // maxWidth: 882,
+            // backgroundColor: 'black',
+
+            // width: 1366
+        // },
         // alignSelf: 'center'
         // width: 1176,
         flexWrap: 'wrap',
         position: 'absolute',
         top: 0,
         left: 0,
+        right: 0,
         // right: 0,
         margin: '0 auto'
+    },
+    containerLine: {
+        width: '100%',
+        height: 12,
+        position: 'absolute',
+        backgroundColor: colors.green5,
+        position: 'absolute',
+        top: 0,
+        bottom: 0,
+        left: 0,
+        right: 0,
+        margin: 'auto',
+        zIndex: 1
+    },
+    containerNumberList: {
+        width: '80%',
+        height: 'fit-content',
+        // backgroundColor: colors.green,
+        justifyContent: 'space-between',
+        display: 'flex',
+        flexDirection: 'row',
+        position: 'absolute',
+        top: 0,
+        bottom: 0,
+        left: 0,
+        right: 0,
+        margin: 'auto',
+    },
+    containerNumber: {
+        cursor: 'pointer',
+        height: 124,
+        width: 124,
+        borderRadius: 62,
+        border: 'solid 2px ' + (isDisabled ? colors.gray : colors.green2),
+        backgroundColor: isDisabled ? colors.gray5 : colors.yellow3,
+        display: 'flex',
+        justifyContent: 'center',
+        zIndex: 999
+        // position: 'absolute',
+        // top: 670,
+        // left: 114
     },
     containerNumber1: {
         cursor: 'pointer',
@@ -89,7 +140,7 @@ const styles = (isOpen) => ({
     fontNumber: {
         alignSelf: 'center',
         fontSize: 44,
-        color: colors.green
+        color: isDisabled ? colors.gray3 : colors.green
     },
     fontNumberDisabled: {
         alignSelf: 'center',
@@ -113,12 +164,13 @@ const styles = (isOpen) => ({
         height: 70,
         // width: 24,
         position: 'absolute',
-        top: 596,
-        left: 155
+        top: 'calc(50% - 124px)',
+        left: 'calc(10% + 40px)'
     },
     containerDescription: {
         height: 44,
-        width: 300,
+        maxWidth: 300,
+        width: 'fit-content',
         borderRadius: 16,
         backgroundColor: colors.green2 + '99',
         padding: 10,
@@ -126,8 +178,8 @@ const styles = (isOpen) => ({
         display: 'flex',
         alignItems: 'center',
         position: 'absolute',
-        top: 524,
-        left: 155
+        top: 'calc(50% - 188px)',
+        left: 'calc(10% + 40px)'
     },
     fontDescription: {
         fontSize: 16,

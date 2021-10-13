@@ -47,7 +47,7 @@ const PriceList = () => {
             </div>
             {/* <ProcessButton isNav={false} btnLabel="Proceed" style={{...styles().containerButton,
                                                                           ...{display: isSelected ? 'flex' : 'flex'}}}/> */}
-            <NavButton dest="payment" style={styles().containerButton} />
+            <NavButton title="Go to payment" dest="payment" isDisabled={selectedPrice.id == undefined} style={styles(selectedPrice.id == undefined).containerButton} />
         </div>
     )
 }

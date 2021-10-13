@@ -17,7 +17,7 @@ const styles = () => ({
         // justifyContent: 'center',
         flexDirection: 'row',
         // justifyContent: ''
-        minHeight: 1080
+        minHeight: '100vh'
     },
     containerLeft: {
         width: '50%',
@@ -26,7 +26,7 @@ const styles = () => ({
         justifyContent: 'flex-end',
         display: 'flex',
         alignItems: 'center',
-        minHeight: 1080
+        minHeight: '100vh'
     },
     containerRight: {
         width: '50%',
@@ -34,7 +34,7 @@ const styles = () => ({
         // backgroundColor: colors.red,
         justifyContent: 'flex-start',
         display: 'flex',
-        minHeight: 1080
+        minHeight: '100vh'
     },
     containerButton: {
         alignSelf: 'center',

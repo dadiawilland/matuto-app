@@ -16,7 +16,7 @@ export function* accountLoginSaga(request) {
     }
 };
 
-export function* registerAccountSaga(request) {
+export function* registerAccountPaymentSaga(request) {
     try {
         const response = yield call(registerAccountService, request.data.account);
         if (response.status == 200) {
@@ -27,6 +27,19 @@ export function* registerAccountSaga(request) {
             } else {
                 yield put({type: ACCOUNT.REGISTER_ERROR, data: response});
             }
+        } else {
+            yield put({type: ACCOUNT.REGISTER_ERROR, data: response});
+        }
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export function* registerAccountSaga(request) {
+    try {
+        const response = yield call(registerAccountService, request.data.account);
+        if (response.status == 200) {
+            yield put({type: ACCOUNT.REGISTER_SUCCESS, data: response.data});
         } else {
             yield put({type: ACCOUNT.REGISTER_ERROR, data: response});
         }

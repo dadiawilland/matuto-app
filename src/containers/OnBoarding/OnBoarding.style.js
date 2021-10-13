@@ -5,7 +5,7 @@ const styles = () => ({
         height: '100%',
         display: 'flex',
         paddingRight: 62,
-        minHeight: 1080,
+        minHeight: '100vh',
         width: '100%',
     },
     containerLeft: {

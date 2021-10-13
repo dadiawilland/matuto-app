@@ -6,11 +6,15 @@ import {NavLink} from 'react-router-dom'
 import ProcessButton from '../../components/Buttons/ProcessButton'
 import AltLoginButton from '../../components/Buttons/AltLoginButton'
 import TextInput from '../../components/TextInput/TextInput';
+import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
 import { FORM_FIELDS } from '../../constants/formConstants';
 import { loginAction } from '../../actions/accountActions';
+import { useHistory } from 'react-router-dom';
 
 const Login = () => {
     const dispatch = useDispatch();
+    const history = useHistory();
+    const [hasError, setHasError] = useState(false);
     const {formState: { errors }, handleSubmit, control } = useForm({
         mode: 'onSubmit', 
         reValidateMode: 'onSubmit'
@@ -28,16 +32,19 @@ const Login = () => {
     }
 
     useEffect(() => {
-        console.log(account);
-    }, [account]);
+        if(account.id && !accountLoginError) {
+            setHasError(false)
+            history.push('/home')
+        } else if(accountLoginError) {
 
-    
-    useEffect(() => {
-        console.log(accountLoginError);
-    }, [accountLoginError]);
+        console.log(accountLoginError)
+            setHasError(true)
+        }
+    }, [account, accountLoginError]);
 
     return (
         <div style={styles().containerForm}>
+            <ErrorMessage hasError={hasError} message={accountLoginError?.data?.message} />
             <span style={styles().formTitleFont}>Login to Matuto</span>
             {FORM_FIELDS.LOGIN.map((formfield, i) => {
                 return (        

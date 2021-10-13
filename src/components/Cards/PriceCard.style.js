@@ -65,7 +65,8 @@ const styles = () => ({
     },
     fontDescription: {
         fontSize: 12,
-        color: colors.gray3
+        color: colors.gray3,
+        whiteSpace: 'pre-line'
     },
     containerButton: {
         // position: 'absolute',

@@ -2,7 +2,7 @@ import colors from "../../helpers/colors"
 
 const styles = () => ({
     containerClosebtn: {
-        backgroundColor: colors.red,
+        // backgroundColor: colors.white,
         borderRadius: 20,
         display: 'flex',
         justifyContent: 'center',
@@ -12,9 +12,12 @@ const styles = () => ({
         // width: 'fit-content',
         // paddingInline: 10,
         // paddingBlock: 4,
-        border: '1px solid #EA5C55',
+        // border: '1px solid #EA5C55',
         color: colors.red,
         cursor: 'pointer',
+        ':hover': {
+            backgroundColor: colors.gray5
+        },
     },
     btnFont: {
         alignSelf: 'center',
@@ -26,7 +29,7 @@ const styles = () => ({
     filterIconImg: {
         alignSelf: 'center',
         height: 6,
-        filter: 'brightness(10) grayscale(100%)',
+        // filter: 'brightness(10) grayscale(100%)',
         cursor: 'pointer',
     },
 })

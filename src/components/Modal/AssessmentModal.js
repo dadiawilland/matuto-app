@@ -37,7 +37,7 @@ const AssessmentModal = (props) => {
                     </span> */}
                     <p style={styles().fontTitle}><span style={styles().fontTitle}>Customer</span><span style={styles().fontTitle}>Service</span><span style={styles().fontTitle}>Basics</span></p>
                 </div>
-                <span style={styles().fontSubTitle}>Assessment 2</span>
+                <span style={styles().fontSubTitle}>Assessment 1</span>
                 <div style={styles().containerQuestions}>
                     <span style={styles().fontQuestions}>Which of these are the Three Key Elements of Customer Service?</span>
                     <div style={styles().containerAnswers}>

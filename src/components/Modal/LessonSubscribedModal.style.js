@@ -14,11 +14,11 @@ const styles = () => ({
         position: 'absolute',
         width: '80%',
         minWidth: 1080,
-        height: 704,
+        height: 607.5,
         backgroundColor: colors.yellow3,
-        borderRadius: 12,
+        borderRadius: 2,
         border: '1px solid' + colors.green2,
-        // boxShadow: '0 2px 10 #00000020',
+        boxShadow: '0 2px 10px #00000040',
         alignSelf: 'center',
         // marginLeft: 160,
         padding: 32,
@@ -100,7 +100,7 @@ const styles = () => ({
         color: colors.green2,
         fontStyle: 'italic',
         alignSelf: 'center',
-        marginLeft: -550,
+        marginLeft: -730,
     }
 })
 

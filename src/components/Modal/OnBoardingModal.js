@@ -13,7 +13,6 @@ import RegisterButton from '../Buttons/RegisterButton';
 import AdminHeader from '../Header/AdminHeader';
 import TextInput from '../TextInput/TextInput';
 import TextArea from '../TextArea/TextArea';
-import ProcessButton from '../Buttons/ProcessButton';
 import CloseButton from '../Buttons/CloseButton';
 import { toggleJobPostModalAction } from '../../actions/adminActions';
 import icn from '../../assets/icon-arrow-white.png'

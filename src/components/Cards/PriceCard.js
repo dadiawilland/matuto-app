@@ -3,14 +3,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import styles from './PriceCard.style'
 import {NavLink} from 'react-router-dom'
 import { StyleRoot } from 'radium'
-import ProcessButton from '../Buttons/ProcessButton'
 import { setSelectedPriceAction, clearSelectedPriceAction } from '../../actions/priceActions';
 
 
 const PriceCard = (props) => {
     const dispatch = useDispatch();
     const selectedPrice = useSelector((state) => state.price.selectedPrice);
-    const icon = require(`../../assets/${props.price.logo}`).default;
+    const icon = props.price.logo ? require(`../../assets/${props.price.logo}`).default : null;
     const [isActive, setIsActive] = useState(false);
     // const icon = require(`../../assets/icon-free-subj-1.png`).default;
 
@@ -40,11 +39,12 @@ const PriceCard = (props) => {
                         <img key="img" style={styles().imgIcon} src={icon} alt="Free course logo"/>
                     </div>
                     <span style={styles().fontTitle}>{props.price.title}</span>
+                    <span style={styles().fontDescription}>{props.price.description}</span>
+                    <span style={styles().fontPrice}>{props.price ? props.price.price : null}</span>
                     <div style={styles().containerFontContent}>
                         <span style={styles().fontContent}>{props.price.content}</span>
                     </div>
-                    <span style={styles().fontPrice}>{props.price.price}</span>
-                    <span style={styles().fontDescription}>{props.price.description}</span>
+                    
                 </div>
             </div>
         </StyleRoot>                                    
