@@ -17,7 +17,6 @@ import { useHistory } from 'react-router-dom';
 const PaymentInfo = (props) => {
     const dispatch = useDispatch();
     const location = useLocation();
-    const history = useHistory();
     const {formState: { errors }, handleSubmit, control, getValues } = useForm({
         mode: 'onSubmit', 
         reValidateMode: 'onSubmit'

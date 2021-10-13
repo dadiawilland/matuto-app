@@ -21,7 +21,6 @@ const Login = () => {
     });
     const account = useSelector((state) => state.account.account);
     const accountLoginError = useSelector((state) => state.account.accountLoginError);
-    const history = useHistory();
 
 
     const onSubmit = (data, e) => {
