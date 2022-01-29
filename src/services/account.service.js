@@ -1,5 +1,6 @@
 export const accountLoginService = (request) => {
-    const endPoint = process.env.REACT_APP_API_URL+'/account/login';
+    const endPoint = process.env.REACT_APP_API_URL+'/oauth/token';
+    request.grant_type = 'password'
     return fetch(endPoint, {
         method: 'POST',
         headers: {
@@ -17,9 +18,9 @@ export const accountLoginService = (request) => {
         console.log(error);
     });
 }
-
+// TODO: uncamelize requests
 export const registerAccountService = (request) => {
-    const endPoint = process.env.REACT_APP_API_URL+'/account/';
+    const endPoint = process.env.REACT_APP_API_URL+'/api/users/';
     return fetch(endPoint, {
         method: 'POST',
         headers: {

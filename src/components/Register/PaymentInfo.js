@@ -27,9 +27,9 @@ const PaymentInfo = (props) => {
     const accountLoginError = useSelector((state) => state.account.accountLoginError);
 
     const onSubmit = (data, e) => {
-        data.paymentInfoType = 1;
+        data.paymentType = 1;
         dispatch(registerAccountAction({
-            account: location.state.account,
+            user: location.state.account,
             paymentInfo: data,
         }));
         
@@ -40,8 +40,11 @@ const PaymentInfo = (props) => {
     }
 
     const handleClick = () => {
-        dispatch(registerAccountOnlyAction({
-            account: location.state.account,
+        // dispatch(registerAccountOnlyAction({
+        //     account: location.state.account,
+        // }));
+        dispatch(registerAccountAction({
+            account: location.state.account
         }));
     }
 
@@ -101,21 +104,21 @@ const PaymentInfo = (props) => {
                     }
                 })}
             </div>
-            {
+            {/* {
                 props.isRegistration ?
                     null
                 :
                     (<div  style={styles().containerPriceField}>
                         <span style={styles().priceFieldFont}>Total Amount:{'\u00A0'} {props.amount}</span>
                     </div>)
-            }
+            } */}
             <ProcessButton onClick={handleSubmit(onSubmit, onError)} style={{paddingTop: 11}} isNav={false} btnLabel="Submit" style={styles().containerButton}/>
-            { props.isRegistration ? 
-                // <NavButton title={'Skip'} dest="home" style={styles().containerButton} /> 
+            {/* { props.isRegistration ?  */}
+                {/* // <NavButton title={'Skip'} dest="home" style={styles().containerButton} />  */}
                 <StyleRoot style={styles().containerSkipBtn}>
                     <span onClick={handleClick} style={styles().skipBtnFont}>Skip</span>
                 </StyleRoot>
-                : null}
+                {/* : null} */}
         </div>
     )
 }

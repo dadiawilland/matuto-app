@@ -1,8 +1,14 @@
 export const FORM_FIELDS = {
     LOGIN: [
         {
-            name: 'username', type: 'text', label: 'Username', 
-            validators: { required: 'Enter username'}
+            name: 'email', type: 'text', label: 'Email Address', 
+            validators: { 
+                required: 'Enter Email Address',
+                pattern: {
+                    value:  /^\w+([.-]?\w+)@\w+([.-]?\w+)(.\w{2,3})+$/,
+                    message: 'Enter a valid email'
+                }
+            }
         },
         {
             name: 'password', type: 'password', label: 'Password', 
@@ -21,13 +27,7 @@ export const FORM_FIELDS = {
     ],
     REGISTER: [
         {
-            name: 'username', type: 'text', label: 'Username', 
-            validators: { 
-                required: 'Enter valid username',
-            }
-        },
-        {
-            name: 'emailAddress', type: 'text', label: 'Email Address', 
+            name: 'email', type: 'text', label: 'Email Address', 
             validators: { 
                 required: 'Enter Email Address',
                 pattern: {
@@ -71,7 +71,7 @@ export const FORM_FIELDS = {
                     validators: { required: 'Enter CVV'}
                 },
                 {  
-                    name: 'expiryDate', type: 'password', label: 'Expiry Date', 
+                    name: 'date_expiration', type: 'password', label: 'Expiry Date', 
                     validators: { required: 'Enter Expiry Date'}
                 }
             ]
