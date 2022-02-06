@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux';
 import styles from './Top.style'
 import CommonCard from '../../components/Cards/CommonCard'
 import NavCard from '../../components/Cards/NavCard'
@@ -18,7 +19,18 @@ const Home = () => {
 
     const location = useLocation().pathname
 
+    const account = useSelector((state) => state.account.account);
+
+    useEffect(() => {
+        console.log(account)
+    })
+
     const renderContent = (loc) => {
+
+        if (account.access_token !== '' && loc == '/home') {
+            return <HomeSubscribed/>
+        }
+
         switch(loc) {
             case '/home':
                 return <FreeCourse/>
@@ -28,8 +40,6 @@ const Home = () => {
                 return <Payment/>
             case '/on-boarding':
                 return <OnBoarding/>
-            case '/home-subscribed':
-                return <HomeSubscribed/>
             case '/lesson':
                 return <HomeSubscribedMap/>
 
@@ -37,6 +47,11 @@ const Home = () => {
     }
 
     const renderHeader = (loc) => {
+
+        if (account.access_token !== '' && loc == '/home') {
+            return 'Continue your Journey'
+        }
+
         switch(loc) {
             case '/home':
                 return 'Free Courses'
@@ -46,7 +61,6 @@ const Home = () => {
                 return 'Payment'
             case '/on-boarding':
                 return 'Onboarding'
-            case '/home-subscribed':
             case '/lesson':
                 return 'Continue your Journey'
 

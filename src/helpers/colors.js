@@ -7,6 +7,7 @@ const colors = {
     red4: "#E5715D",
     red5: "#F8E6E7",
     red6: "#FFF4F4",
+    red7: "#E8694C",
     black: "#000000",
     black2: "#141414",
     green: "#3C8855",

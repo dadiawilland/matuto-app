@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux';
 import logo from '../../assets/logo.png'
 import logoWhite from '../../assets/logo-white.png'
 import styles from './Header.style'
@@ -11,6 +12,11 @@ const Header = () => {
 
     const location = useLocation().pathname
     const onBoardingLocations = ['/login', '/register', '/payment-info']
+    const account = useSelector((state) => state.account.account);
+
+    useEffect(() => {
+        console.log(account)
+    })
 
     const renderHeader = (loc) => {
         switch(loc) {

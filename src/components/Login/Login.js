@@ -32,7 +32,8 @@ const Login = () => {
     }
 
     useEffect(() => {
-        if(account.id && !accountLoginError) {
+        console.log(account)
+        if(account.access_token && !accountLoginError) {
             setHasError(false)
             history.push('/home')
         } else if(accountLoginError) {

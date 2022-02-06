@@ -21,31 +21,31 @@ const FilterButton = (props) => {
               id: 0,
               title: 'First Name',
               selected: false,
-              key: 'firstName'
+              key: 'first_name'
           },
           {
               id: 1,
               title: 'Last Name',
               selected: false,
-              key: 'lastName'
+              key: 'last_name'
           },
           {
               id: 2,
               title: 'Email Address',
               selected: false,
-              key: 'emailAddress'
+              key: 'email'
           },
           {
               id: 3,
               title: 'Contact Number',
               selected: false,
-              key: 'contactNumber'
+              key: 'contact_number'
           },
           {
               id: 4,
               title: 'User Status',
               selected: false,
-              key: 'userStatus'
+              key: 'user_status'
           }
         ]
        })
