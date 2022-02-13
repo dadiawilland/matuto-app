@@ -18,7 +18,7 @@ const configureStore = () => {
 
     return {
         ...createStore(
-            persistedReducer,
+            rootReducer,
             composeWithDevTools(applyMiddleware(sagaMiddleware)),
         ),
         runSaga: sagaMiddleware.run(rootSaga),
