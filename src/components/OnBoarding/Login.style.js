@@ -1,26 +1,10 @@
 import colors from "../../helpers/colors"
 
 const styles = () => ({
-    containerForm: {
-        backgroundColor: colors.white,
-        display: 'flex',
-        flexDirection: 'column',
-        paddingInline: 19,
-        width: 300,
-        marginTop: 250
-    },
-    containerInputField: {
-        marginBottom: 8
-    },
     containerCheckbox: {
         flexDirection: 'row',
         display: 'flex',
         marginBottom: 19
-    },
-    containerButton: {
-        alignSelf: 'center',
-        margin: '0 auto',
-        marginBottom: 9
     },
     containerBreak: {
         display: 'flex',
@@ -40,7 +24,6 @@ const styles = () => ({
         borderRadius: 6,
         fontSize: 12,
         color: colors.red4,
-        
     },
     btnFont: {
         alignSelf: 'center',
@@ -67,14 +50,6 @@ const styles = () => ({
         fontSize: 8,
         alignSelf: 'center',
         color: colors.gray2
-    },
-    formTitleFont: {
-        paddingBlock: 12,
-        marginBottom: 32,
-        fontSize: 24,
-        color: colors.red2,
-        fontWeight: 600,
-        alignSelf: 'center',
     },
     signUpFont: {
         fontSize: 12,

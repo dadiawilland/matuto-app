@@ -10,7 +10,7 @@ import { StyleRoot } from 'radium'
 import FreeCourse from '../../components/FreeCourse/FreeCourse'
 import PriceList from '../../components/PriceList/PriceList'
 import Payment from '../../components/Payment/Payment'
-import OnBoarding from '../../components/OnBoarding/OnBoarding'
+import OnBoarding from '../../components/OnBoarding/Step2'
 import HomeSubscribed from '../../components/Subscribed/HomeSubscribed'
 import HomeSubscribedMap from '../../components/Subscribed/HomeSubscribedMap'
 import { useLocation } from "react-router-dom";
@@ -38,8 +38,8 @@ const Home = () => {
                 return <PriceList/>
             case '/payment':
                 return <Payment/>
-            case '/on-boarding':
-                return <OnBoarding/>
+            // case '/on-boarding':
+            //     return <OnBoarding/>
             case '/lesson':
                 return <HomeSubscribedMap/>
 

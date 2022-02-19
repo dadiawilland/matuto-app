@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux';
 import styles from './Payment.style'
 import PriceCard from '../../components/Cards/PriceCard'
-import PaymentInfo from '../Register/PaymentInfo'
+import PaymentInfo from '../OnBoarding/PaymentInfo'
 import { useHistory } from 'react-router-dom';
 
 const Payment = () => {

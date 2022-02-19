@@ -19,18 +19,20 @@ const Header = () => {
     })
 
     const renderHeader = (loc) => {
+        console.log(loc)
         switch(loc) {
             case '/login':
             case '/register':
             case '/payment-info':
-              return  (<div>
-                            <NavLink style={styles().containerLink} to="/">
-                                <span style={styles().btnFont} key="help">Help</span>
-                            </NavLink>
-                            <NavLink style={styles().containerLink} to="/">
-                                <span style={styles().btnFont} key="contact">Contact</span>
-                            </NavLink>
-                        </div>);
+            case '/step1':
+                return  (<div>
+                                <NavLink style={styles().containerLink} to="/">
+                                    <span style={styles().btnFont} key="help">Help</span>
+                                </NavLink>
+                                <NavLink style={styles().containerLink} to="/">
+                                    <span style={styles().btnFont} key="contact">Contact</span>
+                                </NavLink>
+                            </div>);
             case '/':
                 return (<div>
                             <NavLink style={styles().containerLink} to="/login">

@@ -1,12 +1,13 @@
 import React, { useEffect, useState} from 'react'
 import { useForm, Controller } from "react-hook-form";
 import styles from './Register.style'
+import common from './Common.style'
 import ProcessButton from '../../components/Buttons/ProcessButton'
 import TextInput from '../../components/TextInput/TextInput'
 import { FORM_FIELDS } from '../../constants/formConstants';
 import { useHistory } from 'react-router-dom';
 
-const Register = () => {
+const Register = (props) => {
 
     const history = useHistory();
 
@@ -30,9 +31,9 @@ const Register = () => {
     }
 
     return (
-        <div style={styles().containerForm}>
-            <span style={styles().formTitleFont}>Register to Matuto</span>
-            <div style={styles().containerInputFieldRow}>
+        <div style={common().containerForm}>
+            <span style={common().formTitleFont}>{props.title}</span>
+            <div style={common().containerInputFieldRow}>
                 {FORM_FIELDS.REGISTER_NAME.map((formfield, i) => {
                     return (        
                         <Controller
@@ -43,14 +44,14 @@ const Register = () => {
                             render={({
                                 field: { onChange, value }
                                 }) => 
-                                <TextInput onChange={onChange} val={value} style={{...styles().containerInputField, ...styles().containerInputFieldSml}} type={formfield.type} 
+                                <TextInput onChange={onChange} val={value} style={{...common().containerInputField, ...common().containerInputFieldSml}} type={formfield.type} 
                                     name={formfield.name} label={formfield.label} error={errors[formfield.name]}/>
                             }
                         />
                     );
                 })}
             </div>
-            <div style={styles().containerInputFields}>
+            <div style={common().containerInputFields}>
                 {FORM_FIELDS.REGISTER.map((formfield, i) => {
                     if (formfield.name === 'passwordConfirm') {
                         formfield.validators = {...formfield.validators, 
@@ -71,14 +72,14 @@ const Register = () => {
                             render={({
                                 field: { onChange, value }
                                 }) => 
-                                <TextInput onChange={onChange} val={value} style={styles().containerInputField} type={formfield.type} 
+                                <TextInput onChange={onChange} val={value} style={common().containerInputField} type={formfield.type} 
                                     name={formfield.name} label={formfield.label} error={errors[formfield.name]}/>
                             }
                         />
                     );
                 })}
             </div>
-            <ProcessButton onClick={handleSubmit(onSubmit, onError)} style={{top: 300}} isNav={false} dest={'payment-info'} btnLabel="Next" style={styles().containerButton}/>
+            <ProcessButton onClick={handleSubmit(onSubmit, onError)} style={{top: 300}} isNav={false} dest={'payment-info'} btnLabel="Next" style={common().containerButton}/>
         </div>
     )
 }
