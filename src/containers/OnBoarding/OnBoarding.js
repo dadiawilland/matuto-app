@@ -7,6 +7,7 @@ import PaymentInfo from '../../components/OnBoarding/PaymentInfo'
 import { useLocation } from "react-router-dom";
 import Step1 from '../../components/OnBoarding/Step1'
 import Step2 from '../../components/OnBoarding/Step2'
+import Step3 from '../../components/OnBoarding/Step3'
 
 const SignIn = () => {
 
@@ -22,6 +23,8 @@ const SignIn = () => {
                 return <Step1 title={'Select an Avatar'}/>
             case '/step2':
                 return <Step2/>
+            case '/step3':
+                return <Step3 title={'Select an Avatar'}/>
             default:
               return <Login/>;
           }

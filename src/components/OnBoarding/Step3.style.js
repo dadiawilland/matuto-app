@@ -6,10 +6,27 @@ const styles = (isSelected) => ({
         // justifyContent: 'center',
         flexDirection: 'row',
         // backgroundColor: colors.black,
-        width: 390,
+        // width: 390,
+        // width: 'calc(100% - 400px)',
         height: 'auto',
         flexFlow: 'wrap',
         marginBottom: 19
+    },
+    containerForm: {
+        backgroundColor: colors.white,
+        display: 'flex',
+        flexDirection: 'column',
+        paddingInline: 19,
+        // width: 300,
+        maxWidth: 'calc(100% - 400px)',
+        // marginTop: 250
+        margin: 'auto'
+    },
+    containerSurvey: {
+
+    },
+    containerOption: {
+
     },
     containerAvatar: {
         display: 'flex',
@@ -24,6 +41,12 @@ const styles = (isSelected) => ({
             '-webkit-transition': 'background 0.5s', /* For Safari 3.0 to 6.0 */
             transition: 'background 0.5s' /* For modern browsers */
         },
+    },
+    fontTitle: {
+
+    },
+    fontSubTitle: {
+
     },
     imgAvatar: {
         height: 180,

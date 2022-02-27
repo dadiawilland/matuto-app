@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux';
 import styles from './Step2.style'
+import common from './Common.style'
 import CommonCard from '../Cards/CommonCard'
 import NavCard from '../Cards/NavCard'
 import PriceCard from '../Cards/PriceCard'
@@ -45,7 +46,7 @@ const Step1 = () => {
                     null
                 }
                 {!isSubmitted ? 
-                <ProcessButton onClick={handleClick} isNav={false} btnLabel="Get started" style={styles().containerButton}/>
+                <ProcessButton onClick={handleClick} isNav={false} btnLabel="Get started" style={common().containerButton}/>
                 :
                 <NavButton title="Let's Go!" dest="home-subscribed" style={styles().containerButton}/>}
             </div>

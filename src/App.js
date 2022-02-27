@@ -35,7 +35,7 @@ const App = () => {
             <Route path={["/home", "/pricing", "/payment", "/home-subscribed", "/lesson"]}>
               <Top/>
             </Route>
-            <Route path={["/login", "/register", "/payment-info", "/step1", "/step2"]}>
+            <Route path={["/login", "/register", "/payment-info", "/step1", "/step2", "/step3"]}>
               <OnBoarding/>
             </Route>
           </Switch>

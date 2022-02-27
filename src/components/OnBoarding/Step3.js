@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from 'react'
-import styles from './Step1.style'
+import styles from './Step3.style'
 import common from './Common.style'
 import ProcessButton from '../Buttons/ProcessButton'
 import { StyleRoot } from 'radium'
 
-const Step1 = (props) => {
+const Step3 = (props) => {
 
     const [isSelected, setIsSelected] = useState()
 
     return (
-        <div style={{...common().containerForm, ...props.style}}>
-            <span style={common().formTitleFont}>Select an Avatar</span>
-            <StyleRoot style={styles().containerGrid}>
+        <div style={styles().containerForm}>
+            {/* <span style={common().formTitleFont}>{props.title}</span> */}
+            {/* <StyleRoot style={styles().containerGrid}>
                 {[1,2,3,4].map((i) => {
                     return (
                         <div onClick={() => setIsSelected(i)} key={i} style={styles(isSelected == i).containerAvatar}>
@@ -19,7 +19,11 @@ const Step1 = (props) => {
                         </div>
                     )
                 })}
-            </StyleRoot>
+            </StyleRoot> */}
+            <div style={styles().containerGrid}>
+                <span style={styles().fontTitle}>Getting Started</span>
+            </div>
+            
             <ProcessButton style={{paddingTop: 11}} isNav={false} btnLabel="Select" style={common().containerButton}/>
         </div>
 
@@ -27,4 +31,4 @@ const Step1 = (props) => {
     )
 }
 
-export default Step1;
+export default Step3;

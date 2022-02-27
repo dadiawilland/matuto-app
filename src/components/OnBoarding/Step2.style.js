@@ -3,13 +3,9 @@ import bg from '../../assets/home-bg.jpg'
 
 const styles = () => ({
     containerOnBoarding: {
-        // flexGrow: 1,
         width: '100%',
-        // width: 860,
         display: 'flex',
         justifyContent: 'center'
-
-        // justifyContent: 'space-evenly's
     },
     imgBg: {
         marginTop: 100,
@@ -21,7 +17,6 @@ const styles = () => ({
         left: 0,
         right: 0,
         margin: '0 auto',
-        // top: 380
     },
     containerDialogue: {
         position: 'absolute',

@@ -25,6 +25,8 @@ const Header = () => {
             case '/register':
             case '/payment-info':
             case '/step1':
+            case '/step2':
+            case '/step3':
                 return  (<div>
                                 <NavLink style={styles().containerLink} to="/">
                                     <span style={styles().btnFont} key="help">Help</span>

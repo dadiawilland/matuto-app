@@ -12,6 +12,8 @@ const ProcessButton = (props) => {
         //route to home subscribed
     }
 
+    // TODO: add disabled function
+
     return (
         <StyleRoot>
             <NavLink onClick={handleClick} style={{textDecoration: 'none'}} to={isNav ? dest : location}>
