@@ -15,11 +15,11 @@ const Header = () => {
     const account = useSelector((state) => state.account.account);
 
     useEffect(() => {
-        console.log(account)
+        // console.log(account)
     })
 
     const renderHeader = (loc) => {
-        console.log(loc)
+        // console.log(loc)
         switch(loc) {
             case '/login':
             case '/register':

@@ -9,8 +9,8 @@ const styles = () => ({
     },
     imgBg: {
         marginTop: 100,
-        width: 900,
-        height: 600
+        maxWidth: 900,
+        width: 'auto'
     }, 
     containerButton: {
         position: 'absolute',

@@ -21,7 +21,7 @@ const styles = (isSelected) => ({
         cursor: 'pointer',
         ':hover': {
             backgroundColor: colors.red7,
-            '-webkit-transition': 'background 0.5s', /* For Safari 3.0 to 6.0 */
+            WebkitTransition: 'background 0.5s', /* For Safari 3.0 to 6.0 */
             transition: 'background 0.5s' /* For modern browsers */
         },
     },

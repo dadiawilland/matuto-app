@@ -1,58 +1,50 @@
 import colors from "../../helpers/colors"
 
 const styles = (isSelected) => ({
-    containerGrid: {
-        display: 'flex',
-        // justifyContent: 'center',
-        flexDirection: 'row',
-        // backgroundColor: colors.black,
-        // width: 390,
-        // width: 'calc(100% - 400px)',
-        height: 'auto',
-        flexFlow: 'wrap',
-        marginBottom: 19
-    },
-    containerForm: {
-        backgroundColor: colors.white,
-        display: 'flex',
-        flexDirection: 'column',
-        paddingInline: 19,
-        // width: 300,
-        maxWidth: 'calc(100% - 400px)',
-        // marginTop: 250
-        margin: 'auto'
-    },
-    containerSurvey: {
-
-    },
-    containerOption: {
-
-    },
-    containerAvatar: {
-        display: 'flex',
-        minWidth: 180,
-        height: 215,
-        margin: 7.5,
-        borderRadius: 2,
-        backgroundColor: isSelected ? colors.red7 : colors.red7 + '30',
-        cursor: 'pointer',
-        ':hover': {
-            backgroundColor: colors.red7,
-            '-webkit-transition': 'background 0.5s', /* For Safari 3.0 to 6.0 */
-            transition: 'background 0.5s' /* For modern browsers */
-        },
-    },
-    fontTitle: {
-
-    },
-    fontSubTitle: {
-
-    },
-    imgAvatar: {
-        height: 180,
-        margin: '0 auto',
-        alignSelf: 'center'
-    }
+  containerForm: {
+    backgroundColor: colors.white,
+    display: 'flex',
+    flexDirection: 'column',
+    paddingInline: 19,
+    margin: 'auto'
+  },
+  fontTitle: {
+    fontSize: 26,
+    color: colors.gray7,
+    marginLeft: 15,
+    marginBottom: 12
+  },
+  containerSurvey: {
+    display: 'flex',
+    flexDirection: 'row',
+    maxWidth: 747,
+    flexWrap: 'wrap',
+    marginBottom: 12
+  },
+  fontSubTitle: {
+    fontSize: 16,
+    fontWeight: 200,
+    color: colors.gray7,
+    marginLeft: 15,
+  },
+  containerOption: {
+    display: 'flex',
+    justifyContent: 'center',
+    cursor: 'pointer',
+    width: 201,
+    height: 51,
+    backgroundColor: colors.black,
+    borderRadius: 8,
+    padding: 12,
+    margin: 12,
+    backgroundColor: isSelected ? colors.green4 : colors.green6,
+    WebkitTransition: 'background 0.5s', /* For Safari 3.0 to 6.0 */
+    transition: 'background 0.5s', /* For modern browsers */
+  },
+  fontText: {
+    fontSize: 18,
+    color: colors.white,
+    alignSelf: 'center',
+  }
 })
-
 export default styles
