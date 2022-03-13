@@ -20,7 +20,7 @@ const DataTable = (props) => {
 		console.log('asdasdasdsd')
 		console.log(props.data)
 		console.log('fgdfgdfgdfgdf')
-	}, [])
+	}, [props.data])
     
     const classes = useStyles();
 
@@ -52,7 +52,7 @@ const DataTable = (props) => {
 					{ title: '#', field: 'id' },
 					{ title: 'First Name', field: 'first_name' },
 					{ title: 'Last Name', field: 'last_name' },
-					{ title: 'Email Address', field: 'email_address' },
+					{ title: 'Email Address', field: 'email' },
 					{ title: 'Contact Number', field: 'contact_number', type: 'numeric' },
 					{ title: 'User Status', field: 'user_status', type: 'numeric' },
 					
@@ -62,7 +62,7 @@ const DataTable = (props) => {
 					// lookup: { 34: 'İstanbul', 63: 'Şanlıurfa' },
 					// },
 				]}
-				data={props.data ? props.data : null}
+				data={props.data ? props.data.users : null}
 				options={{
 					rowStyle: styles().tableRow,
 					headerStyle: styles().tableHeader,

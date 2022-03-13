@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux';
 import logo from '../../assets/logo.png'
 import logoWhite from '../../assets/logo-white.png'
 import styles from './Header.style'
@@ -11,20 +12,29 @@ const Header = () => {
 
     const location = useLocation().pathname
     const onBoardingLocations = ['/login', '/register', '/payment-info']
+    const account = useSelector((state) => state.account.account);
+
+    useEffect(() => {
+        // console.log(account)
+    })
 
     const renderHeader = (loc) => {
+        // console.log(loc)
         switch(loc) {
             case '/login':
             case '/register':
             case '/payment-info':
-              return  (<div>
-                            <NavLink style={styles().containerLink} to="/">
-                                <span style={styles().btnFont} key="help">Help</span>
-                            </NavLink>
-                            <NavLink style={styles().containerLink} to="/">
-                                <span style={styles().btnFont} key="contact">Contact</span>
-                            </NavLink>
-                        </div>);
+            case '/step1':
+            case '/step2':
+            case '/step3':
+                return  (<div>
+                                <NavLink style={styles().containerLink} to="/">
+                                    <span style={styles().btnFont} key="help">Help</span>
+                                </NavLink>
+                                <NavLink style={styles().containerLink} to="/">
+                                    <span style={styles().btnFont} key="contact">Contact</span>
+                                </NavLink>
+                            </div>);
             case '/':
                 return (<div>
                             <NavLink style={styles().containerLink} to="/login">

@@ -32,7 +32,7 @@ const CareerMarket = () => {
     function registerAccount() {
         let resAccount = null;
         return new Promise(resolve => {
-            fetch("http://localhost:3001/api/account/"+window.location.search, requestOptions())
+            fetch("http://localhost:3000/api/users/"+window.location.search, requestOptions())
                 .then(res => res.json())
                 .then(res => {
                     resAccount = res

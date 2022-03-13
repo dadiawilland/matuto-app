@@ -1,18 +1,19 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux';
-import styles from './OnBoarding.style'
-import CommonCard from '../../components/Cards/CommonCard'
-import NavCard from '../../components/Cards/NavCard'
-import PriceCard from '../../components/Cards/PriceCard'
+import styles from './Step2.style'
+import common from './Common.style'
+import CommonCard from '../Cards/CommonCard'
+import NavCard from '../Cards/NavCard'
+import PriceCard from '../Cards/PriceCard'
 import { StyleRoot } from 'radium'
-import ProcessButton from '../../components/Buttons/ProcessButton'
-import PaymentInfo from '../Register/PaymentInfo'
+import ProcessButton from '../Buttons/ProcessButton'
+import PaymentInfo from './PaymentInfo'
 import bg from '../../assets/on-boarding-bg.png'
 import OnBoardingModal from '../Modal/OnBoardingModal';
 import NavButton from '../Buttons/NavButton';
 import { useHistory } from 'react-router-dom';
 
-const OnBoarding = () => {
+const Step1 = () => {
 
     const history = useHistory();
     const [isModalOpen, setIsModalOpen] = useState(false)
@@ -45,7 +46,7 @@ const OnBoarding = () => {
                     null
                 }
                 {!isSubmitted ? 
-                <ProcessButton onClick={handleClick} isNav={false} btnLabel="Get started" style={styles().containerButton}/>
+                <ProcessButton onClick={handleClick} isNav={false} btnLabel="Get started" style={common().containerButton}/>
                 :
                 <NavButton title="Let's Go!" dest="home-subscribed" style={styles().containerButton}/>}
             </div>
@@ -54,4 +55,4 @@ const OnBoarding = () => {
     )
 }
 
-export default OnBoarding;
+export default Step1;

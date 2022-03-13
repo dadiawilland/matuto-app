@@ -1,13 +1,15 @@
 import colors from "../../helpers/colors"
 
-const styles = () => ({
+const common = () => ({
     containerForm: {
         backgroundColor: colors.white,
         display: 'flex',
         flexDirection: 'column',
         paddingInline: 19,
-        width: 300,
-        marginTop: 250
+        // width: 300,
+        maxWidth: 390,
+        // marginTop: 250
+        margin: 'auto'
     },
     containerInputField: {
         marginBottom: 8,
@@ -20,13 +22,13 @@ const styles = () => ({
     containerInputFieldSml: {
         width: 'calc(50% - 9px)'
     },
+    containerInputFields: {
+        marginBottom: 19
+    },
     containerButton: {
         alignSelf: 'center',
         margin: '0 auto',
         marginBottom: 9
-    },
-    containerInputFields: {
-        marginBottom: 19
     },
     formTitleFont: {
         paddingBlock: 12,
@@ -38,4 +40,4 @@ const styles = () => ({
     },
 })
 
-export default styles
+export default common

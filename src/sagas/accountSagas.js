@@ -18,15 +18,9 @@ export function* accountLoginSaga(request) {
 
 export function* registerAccountPaymentSaga(request) {
     try {
-        const response = yield call(registerAccountService, request.data.account);
+        const response = yield call(registerAccountService, request.data);
         if (response.status == 200) {
-            request.data.paymentInfo.accountId = response.data.id;
-            const paymentResponse = yield call(registerPaymentInfoService, request.data.paymentInfo);
-            if (paymentResponse.status === 200) {
-                yield put({type: ACCOUNT.REGISTER_SUCCESS, data: response.data});
-            } else {
-                yield put({type: ACCOUNT.REGISTER_ERROR, data: response});
-            }
+            yield put({type: ACCOUNT.REGISTER_SUCCESS, data: response.data});
         } else {
             yield put({type: ACCOUNT.REGISTER_ERROR, data: response});
         }

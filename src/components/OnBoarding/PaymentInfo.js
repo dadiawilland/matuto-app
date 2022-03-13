@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import { useForm, Controller } from "react-hook-form";
 import styles from './PaymentInfo.style'
+import common from './Common.style'
 import ProcessButton from '../Buttons/ProcessButton'
 import PaymentButton from '../Buttons/PaymentButton'
 import NavButton from '../Buttons/NavButton';
@@ -27,9 +28,9 @@ const PaymentInfo = (props) => {
     const accountLoginError = useSelector((state) => state.account.accountLoginError);
 
     const onSubmit = (data, e) => {
-        data.paymentInfoType = 1;
+        data.paymentType = 1;
         dispatch(registerAccountAction({
-            account: location.state.account,
+            user: location.state.account,
             paymentInfo: data,
         }));
         
@@ -40,8 +41,11 @@ const PaymentInfo = (props) => {
     }
 
     const handleClick = () => {
-        dispatch(registerAccountOnlyAction({
-            account: location.state.account,
+        // dispatch(registerAccountOnlyAction({
+        //     account: location.state.account,
+        // }));
+        dispatch(registerAccountAction({
+            account: location.state.account
         }));
     }
 
@@ -52,18 +56,18 @@ const PaymentInfo = (props) => {
     }, [account, accountLoginError]);
 
     return (
-        <div style={{...styles().containerForm, ...props.style}}>
-            <span style={styles().formTitleFont}>{props.title}</span>
+        <div style={{...common().containerForm, ...props.style}}>
+            <span style={common().formTitleFont}>{props.title}</span>
             <span style={styles().paymentTitleFont}>Payment Information</span>
             <div style={styles().containerPaymentBtnRow}>
                 <PaymentButton src={'icon-creditcard.png'} text={'Creditcard'} style={styles().containerPaymentBtn}/>
                 <PaymentButton src={'icon-gcash.png'} text={'GCash'} style={styles().containerPaymentBtn}/>
             </div>
-            <div style={styles().containerInputFields}>
+            <div style={common().containerInputFields}>
                 {FORM_FIELDS.PAYMENT_INFO.map((formfield, i) => {
                     if (formfield.subFields) {
                         return (
-                            <div key={i} style={styles().containerInputFieldRow}>
+                            <div key={i} style={common().containerInputFieldRow}>
                                 {formfield.subFields.map((subFormField, ii) => {
                                     return (
                                         <Controller
@@ -75,7 +79,7 @@ const PaymentInfo = (props) => {
                                             render={({
                                                 field: { onChange, value  }
                                                 }) => 
-                                                <TextInput onChange={onChange} val={value} style={{...styles().containerInputField, ...styles().containerInputFieldSml}} type={subFormField.type} 
+                                                <TextInput onChange={onChange} val={value} style={{...common().containerInputField, ...common().containerInputFieldSml}} type={subFormField.type} 
                                                     name={subFormField.name} label={subFormField.label} error={errors[subFormField.name]}/>
                                             }
                                         />
@@ -101,21 +105,21 @@ const PaymentInfo = (props) => {
                     }
                 })}
             </div>
-            {
+            {/* {
                 props.isRegistration ?
                     null
                 :
                     (<div  style={styles().containerPriceField}>
                         <span style={styles().priceFieldFont}>Total Amount:{'\u00A0'} {props.amount}</span>
                     </div>)
-            }
-            <ProcessButton onClick={handleSubmit(onSubmit, onError)} style={{paddingTop: 11}} isNav={false} btnLabel="Submit" style={styles().containerButton}/>
-            { props.isRegistration ? 
-                // <NavButton title={'Skip'} dest="home" style={styles().containerButton} /> 
+            } */}
+            <ProcessButton onClick={handleSubmit(onSubmit, onError)} style={{paddingTop: 11}} isNav={false} btnLabel="Submit" style={common().containerButton}/>
+            {/* { props.isRegistration ?  */}
+                {/* // <NavButton title={'Skip'} dest="home" style={common().containerButton} />  */}
                 <StyleRoot style={styles().containerSkipBtn}>
                     <span onClick={handleClick} style={styles().skipBtnFont}>Skip</span>
                 </StyleRoot>
-                : null}
+                {/* : null} */}
         </div>
     )
 }
