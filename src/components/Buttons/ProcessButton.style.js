@@ -1,7 +1,12 @@
 import colors from "../../helpers/colors"
 
 const styles = () => ({
+    containerNav: {
+        textDecoration: 'none',
+        width: 'auto'
+    },
     containerProcessBtn: {
+        cursor: 'pointer',
         backgroundColor: colors.transparent,
         borderRadius: 20,
         display: 'flex',
@@ -19,7 +24,7 @@ const styles = () => ({
     btnFont: {
         alignSelf: 'center',
         fontSize: 12,
-        textDecoration: 'none',
+        
         display: 'inline-table'
     }
 })

@@ -51,15 +51,6 @@ const styles = () => ({
         alignSelf: 'center',
         color: colors.gray2
     },
-    signUpFont: {
-        fontSize: 12,
-        color: colors.black2,
-        textAlign: 'center',
-        marginBlock: 8
-    },
-    signUpLinkFont: {
-        color: colors.red2,
-    },
 })
 
 export default styles

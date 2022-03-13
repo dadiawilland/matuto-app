@@ -44,16 +44,20 @@ const PaymentInfo = (props) => {
         // dispatch(registerAccountOnlyAction({
         //     account: location.state.account,
         // }));
-        dispatch(registerAccountAction({
-            account: location.state.account
-        }));
+        // dispatch(registerAccountAction({
+        //     account: location.state.account
+        // }));
     }
 
     useEffect(() => {
-        if(account.id && !accountLoginError) {
-            history.push('/on-boarding')
-        }
-    }, [account, accountLoginError]);
+
+    }, [])
+
+    // useEffect(() => {
+    //     if(account.id && !accountLoginError) {
+    //         history.push('/on-boarding')
+    //     }
+    // }, [account, accountLoginError]);
 
     return (
         <div style={{...common().containerForm, ...props.style}}>

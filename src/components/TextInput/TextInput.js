@@ -17,7 +17,9 @@ const TextInput = (props) => {
                     style={{...{backgroundColor: (isActive || (val !== '' && val !== undefined)) ? colors.transparent : colors.gray5},
                         ...props.error ? styles().inputFieldError : styles().containerInputField}}
                     />
-            {/* {props.error && props.error.message} */}
+            <span style={styles().fontError}>
+                {props.error && props.error.message}
+            </span>
         </div>
     )
 }

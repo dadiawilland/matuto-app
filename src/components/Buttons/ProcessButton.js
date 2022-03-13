@@ -1,13 +1,16 @@
 import React from 'react'
 import styles from './ProcessButton.style'
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink, useLocation, useHistory } from "react-router-dom";
 import { StyleRoot } from 'radium'
 
 const ProcessButton = (props) => {
     const {onClick, isNav, dest, style } = props;
-    const location = useLocation().pathname
+    const history = useHistory();
 
     const handleClick = () => {
+        if (isNav) {
+            history.push(dest)
+        }
         props.onClick()
         //route to home subscribed
     }
@@ -16,11 +19,9 @@ const ProcessButton = (props) => {
 
     return (
         <StyleRoot>
-            <NavLink onClick={handleClick} style={{textDecoration: 'none'}} to={isNav ? dest : location}>
-                <div key="process" style={{...styles().containerProcessBtn, ...style}}>
-                    <span style={styles().btnFont}>{props.btnLabel}</span>
-                </div>
-            </NavLink>
+            <div onClick={handleClick} key="process" style={{...styles().containerProcessBtn, ...style}}>
+                <span style={styles().btnFont}>{props.btnLabel}</span>
+            </div>
         </StyleRoot>                                    
     )
 }

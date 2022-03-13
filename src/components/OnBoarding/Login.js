@@ -1,4 +1,4 @@
-import React, { useEffect, useState} from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useForm, Controller  } from "react-hook-form";
 import styles from './Login.style'
@@ -11,6 +11,8 @@ import ErrorMessage from '../ErrorMessage/ErrorMessage';
 import { FORM_FIELDS } from '../../constants/formConstants';
 import { loginAction } from '../../actions/accountActions';
 import { useHistory } from 'react-router-dom';
+import { OnboardingErrorContext } from '../../contexts/OnboardingErrorContext';
+import { accountLoginService } from '../../services/account.service';
 
 const Login = () => {
     const dispatch = useDispatch();
@@ -20,33 +22,36 @@ const Login = () => {
         mode: 'onSubmit', 
         reValidateMode: 'onSubmit'
     });
-    const account = useSelector((state) => state.account.account);
-    const accountLoginError = useSelector((state) => state.account.accountLoginError);
 
+    const { onboardingError, setOnboardingError } = useContext(OnboardingErrorContext)
 
-    const onSubmit = (data, e) => {
-        dispatch(loginAction(data));
+    const onSubmit = async (data, e) => {
+        const res = await accountLoginService(data)
+        if (res.status == 200) {
+            setOnboardingError(null)
+            console.log(res)
+        } else {
+            if(res.data.error == 'invalid_grant') {
+                setOnboardingError('Incorrenct email or password')
+            }
+        }
     }
 
     const onError = (data, e) => {
         console.log(data);
     }
 
-    useEffect(() => {
-        console.log(account)
-        if(account.access_token && !accountLoginError) {
-            setHasError(false)
-            history.push('/home')
-        } else if(accountLoginError) {
+    const handleToRegister = () => {
+        setOnboardingError(null)
+        history.push('/register')
+    }
 
-        console.log(accountLoginError)
-            setHasError(true)
-        }
-    }, [account, accountLoginError]);
+    useEffect (() => {
+        setOnboardingError(null)
+    },[])
 
     return (
         <div style={common().containerForm}>
-            <ErrorMessage hasError={hasError} message={accountLoginError?.data?.message} />
             <span style={common().formTitleFont}>Login to Matuto</span>
             {FORM_FIELDS.LOGIN.map((formfield, i) => {
                 return (        
@@ -76,7 +81,7 @@ const Login = () => {
             </div>
             <AltLoginButton dest="/" src={'icon-google.png'} text={'Sign in with Google'} style={common().containerButton}/>
             <AltLoginButton dest="/" src={'icon-fb.png'} text={'Sign in with Facebook'} style={common().containerButton}/>
-            <p style={styles().signUpFont}>Not a member yet? <NavLink style={styles().signUpLinkFont} to="/register">Sign up here</NavLink></p>
+            <p style={common().btnInlineFont}>Not a member yet? <span style={common().btnInlineLinkFont} onClick={handleToRegister}>Sign up here</span></p>
         </div>
     )
 }

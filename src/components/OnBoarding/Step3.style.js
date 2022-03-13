@@ -2,11 +2,11 @@ import colors from "../../helpers/colors"
 
 const styles = (isSelected) => ({
   containerForm: {
-    backgroundColor: colors.white,
     display: 'flex',
     flexDirection: 'column',
     paddingInline: 19,
-    margin: 'auto'
+    marginTop: 225
+    // margin: 'auto'
   },
   fontTitle: {
     fontSize: 26,
@@ -19,6 +19,7 @@ const styles = (isSelected) => ({
     flexDirection: 'row',
     maxWidth: 747,
     flexWrap: 'wrap',
+    justifyContent: 'space-evenly',
     marginBottom: 12
   },
   fontSubTitle: {

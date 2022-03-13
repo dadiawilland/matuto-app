@@ -3,49 +3,49 @@ export const FORM_FIELDS = {
         {
             name: 'email', type: 'text', label: 'Email Address', 
             validators: { 
-                required: 'Enter Email Address',
+                required: 'Email Address is required',
                 pattern: {
                     value:  /^\w+([.-]?\w+)@\w+([.-]?\w+)(.\w{2,3})+$/,
-                    message: 'Enter a valid email'
+                    message: 'Please enter a valid email'
                 }
             }
         },
         {
             name: 'password', type: 'password', label: 'Password', 
-            validators: { required: 'Enter password'}
+            validators: { required: 'Password is required'}
         },
     ],
     REGISTER_NAME: [
         {  
             name: 'firstName', type: 'text', label: 'First Name', 
-            validators: { required: 'Enter first name'}
+            validators: { required: 'First Name is required'}
         },
         {
             name: 'lastName', type: 'text', label: 'Last Name', 
-            validators: { required: 'Enter last name'}
+            validators: { required: 'Last Name is required'}
         },
     ],
     REGISTER: [
         {
             name: 'email', type: 'text', label: 'Email Address', 
             validators: { 
-                required: 'Enter Email Address',
+                required: 'Email Address is required',
                 pattern: {
                     value:  /^\w+([.-]?\w+)@\w+([.-]?\w+)(.\w{2,3})+$/,
-                    message: 'Enter a valid email'
+                    message: 'Please enter a valid email'
                 }
             }
         },
         {
             name: 'contactNumber', type: 'text', label: 'Contact Number', 
             validators: { 
-                required: 'Enter contact number',
+                required: 'Contact Number is required',
             }
         },
         {
             name: 'password', type: 'password', label: 'Password', 
             validators: { 
-                required: 'Enter Password',
+                required: 'Password is required',
             }
         },
         {
@@ -58,21 +58,21 @@ export const FORM_FIELDS = {
     PAYMENT_INFO: [
         {  
             name: 'name', type: 'text', label: 'Name on Card', 
-            validators: { required: 'Enter name on card'}
+            validators: { required: 'Name on Card is required'}
         },
         {
             name: 'number', type: 'text', label: 'Card Number', 
-            validators: { required: 'Enter card details'}
+            validators: { required: 'Card Number is required'}
         },
         {
             subFields: [
                 {  
                     name: 'cvv', type: 'password', label: 'CVV', 
-                    validators: { required: 'Enter CVV'}
+                    validators: { required: 'CVV is required'}
                 },
                 {  
                     name: 'date_expiration', type: 'password', label: 'Expiry Date', 
-                    validators: { required: 'Enter Expiry Date'}
+                    validators: { required: 'Expiry Date is required'}
                 }
             ]
         },

@@ -5,12 +5,12 @@ const styles = () => ({
     containerOnBoarding: {
         width: '100%',
         display: 'flex',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        marginTop: 225,
     },
     imgBg: {
-        marginTop: 100,
         maxWidth: 900,
-        width: 'auto'
+        width: 'calc(100%)'
     }, 
     containerButton: {
         position: 'absolute',

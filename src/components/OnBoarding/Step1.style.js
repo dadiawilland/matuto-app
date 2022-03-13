@@ -19,11 +19,12 @@ const styles = (isSelected) => ({
         borderRadius: 2,
         backgroundColor: isSelected ? colors.red7 : colors.red7 + '30',
         cursor: 'pointer',
-        ':hover': {
-            backgroundColor: colors.red7,
-            WebkitTransition: 'background 0.5s', /* For Safari 3.0 to 6.0 */
-            transition: 'background 0.5s' /* For modern browsers */
-        },
+        WebkitTransition: 'background 0.5s', /* For Safari 3.0 to 6.0 */
+        transition: 'background 0.5s' /* For modern browsers */
+        // ':hover': {
+        //     backgroundColor: colors.red7,
+
+        // },
     },
     imgAvatar: {
         height: 180,

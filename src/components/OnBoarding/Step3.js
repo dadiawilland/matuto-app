@@ -20,8 +20,8 @@ const Step3 = (props) => {
 		async function fetchData() {
       // 2. Use a template string to set the URL:
       const res = await fetchOnboardingSurveyList()
-			console.log(res.data)
-      setData(res.data)
+			console.log(res?.data)
+      setData(res?.data)
     }
 
     fetchData();
@@ -51,7 +51,7 @@ const Step3 = (props) => {
 			{
 				<OnboardingSurvey ref={listRef}
 													key={currentPage}
-													data={data[currentPage - 1]}
+													data={data?.[currentPage - 1]}
 													currentPage={currentPage} />
 			}
 			<ProcessButton onClick={() => handleSurveyPage()} style={{ paddingTop: 11 }} isNav={false} btnLabel="Select" style={common().containerButton} />

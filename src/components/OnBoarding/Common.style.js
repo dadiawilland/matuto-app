@@ -8,11 +8,12 @@ const common = () => ({
         paddingInline: 19,
         // width: 300,
         maxWidth: 390,
-        // marginTop: 250
-        margin: 'auto'
+        marginTop: 225,
+        width: '100%'
+        // margin: 'auto'
     },
     containerInputField: {
-        marginBottom: 8,
+        marginBottom: 18,
     },
     containerInputFieldRow: {
         display: 'flex',
@@ -37,6 +38,19 @@ const common = () => ({
         color: colors.red2,
         fontWeight: 600,
         alignSelf: 'center',
+    },
+    btnInlineFont: {
+        fontSize: 12,
+        color: colors.black2,
+        textAlign: 'center',
+        marginBlock: 8
+    },
+    btnInlineLinkFont: {
+        textDecoration: 'underline',
+        fontSize: 12,
+        color: colors.red2,
+        cursor: 'pointer',
+        textAlign: 'center',
     },
 })
 

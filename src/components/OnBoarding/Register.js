@@ -26,6 +26,10 @@ const Register = (props) => {
         })
     }
 
+    const handleGoBack = () => {
+        history.push('/login')
+    }
+
     const onError = (data, e) => {
         console.log(data);
     }
@@ -80,6 +84,7 @@ const Register = (props) => {
                 })}
             </div>
             <ProcessButton onClick={handleSubmit(onSubmit, onError)} style={{top: 300}} isNav={false} dest={'payment-info'} btnLabel="Next" style={common().containerButton}/>
+            <span style={common().btnInlineLinkFont} onClick={handleGoBack}>back</span>
         </div>
     )
 }

@@ -11,7 +11,7 @@ import { NavLink, useLocation } from "react-router-dom";
 const Header = () => {
 
     const location = useLocation().pathname
-    const onBoardingLocations = ['/login', '/register', '/payment-info']
+    const onBoardingLocations = ['/login', '/register', '/payment-info', '/step1', '/step2', '/step3']
     const account = useSelector((state) => state.account.account);
 
     useEffect(() => {
@@ -27,6 +27,7 @@ const Header = () => {
             case '/step1':
             case '/step2':
             case '/step3':
+            case onBoardingLocations.includes(location):
                 return  (<div>
                                 <NavLink style={styles().containerLink} to="/">
                                     <span style={styles().btnFont} key="help">Help</span>
