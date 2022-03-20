@@ -1,12 +1,21 @@
 import colors from "../../helpers/colors"
 
 const styles = () => ({
-    containerSignIn: {
+    containerOnboarding: {
         height: '100%',
         display: 'flex',
         // paddingRight: 62,
         minHeight: '100vh',
         // width: '100%',
+    },
+    containerLoading: {
+        position: 'absolute',
+        width: '100vw',
+        height: '100vh',
+        backgroundColor: colors.white + 70,
+        zIndex: 999999,
+        display: 'flex',
+        justifyContent: 'center'
     },
     containerMessage: {
         backgroundColor: colors.red6,
@@ -55,6 +64,11 @@ const styles = () => ({
         height: 320,
         position: 'fixed',
         bottom: 0,
+        alignSelf: 'center'
+    },
+    imgLoadingGif: {
+        height: 175,
+        margin: '0 auto',
         alignSelf: 'center'
     }
 })

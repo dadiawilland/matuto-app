@@ -43,7 +43,7 @@ export const registerAccountService = (request) => {
 
 export const registerPaymentInfoService = (request) => {
     console.log(request);
-    const endPoint = process.env.REACT_APP_API_URL+'/payment-info/';
+    const endPoint = process.env.REACT_APP_API_URL+'/api/payment-info/';
     return fetch(endPoint, {
         method: 'POST',
         headers: {

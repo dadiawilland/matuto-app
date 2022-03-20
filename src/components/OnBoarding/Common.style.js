@@ -46,6 +46,8 @@ const common = () => ({
         marginBlock: 8
     },
     btnInlineLinkFont: {
+        width: 'fit-content',
+        alignSelf: 'center',
         textDecoration: 'underline',
         fontSize: 12,
         color: colors.red2,

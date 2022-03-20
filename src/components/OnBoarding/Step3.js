@@ -47,14 +47,14 @@ const Step3 = (props) => {
 
 	return (
 		<div style={styles().containerForm}>
-			<span style={styles().fontTitle}>Getting Started</span>
+			<span style={common().formTitleFont}>Getting Started</span>
 			{
 				<OnboardingSurvey ref={listRef}
 													key={currentPage}
 													data={data?.[currentPage - 1]}
 													currentPage={currentPage} />
 			}
-			<ProcessButton onClick={() => handleSurveyPage()} style={{ paddingTop: 11 }} isNav={false} btnLabel="Select" style={common().containerButton} />
+			<ProcessButton onClick={() => handleSurveyPage()} isNav={false} btnLabel="Select" style={common().containerButton} />
 		</div>
 	)
 }

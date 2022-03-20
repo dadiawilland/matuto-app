@@ -12,20 +12,20 @@ import { FORM_FIELDS } from '../../constants/formConstants';
 import { loginAction } from '../../actions/accountActions';
 import { useHistory } from 'react-router-dom';
 import { OnboardingErrorContext } from '../../contexts/OnboardingErrorContext';
+import { LoadingContext } from '../../contexts/LoadingContext';
 import { accountLoginService } from '../../services/account.service';
 
 const Login = () => {
-    const dispatch = useDispatch();
     const history = useHistory();
-    const [hasError, setHasError] = useState(false);
+    const { onboardingError, setOnboardingError } = useContext(OnboardingErrorContext);
+    const { loading, setLoading } = useContext(LoadingContext);
     const {formState: { errors }, handleSubmit, control } = useForm({
         mode: 'onSubmit', 
         reValidateMode: 'onSubmit'
     });
 
-    const { onboardingError, setOnboardingError } = useContext(OnboardingErrorContext)
-
     const onSubmit = async (data, e) => {
+        setLoading(true)
         const res = await accountLoginService(data)
         if (res.status == 200) {
             setOnboardingError(null)
@@ -35,10 +35,11 @@ const Login = () => {
                 setOnboardingError('Incorrenct email or password')
             }
         }
+        setTimeout(() => setLoading(false), 300);
+        
     }
 
     const onError = (data, e) => {
-        console.log(data);
     }
 
     const handleToRegister = () => {

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useContext } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import { useForm, Controller } from "react-hook-form";
 import styles from './PaymentInfo.style'
@@ -13,51 +13,54 @@ import { registerAccountAction, registerAccountOnlyAction } from '../../actions/
 import { StyleRoot } from 'radium'
 import Register from './Register';
 import { useHistory } from 'react-router-dom';
+import { registerPaymentInfoService } from '../../services/account.service';
+import { OnboardingErrorContext } from '../../contexts/OnboardingErrorContext'; 
+import { LoadingContext } from '../../contexts/LoadingContext';
 
 
 const PaymentInfo = (props) => {
-    const dispatch = useDispatch();
     const location = useLocation();
     const history = useHistory();
+    const { onboardingError, setOnboardingError } = useContext(OnboardingErrorContext);
+    const { loading, setLoading } = useContext(LoadingContext);
     const {formState: { errors }, handleSubmit, control, getValues } = useForm({
         mode: 'onSubmit', 
         reValidateMode: 'onSubmit'
     });
 
-    const account = useSelector((state) => state.account.account);
-    const accountLoginError = useSelector((state) => state.account.accountLoginError);
+    const onSubmit = async (data, e) => {
+        const req = {
+            user_id: location.state.id,
+            payment_type: 1
 
-    const onSubmit = (data, e) => {
-        data.paymentType = 1;
-        dispatch(registerAccountAction({
-            user: location.state.account,
-            paymentInfo: data,
-        }));
-        
+        }
+        setLoading(true)
+        const res = await registerPaymentInfoService(
+            {
+                paymentInfo: {...data, ...req}
+            }
+        )
+        if (res.status == 200) {
+            setOnboardingError(null)
+            history.push('/step1')
+        } else {
+            setOnboardingError(res.data.error)
+        }
+        setTimeout(() => setLoading(false), 300);
     }
 
     const onError = (data, e) => {
-        console.log(data);
     }
 
-    const handleClick = () => {
-        // dispatch(registerAccountOnlyAction({
-        //     account: location.state.account,
-        // }));
-        // dispatch(registerAccountAction({
-        //     account: location.state.account
-        // }));
+    const handleSkip = () => {
+        history.push('/step1')
     }
 
     useEffect(() => {
-
+        console.log(location)
     }, [])
 
-    // useEffect(() => {
-    //     if(account.id && !accountLoginError) {
-    //         history.push('/on-boarding')
-    //     }
-    // }, [account, accountLoginError]);
+    
 
     return (
         <div style={{...common().containerForm, ...props.style}}>
@@ -109,21 +112,8 @@ const PaymentInfo = (props) => {
                     }
                 })}
             </div>
-            {/* {
-                props.isRegistration ?
-                    null
-                :
-                    (<div  style={styles().containerPriceField}>
-                        <span style={styles().priceFieldFont}>Total Amount:{'\u00A0'} {props.amount}</span>
-                    </div>)
-            } */}
-            <ProcessButton onClick={handleSubmit(onSubmit, onError)} style={{paddingTop: 11}} isNav={false} btnLabel="Submit" style={common().containerButton}/>
-            {/* { props.isRegistration ?  */}
-                {/* // <NavButton title={'Skip'} dest="home" style={common().containerButton} />  */}
-                <StyleRoot style={styles().containerSkipBtn}>
-                    <span onClick={handleClick} style={styles().skipBtnFont}>Skip</span>
-                </StyleRoot>
-                {/* : null} */}
+            <ProcessButton onClick={handleSubmit(onSubmit, onError)} isNav={false} btnLabel="Submit" style={common().containerButton}/>
+            <span style={common().btnInlineLinkFont} onClick={handleSkip}>skip</span>
         </div>
     )
 }

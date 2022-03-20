@@ -22,7 +22,7 @@ const Step1 = (props) => {
             )
         })}
       </StyleRoot>
-      <ProcessButton style={{paddingTop: 11}} isNav={false} btnLabel="Select" style={common().containerButton}/>
+      <ProcessButton isNav={false} btnLabel="Select" style={common().containerButton}/>
     </div>
   )
 }
