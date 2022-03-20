@@ -7,18 +7,18 @@ import {NavLink} from 'react-router-dom'
 import ProcessButton from '../Buttons/ProcessButton'
 import AltLoginButton from '../Buttons/AltLoginButton'
 import TextInput from '../TextInput/TextInput';
-import ErrorMessage from '../ErrorMessage/ErrorMessage';
 import { FORM_FIELDS } from '../../constants/formConstants';
-import { loginAction } from '../../actions/accountActions';
 import { useHistory } from 'react-router-dom';
 import { OnboardingErrorContext } from '../../contexts/OnboardingErrorContext';
 import { LoadingContext } from '../../contexts/LoadingContext';
+import { UserContext } from '../../contexts/UserContext';
 import { accountLoginService } from '../../services/account.service';
 
-const Login = () => {
+const Login = (props) => {
     const history = useHistory();
     const { onboardingError, setOnboardingError } = useContext(OnboardingErrorContext);
     const { loading, setLoading } = useContext(LoadingContext);
+    const { user, setUser } = useContext(UserContext);
     const {formState: { errors }, handleSubmit, control } = useForm({
         mode: 'onSubmit', 
         reValidateMode: 'onSubmit'
@@ -29,7 +29,8 @@ const Login = () => {
         const res = await accountLoginService(data)
         if (res.status == 200) {
             setOnboardingError(null)
-            console.log(res)
+            props.userContext.setUser(res.data)
+            history.push('/register')
         } else {
             if(res.data.error == 'invalid_grant') {
                 setOnboardingError('Incorrenct email or password')
@@ -49,6 +50,10 @@ const Login = () => {
 
     useEffect (() => {
         setOnboardingError(null)
+        console.log(props.userContext)
+        if (user?.access_token == null) {
+            
+        }
     },[])
 
     return (

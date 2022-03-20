@@ -29,6 +29,7 @@ const Register = (props) => {
         console.log(res)
         if (res.status == 200) {
             setOnboardingError(null)
+            props.userContext.setUser(res.data)
             history.push({
                 pathname: '/payment-info',
                 state: {id: res.data.user.id}
@@ -45,6 +46,11 @@ const Register = (props) => {
     const handleGoBack = () => {
         history.push('/login')
     }
+
+    useEffect (() => {
+        setOnboardingError(null)
+        console.log(props.userContext)
+    },[])
 
     return (
         <div style={common().containerForm}>

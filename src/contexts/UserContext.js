@@ -1,8 +1,7 @@
 import { createContext } from "react";
 
-export const OnboardingErrorContext = createContext({
+export const UserContext = createContext({
   id: null,
-  email: null,
   access_token: null,
   token_type: 'bearer',
   expires_in: null,
