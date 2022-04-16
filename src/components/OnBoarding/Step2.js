@@ -15,44 +15,44 @@ import { useHistory } from 'react-router-dom';
 
 const Step1 = () => {
 
-    const history = useHistory();
-    const [isModalOpen, setIsModalOpen] = useState(false)
-    const [isSubmitted, setIsSubmitted] = useState(false)
+	const history = useHistory();
+	const [isModalOpen, setIsModalOpen] = useState(false)
+	const [isSubmitted, setIsSubmitted] = useState(false)
 
-    const handleCloseModal = () => {
-        setIsModalOpen(false)
-    }
+	const handleCloseModal = () => {
+		setIsModalOpen(false)
+	}
 
-    const handleClick = () => {
-        setIsModalOpen(true)
-        
-        //route to home subscribed
-    }
+	const handleClick = () => {
+		setIsModalOpen(true)
 
-    const handleSubmit = () => {
-        setIsModalOpen(false)
-        setIsSubmitted(true)
-    }
+		//route to home subscribed
+	}
 
-    return (
-        <div style={styles().containerOnBoarding}>
-            <div>
-                <img style={styles().imgBg} src={bg} alt="Matuto logo white"/>
-                {isSubmitted ? 
-                    <div style={styles().containerDialogue}>
-                        <span style={styles().fontDialogue}>You're now ready to start your learning journey with us!</span>
-                    </div>
-                    :
-                    null
-                }
-                {!isSubmitted ? 
-                <ProcessButton onClick={handleClick} isNav={false} btnLabel="Get started" style={common().containerButton}/>
-                :
-                <NavButton title="Let's Go!" dest="home-subscribed" style={styles().containerButton}/>}
-            </div>
-            {isModalOpen ? <OnBoardingModal onSubmit={handleSubmit} onClose={handleCloseModal}/> : null}
-        </div>
-    )
+	const handleSubmit = () => {
+		setIsModalOpen(false)
+		setIsSubmitted(true)
+	}
+
+	return (
+		<div style={styles().containerOnBoarding}>
+			<div>
+				<img style={styles().imgBg} src={bg} alt="Matuto logo white" />
+				{isSubmitted ?
+					<div style={styles().containerDialogue}>
+						<span style={styles().fontDialogue}>You're now ready to start your learning journey with us!</span>
+					</div>
+					:
+					null
+				}
+				{!isSubmitted ?
+					<ProcessButton onClick={handleClick} isNav={false} btnLabel="Get started" style={common().containerButton} />
+					:
+					<NavButton title="Let's Go!" dest="home-subscribed" style={styles().containerButton} />}
+			</div>
+			{isModalOpen ? <OnBoardingModal onSubmit={handleSubmit} onClose={handleCloseModal} /> : null}
+		</div>
+	)
 }
 
 export default Step1;
