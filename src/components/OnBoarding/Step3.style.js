@@ -1,4 +1,4 @@
-import colors from "../../helpers/colors"
+import colors from '../../helpers/colors';
 
 const styles = (isSelected) => ({
   containerForm: {
@@ -26,7 +26,7 @@ const styles = (isSelected) => ({
     fontSize: 16,
     fontWeight: 200,
     color: colors.gray7,
-    marginLeft: 15,
+    marginLeft: 15
   },
   containerOption: {
     display: 'flex',
@@ -39,13 +39,13 @@ const styles = (isSelected) => ({
     padding: 12,
     margin: 12,
     backgroundColor: isSelected ? colors.green4 : colors.green6,
-    WebkitTransition: 'background 0.5s', /* For Safari 3.0 to 6.0 */
-    transition: 'background 0.5s', /* For modern browsers */
+    WebkitTransition: 'background 0.5s' /* For Safari 3.0 to 6.0 */,
+    transition: 'background 0.5s' /* For modern browsers */
   },
   fontText: {
     fontSize: 18,
     color: colors.white,
-    alignSelf: 'center',
+    alignSelf: 'center'
   }
-})
-export default styles
+});
+export default styles;

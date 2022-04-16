@@ -1,12 +1,11 @@
 export const CreateTokenProvider = () => {
+  let _token = localStorage.getItem('REACT_TOKEN_AUTH')
+    ? JSON.parse(localStorage.getItem('REACT_TOKEN_AUTH') || '')
+    : null;
 
-  let _token = localStorage.getItem('REACT_TOKEN_AUTH') ?
-    JSON.parse(localStorage.getItem('REACT_TOKEN_AUTH') || '') :
-    null;
-
-  console.log(_token)
-  console.log(new Date((1000 * _token.created_at)))
-  console.log(new Date(1000 * (_token.created_at + _token.expires_in)))
+  console.log(_token);
+  console.log(new Date(1000 * _token.created_at));
+  console.log(new Date(1000 * (_token.created_at + _token.expires_in)));
 
   const getExpirationDate = (jwtToken) => {
     if (!jwtToken) {
@@ -16,7 +15,7 @@ export const CreateTokenProvider = () => {
     const jwt = JSON.parse(atob(jwtToken.split('.')[1]));
 
     // multiply by 1000 to convert seconds into milliseconds
-    return (jwt && jwt.exp) ? jwt.exp * 1000 : null;
+    return jwt && jwt.exp ? jwt.exp * 1000 : null;
   };
 
   const isExpired = (exp) => {
@@ -31,15 +30,14 @@ export const CreateTokenProvider = () => {
     if (!_token) {
       return null;
     }
-    console.log('asd')
-    console.log(_token)
+    console.log('asd');
+    console.log(_token);
 
     if (isExpired(getExpirationDate(_token.accessToken))) {
       const updatedToken = await fetch('/update-token', {
         method: 'POST',
         body: _token.refreshToken
-      })
-        .then(r => r.json());
+      }).then((r) => r.json());
 
       setToken(updatedToken);
     }
@@ -58,12 +56,12 @@ export const CreateTokenProvider = () => {
   };
 
   const unsubscribe = (observer) => {
-    observers = observers.filter(_observer => _observer !== observer);
+    observers = observers.filter((_observer) => _observer !== observer);
   };
 
   const notify = () => {
     const isLogged = isLoggedIn();
-    observers.forEach(observer => observer(isLogged));
+    observers.forEach((observer) => observer(isLogged));
   };
 
   const setToken = (token) => {
@@ -81,6 +79,6 @@ export const CreateTokenProvider = () => {
     isLoggedIn,
     setToken,
     subscribe,
-    unsubscribe,
+    unsubscribe
   };
 };

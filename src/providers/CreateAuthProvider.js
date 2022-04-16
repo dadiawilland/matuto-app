@@ -1,54 +1,53 @@
 import { useEffect, useState } from 'react';
-import { CreateTokenProvider } from "./CreateTokenProvider";
+import { CreateTokenProvider } from './CreateTokenProvider';
 
 export const CreateAuthProvider = () => {
+  const tokenProvider = CreateTokenProvider();
 
-	const tokenProvider = CreateTokenProvider();
+  const login = (newTokens) => {
+    tokenProvider.setToken(newTokens);
+  };
 
-	const login = (newTokens) => {
-		tokenProvider.setToken(newTokens);
-	};
+  const logout = () => {
+    tokenProvider.setToken(null);
+  };
 
-	const logout = () => {
-		tokenProvider.setToken(null);
-	};
+  const authFetch = async (input, init) => {
+    const token = await tokenProvider.getToken();
 
-	const authFetch = async (input, init) => {
-		const token = await tokenProvider.getToken();
+    init = init || {};
 
-		init = init || {};
+    init.headers = {
+      ...init.headers,
+      Authorization: `Bearer ${token}`
+    };
 
-		init.headers = {
-			...init.headers,
-			Authorization: `Bearer ${token}`,
-		};
+    return fetch(input, init);
+  };
 
-		return fetch(input, init);
-	};
+  const useAuth = () => {
+    const [isLogged, setIsLogged] = useState(tokenProvider.isLoggedIn());
 
-	const useAuth = () => {
-		const [isLogged, setIsLogged] = useState(tokenProvider.isLoggedIn());
+    useEffect(() => {
+      const listener = (newIsLogged) => {
+        setIsLogged(newIsLogged);
+      };
 
-		useEffect(() => {
-			const listener = (newIsLogged) => {
-				setIsLogged(newIsLogged);
-			};
+      tokenProvider.subscribe(listener);
+      return () => {
+        tokenProvider.unsubscribe(listener);
+      };
+    }, []);
 
-			tokenProvider.subscribe(listener);
-			return () => {
-				tokenProvider.unsubscribe(listener);
-			};
-		}, []);
+    return [isLogged];
+  };
 
-		return [isLogged];
-	};
-
-	return {
-		useAuth,
-		authFetch,
-		login,
-		logout
-	}
+  return {
+    useAuth,
+    authFetch,
+    login,
+    logout
+  };
 };
 
 export const { useAuth, authFetch, login, logout } = CreateAuthProvider();

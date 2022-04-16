@@ -1,77 +1,80 @@
-import React, { useState, useEffect } from 'react'
-import styles from './CareerMarket.style'
-import DataTable from '../../components/DataTable/DataTable'
-import SearchBar from '../../components/Search/SearchBar'
+import React, { useState, useEffect } from 'react';
+import styles from './CareerMarket.style';
+import DataTable from '../../components/DataTable/DataTable';
+import SearchBar from '../../components/Search/SearchBar';
 import AdminHeader from '../../components/Header/AdminHeader';
 import { useHistory } from 'react-router-dom';
 
-
 const CareerMarket = () => {
+  const history = useHistory();
+  const [searchResult, setSearchResult] = useState([]);
+  const [queryParam, setQueryParam] = useState(new Map());
 
-    const history = useHistory();
-    const [searchResult, setSearchResult] = useState([]);
-    const [queryParam, setQueryParam] = useState(new Map());
-    
-    useEffect(() => {
-        getAccounts()
-    }, [])
+  useEffect(() => {
+    getAccounts();
+  }, []);
 
-    async function getAccounts() {
-        let response = await registerAccount()
-        setSearchResult(response)
-    }
-    
-    const requestOptions = () => {
-        return ({
-            method: 'GET',
-            headers: { 'Content-Type': 'application/json' },
-        })
+  async function getAccounts() {
+    let response = await registerAccount();
+    setSearchResult(response);
+  }
 
-    }
+  const requestOptions = () => {
+    return {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' }
+    };
+  };
 
-    function registerAccount() {
-        let resAccount = null;
-        return new Promise(resolve => {
-            fetch("http://localhost:3000/api/users/"+window.location.search, requestOptions())
-                .then(res => res.json())
-                .then(res => {
-                    resAccount = res
-                    console.log(resAccount)
-                    resolve(resAccount)
-                })
+  function registerAccount() {
+    let resAccount = null;
+    return new Promise((resolve) => {
+      fetch(
+        'http://localhost:3000/api/users/' + window.location.search,
+        requestOptions()
+      )
+        .then((res) => res.json())
+        .then((res) => {
+          resAccount = res;
+          console.log(resAccount);
+          resolve(resAccount);
         });
+    });
+  }
+
+  const handleSetQueryParam = (e) => {
+    if (e.queryName.key !== null && e.value !== null) {
+      queryParam.set(e.queryName.key, e.value);
     }
 
-    const handleSetQueryParam = (e) => {
-        if (e.queryName.key !== null && e.value !== null) {
-            queryParam.set(e.queryName.key, e.value )
-        }
-        
-        history.push({
-            pathname: '/admin-career',
-            search: "?" + new URLSearchParams(queryParam).toString()
-        })
+    history.push({
+      pathname: '/admin-career',
+      search: '?' + new URLSearchParams(queryParam).toString()
+    });
 
-        getAccounts()
-    }
+    getAccounts();
+  };
 
-    const handleRemoveQueryParam = (e) => {
-        queryParam.delete(e)
-        history.push({
-            pathname: '/admin-career',
-            search: "?" + new URLSearchParams(queryParam).toString()
-        })
+  const handleRemoveQueryParam = (e) => {
+    queryParam.delete(e);
+    history.push({
+      pathname: '/admin-career',
+      search: '?' + new URLSearchParams(queryParam).toString()
+    });
 
-        getAccounts()
-    }
+    getAccounts();
+  };
 
-    return (
-        <div style={styles().containerContent}>
-            <AdminHeader />
-            <SearchBar removeQueryParam={handleRemoveQueryParam} setQueryParam={handleSetQueryParam}/>
-            <DataTable data={searchResult}/>
-        </div>
-    )
-}
+  return (
+    <div style={styles().containerContent}>
+      <AdminHeader />
+      <SearchBar
+        removeQueryParam={handleRemoveQueryParam}
+        setQueryParam={handleSetQueryParam}
+      />
+      <DataTable data={searchResult} />
+    </div>
+  );
+};
 
-export default CareerMarket
+export default CareerMarket;

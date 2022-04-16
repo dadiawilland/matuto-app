@@ -1,4 +1,4 @@
-import { createContext } from "react";
+import { createContext } from 'react';
 
 export const UserContext = createContext({
   id: null,
@@ -6,5 +6,5 @@ export const UserContext = createContext({
   token_type: 'bearer',
   expires_in: null,
   refresh_token: null,
-  created_at: null,
+  created_at: null
 });

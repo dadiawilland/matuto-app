@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux'
+import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import { persistStore } from 'redux-persist';
 import configureStore from './store.js';
@@ -11,10 +11,10 @@ const rootElement = document.getElementById('root');
 const persistor = persistStore(store);
 
 ReactDOM.render(
-    <Provider store={store}>
-        {/* <PersistGate loading={null} persistor={persistor}> */}
-            <App />
-        {/* </PersistGate> */}
-    </Provider>, 
-    rootElement
+  <Provider store={store}>
+    {/* <PersistGate loading={null} persistor={persistor}> */}
+    <App />
+    {/* </PersistGate> */}
+  </Provider>,
+  rootElement
 );
