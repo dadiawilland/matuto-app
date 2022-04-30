@@ -1,49 +1,42 @@
+import { fetchRefreshToken } from "../services/account.service";
+
 export const createTokenProvider = () => {
   let _token = localStorage.getItem('REACT_TOKEN_AUTH')
     ? JSON.parse(localStorage.getItem('REACT_TOKEN_AUTH') || '')
     : null;
 
-  console.log(_token);
-  console.log(new Date(1000 * _token.created_at));
-  console.log(new Date(1000 * (_token.created_at + _token.expires_in)));
-
-  const getExpirationDate = (jwtToken) => {
-    if (!jwtToken) {
-      return null;
-    }
-
-    const jwt = JSON.parse(atob(jwtToken.split('.')[1]));
-
-    // multiply by 1000 to convert seconds into milliseconds
-    return jwt && jwt.exp ? jwt.exp * 1000 : null;
+  const getExpirationDate = () => {
+    if (!_token) return;
+    return new Date(1000 * (_token.created_at + _token.expires_in));
   };
 
-  const isExpired = (exp) => {
-    if (!exp) {
-      return false;
-    }
-
-    return Date.now() > exp;
+  const isExpired = () => {
+    if (!_token) return;
+    return Date.now() > getExpirationDate();
   };
 
   const getToken = async () => {
     if (!_token) {
       return null;
     }
-    console.log('asd');
-    console.log(_token);
 
-    if (isExpired(getExpirationDate(_token.accessToken))) {
-      const updatedToken = await fetch('/update-token', {
-        method: 'POST',
-        body: _token.refreshToken
-      }).then((r) => r.json());
-
-      setToken(updatedToken);
+    if (isExpired()) {
+      const res = await fetchRefreshToken({refresh_token: _token.refresh_token});
+      if (res.status === 200) {
+        setToken(res.data);
+      }
     }
 
-    return _token && _token.accessToken;
+    return _token && _token.access_token;
   };
+
+  const getRoles = () => {
+    if (!_token) {
+      return []
+    }
+
+    return _token && _token.roles
+  }
 
   const isLoggedIn = () => {
     return !!_token;
@@ -75,6 +68,7 @@ export const createTokenProvider = () => {
   };
 
   return {
+    getRoles,
     getToken,
     isLoggedIn,
     setToken,

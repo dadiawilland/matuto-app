@@ -1,7 +1,10 @@
-// import React, { useState, useCallback } from 'react'
-// import {useHistory} from 'react-router-dom';
+export const getRolesMap = (roleIdList) => {
+  const roles = [];
+  const rolesList = ['admin', 'partner', 'normal'];
 
-// export function navigateTo(location){
-//     const history = useHistory();
-//     return history.push('/pricing');
-// }
+  if (roleIdList.length > 0) {
+    roleIdList.forEach((roleId) => roles.push(rolesList[roleId - 1]));
+  }
+
+  return roles;
+};

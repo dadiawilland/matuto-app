@@ -8,10 +8,12 @@ import Admin from './containers/Admin/Admin';
 import colors from './helpers/colors';
 import Top from './containers/Top/Top';
 import { UserContext } from './contexts/UserContext';
-// import { useLocation } from "react-router-dom";
+import { useAuth } from './providers/CreateAuthProvider';
+
 const queryClient = new QueryClient();
 
 const App = () => {
+  const [logged] = useAuth();
   const [user, setUser] = useState();
   const value = useMemo(() => ({ user, setUser }), [user, setUser]);
 
@@ -33,43 +35,49 @@ const App = () => {
         <QueryClientProvider client={queryClient}>
           <UserContext.Provider value={value}>
             <Switch>
-              <Route exact path="/">
-                <Home />
-              </Route>
-              <Route
-                path={[
-                  '/admin',
-                  '/admin-student',
-                  '/admin-career',
-                  '/admin-recruitment',
-                  '/admin-partner'
-                ]}
-              >
-                <Admin />
-              </Route>
-              <Route
-                path={[
-                  '/home',
-                  '/pricing',
-                  '/payment',
-                  '/home-subscribed',
-                  '/lesson'
-                ]}
-              >
-                <Top />
-              </Route>
-              <Route
-                path={[
-                  '/login',
-                  '/register',
-                  '/payment-info',
-                  '/step1',
-                  '/step2',
-                  '/step3'
-                ]}
-              >
-                <OnBoarding />
-              </Route>
+              <>
+                <Route exact path="/">
+                  <Home />
+                </Route>
+                <Route
+                  path={[
+                    '/login',
+                    '/register',
+                    '/payment-info',
+                    '/step1',
+                    '/step2',
+                    '/step3'
+                  ]}
+                >
+                  <OnBoarding />
+                </Route>
+              </>
+              {logged && (
+                <>
+                  <Route
+                    path={[
+                      '/admin',
+                      '/admin-student',
+                      '/admin-career',
+                      '/admin-recruitment',
+                      '/admin-partner'
+                    ]}
+                  >
+                    <Admin />
+                  </Route>
+                  <Route
+                    path={[
+                      '/home',
+                      '/pricing',
+                      '/payment',
+                      '/home-subscribed',
+                      '/lesson'
+                    ]}
+                  >
+                    <Top />
+                  </Route>
+                </>
+              )}
             </Switch>
           </UserContext.Provider>
         </QueryClientProvider>

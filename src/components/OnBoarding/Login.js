@@ -13,7 +13,7 @@ import { OnboardingErrorContext } from '../../contexts/OnboardingErrorContext';
 import { LoadingContext } from '../../contexts/LoadingContext';
 import { UserContext } from '../../contexts/UserContext';
 import { accountLoginService } from '../../services/account.service';
-import { login, useAuth } from '../../providers/createAuthProvider';
+import { login, roles, useAuth } from '../../providers/CreateAuthProvider';
 
 const Login = (props) => {
   const [logged] = useAuth();
@@ -58,6 +58,7 @@ const Login = (props) => {
 
   useEffect(() => {
     setOnboardingError(null);
+    console.log(roles());
     console.log(props.userContext);
     console.log(logged);
     if (user?.access_token == null) {
