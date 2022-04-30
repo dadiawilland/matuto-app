@@ -13,7 +13,7 @@ import { OnboardingErrorContext } from '../../contexts/OnboardingErrorContext';
 import { LoadingContext } from '../../contexts/LoadingContext';
 import { UserContext } from '../../contexts/UserContext';
 import { accountLoginService } from '../../services/account.service';
-import { login, useAuth } from '../../providers/CreateAuthProvider';
+import { login, useAuth } from '../../providers/createAuthProvider';
 
 const Login = (props) => {
   const [logged] = useAuth();

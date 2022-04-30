@@ -1,4 +1,4 @@
-export const CreateTokenProvider = () => {
+export const createTokenProvider = () => {
   let _token = localStorage.getItem('REACT_TOKEN_AUTH')
     ? JSON.parse(localStorage.getItem('REACT_TOKEN_AUTH') || '')
     : null;
