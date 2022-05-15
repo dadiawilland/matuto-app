@@ -6,11 +6,12 @@ import ProcessButton from '../../components/Buttons/ProcessButton';
 import TextInput from '../../components/TextInput/TextInput';
 import { FORM_FIELDS } from '../../constants/formConstants';
 import { useHistory } from 'react-router-dom';
-import { registerAccountService } from '../../services/account.service';
 import { OnboardingErrorContext } from '../../contexts/OnboardingErrorContext';
 import { LoadingContext } from '../../contexts/LoadingContext';
+import { APIService } from '../../services/APIService';
 
 const Register = (props) => {
+  const API = APIService();
   const history = useHistory();
   const { onboardingError, setOnboardingError } = useContext(
     OnboardingErrorContext
@@ -28,7 +29,7 @@ const Register = (props) => {
 
   const onSubmit = async (data, e) => {
     setLoading(true);
-    const res = await registerAccountService({
+    const res = await API.registerAccount({
       user: data
     });
     console.log(res);

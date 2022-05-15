@@ -10,10 +10,12 @@ import { FORM_FIELDS } from '../../constants/formConstants';
 import { useHistory } from 'react-router-dom';
 import { OnboardingErrorContext } from '../../contexts/OnboardingErrorContext';
 import { LoadingContext } from '../../contexts/LoadingContext';
-import { accountLoginService } from '../../services/account.service';
+import { APIService } from '../../services/APIService';
 import { login, roles, useAuth } from '../../providers/CreateAuthProvider';
 
 const Login = (props) => {
+  const API = APIService();
+
   const [logged] = useAuth();
   const history = useHistory();
   const { onboardingError, setOnboardingError } = useContext(
@@ -31,13 +33,14 @@ const Login = (props) => {
 
   const onSubmit = async (data, e) => {
     setLoading(true);
-    const res = await accountLoginService(data);
+    const res = await API.login(data);
     if (res.status === 200) {
       setOnboardingError(null);
       login(res.data);
 
       history.push('/register');
     } else {
+      console.log(res);
       if (res.data.error === 'invalid_grant') {
         setOnboardingError('Incorrenct email or password');
       }

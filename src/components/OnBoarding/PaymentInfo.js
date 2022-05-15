@@ -11,11 +11,12 @@ import { FORM_FIELDS } from '../../constants/formConstants';
 import { StyleRoot } from 'radium';
 import Register from './Register';
 import { useHistory } from 'react-router-dom';
-import { registerPaymentInfoService } from '../../services/account.service';
 import { OnboardingErrorContext } from '../../contexts/OnboardingErrorContext';
 import { LoadingContext } from '../../contexts/LoadingContext';
+import { APIService } from '../../services/APIService';
 
 const PaymentInfo = (props) => {
+  const API = APIService();
   const location = useLocation();
   const history = useHistory();
   const { onboardingError, setOnboardingError } = useContext(
@@ -38,7 +39,7 @@ const PaymentInfo = (props) => {
       payment_type: 1
     };
     setLoading(true);
-    const res = await registerPaymentInfoService({
+    const res = await API.registerPayment({
       paymentInfo: { ...data, ...req }
     });
     if (res.status == 200) {

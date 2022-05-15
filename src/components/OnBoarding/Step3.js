@@ -9,10 +9,11 @@ import styles from './Step3.style';
 import common from './Common.style';
 import ProcessButton from '../Buttons/ProcessButton';
 import { StyleRoot } from 'radium';
-import { fetchOnboardingSurveyList } from '../../services/onboarding.service';
 import { list } from 'postcss';
+import { APIService } from '../../services/APIService';
 
 const Step3 = (props) => {
+  const API = APIService();
   const [currentPage, setCurrentPage] = useState(1);
   const [data, setData] = useState([]);
   const [surveyList, setSurveyList] = useState([]);
@@ -24,7 +25,7 @@ const Step3 = (props) => {
 
     async function fetchData() {
       // 2. Use a template string to set the URL:
-      const res = await fetchOnboardingSurveyList();
+      const res = await API.fetchOnboardingSurveyList();
       console.log(res?.data);
       setData(res?.data);
     }

@@ -1,4 +1,4 @@
-import { fetchRefreshToken } from "../services/account.service";
+import { APIService } from '../services/APIService';
 
 export const createTokenProvider = () => {
   let _token = localStorage.getItem('REACT_TOKEN_AUTH')
@@ -21,7 +21,9 @@ export const createTokenProvider = () => {
     }
 
     if (isExpired()) {
-      const res = await fetchRefreshToken({refresh_token: _token.refresh_token});
+      const res = await APIService().fetchRefreshToken({
+        refresh_token: _token.refresh_token
+      });
       if (res.status === 200) {
         setToken(res.data);
       }
@@ -32,11 +34,11 @@ export const createTokenProvider = () => {
 
   const getRoles = () => {
     if (!_token) {
-      return []
+      return [];
     }
 
-    return _token && _token.roles
-  }
+    return _token && _token.roles;
+  };
 
   const isLoggedIn = () => {
     return !!_token;

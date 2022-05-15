@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { createTokenProvider } from './CreateTokenProvider';
-import { getRolesMap } from '../utils/utils'; 
+import { getRolesMap } from '../utils/utils';
 
 export const createAuthProvider = () => {
   const tokenProvider = createTokenProvider();
@@ -26,6 +26,10 @@ export const createAuthProvider = () => {
     return fetch(input, init);
   };
 
+  const getAccessToken = async () => {
+    return await tokenProvider.getToken();
+  };
+
   const useAuth = () => {
     const [isLogged, setIsLogged] = useState(tokenProvider.isLoggedIn());
 
@@ -43,19 +47,21 @@ export const createAuthProvider = () => {
     return [isLogged];
   };
 
-	const roles = () => {
-		const roleIdList = tokenProvider.getRoles();
+  const roles = () => {
+    const roleIdList = tokenProvider.getRoles();
 
-		return (getRolesMap(roleIdList));	
-	}
+    return getRolesMap(roleIdList);
+  };
 
   return {
-    useAuth,
     authFetch,
+    getAccessToken,
     login,
     logout,
-		roles
+    roles,
+    useAuth
   };
 };
 
-export const { useAuth, authFetch, login, logout, roles } = createAuthProvider();
+export const { useAuth, getAccessToken, authFetch, login, logout, roles } =
+  createAuthProvider();
