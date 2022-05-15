@@ -1,5 +1,4 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { useForm, Controller } from 'react-hook-form';
 import styles from './CreatePartnerModal.style';
 import SideNavigator from '../SideNavigator/SideNavigator';
@@ -15,14 +14,9 @@ import TextInput from '../TextInput/TextInput';
 import TextArea from '../TextArea/TextArea';
 import ProcessButton from '../Buttons/ProcessButton';
 import CloseButton from '../Buttons/CloseButton';
-import {
-  toggleCreatePartnerModalAction,
-  createPartnerAction
-} from '../../actions/adminActions';
 import { FORM_FIELDS } from '../../constants/formConstants';
 
 const CreatePartnerModal = () => {
-  const dispatch = useDispatch();
   const {
     formState: { errors },
     handleSubmit,
@@ -35,7 +29,7 @@ const CreatePartnerModal = () => {
   });
 
   const onSubmit = (data, e) => {
-    dispatch(createPartnerAction(data));
+    // TODO: add submit function to create partner
     console.log(data);
   };
 
@@ -45,7 +39,7 @@ const CreatePartnerModal = () => {
 
   const closeModal = () => {
     reset();
-    dispatch(toggleCreatePartnerModalAction());
+    // TODO: add close modal function
   };
 
   return (

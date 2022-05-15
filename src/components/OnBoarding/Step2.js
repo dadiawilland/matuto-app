@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
 import styles from './Step2.style';
 import common from './Common.style';
 import CommonCard from '../Cards/CommonCard';

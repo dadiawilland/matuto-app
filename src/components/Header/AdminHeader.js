@@ -10,12 +10,6 @@ import AdminCard from '../../components/Cards/AdminCard';
 import ProfileList from '../../components/ProfileList/ProfileList';
 import { StyleRoot } from 'radium';
 import RegisterButton from '../../components/Buttons/RegisterButton';
-import {
-  toggleJobPostModalAction,
-  toggleCreatePartnerModalAction,
-  closeAdminModalsAction,
-  setNavigationAction
-} from '../../actions/adminActions';
 
 const AdminHeader = (props) => {
   const dispatch = useDispatch();
@@ -26,40 +20,42 @@ const AdminHeader = (props) => {
   const icon = require(`../../assets/${iconImg}`).default;
 
   useEffect(() => {
-    dispatch(closeAdminModalsAction());
+    // TODO: add close modal effect here on show
     switch (location) {
       case '/admin':
       case '/admin-career':
-        dispatch(setNavigationAction('career'));
+        // TODO: add navigation to career
         setTitle('Career Market');
         setHeaderButton(null);
         setIconImg('icon-career-market.png');
         return;
       case '/admin-student':
-        dispatch(setNavigationAction('student'));
+        // TODO: add navigation to student center
         setTitle('Student Center');
         setHeaderButton(null);
         setIconImg('icon-student-center.png');
         return;
       case '/admin-recruitment':
-        dispatch(setNavigationAction('recruitment'));
+        // TODO: add navigation to student center
         setTitle('Recruitment');
         setHeaderButton(
           <RegisterButton
             title={'Create Job Post'}
-            onClick={() => dispatch(toggleJobPostModalAction())}
+            onClick={() => console.log()}
           />
+          // TODO: add toggle show job post modal
         );
         setIconImg('icon-recruitment.png');
         return;
       case '/admin-partner':
-        dispatch(setNavigationAction('partner'));
+        // TODO: add navigation to partner
         setTitle('Partners');
         setHeaderButton(
           <RegisterButton
             title={'Create Partner'}
-            onClick={() => dispatch(toggleCreatePartnerModalAction())}
+            onClick={() => console.log()}
           />
+          // TODO: add toggle show create partmer modal Action
         );
         setIconImg('icon-partners.png');
         return;

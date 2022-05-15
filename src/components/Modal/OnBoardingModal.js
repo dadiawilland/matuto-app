@@ -1,5 +1,4 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { useForm, Controller } from 'react-hook-form';
 import styles from './OnBoardingModal.style';
 import SideNavigator from '../SideNavigator/SideNavigator';
@@ -14,7 +13,6 @@ import AdminHeader from '../Header/AdminHeader';
 import TextInput from '../TextInput/TextInput';
 import TextArea from '../TextArea/TextArea';
 import CloseButton from '../Buttons/CloseButton';
-import { toggleJobPostModalAction } from '../../actions/adminActions';
 import icn from '../../assets/icon-arrow-white.png';
 import { FORM_FIELDS } from '../../constants/formConstants';
 import SelectOption from '../SelectOption/SelectOption';

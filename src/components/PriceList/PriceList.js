@@ -7,30 +7,31 @@ import CommonCard from '../../components/Cards/CommonCard';
 import NavCard from '../../components/Cards/NavCard';
 import PriceCard from '../../components/Cards/PriceCard';
 import NavButton from '../../components/Buttons/NavButton';
-import { getPriceListAction } from '../../actions/priceActions';
+
+// TODO: replicate commented out functions
 
 const PriceList = () => {
   const dispatch = useDispatch();
-  const priceList = useSelector((state) => state.price.priceList);
-  const selectedPrice = useSelector((state) => state.price.selectedPrice);
+  // const priceList = useSelector((state) => state.price.priceList);
+  // const selectedPrice = useSelector((state) => state.price.selectedPrice);
 
   const [isSelected, setisSelected] = useState(false);
   const [prices, setPrices] = useState([]);
 
   useEffect(() => {
-    dispatch(getPriceListAction({}));
+    // TODO: add getter function to fetch price list
   }, []);
 
-  useEffect(() => {
-    console.log(priceList);
-    if (priceList) {
-      setPrices(priceList);
-    }
-  }, [priceList]);
+  // useEffect(() => {
+  //   console.log(priceList);
+  //   if (priceList) {
+  //     setPrices(priceList);
+  //   }
+  // }, [priceList]);
 
-  useEffect(() => {
-    console.log(selectedPrice);
-  }, [selectedPrice]);
+  // useEffect(() => {
+  //   console.log(selectedPrice);
+  // }, [selectedPrice]);
 
   return (
     <div style={styles().containerPriceList}>
@@ -48,8 +49,8 @@ const PriceList = () => {
       <NavButton
         title="Go to payment"
         dest="payment"
-        isDisabled={selectedPrice.id == undefined}
-        style={styles(selectedPrice.id == undefined).containerButton}
+        // isDisabled={selectedPrice.id == undefined}
+        // style={styles(selectedPrice.id == undefined).containerButton}
       />
     </div>
   );

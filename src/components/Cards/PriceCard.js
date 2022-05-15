@@ -1,16 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import styles from './PriceCard.style';
 import { NavLink } from 'react-router-dom';
 import { StyleRoot } from 'radium';
-import {
-  setSelectedPriceAction,
-  clearSelectedPriceAction
-} from '../../actions/priceActions';
+
+// TODO: replicate commented out functions
 
 const PriceCard = (props) => {
-  const dispatch = useDispatch();
-  const selectedPrice = useSelector((state) => state.price.selectedPrice);
+  // const selectedPrice = useSelector((state) => state.price.selectedPrice);
   const icon = props.price.logo
     ? require(`../../assets/${props.price.logo}`).default
     : null;
@@ -19,19 +15,14 @@ const PriceCard = (props) => {
 
   const setActivePrice = () => {
     if (props.isAlwaysActive) return;
-
-    if (isActive) {
-      dispatch(clearSelectedPriceAction());
-    } else {
-      dispatch(setSelectedPriceAction(props.price));
-    }
+    // TODO: add setter for active price
   };
 
-  useEffect(() => {
-    if (selectedPrice) {
-      setIsActive(selectedPrice.type == props.price.type);
-    }
-  }, [selectedPrice]);
+  // useEffect(() => {
+  //   if (selectedPrice) {
+  //     setIsActive(selectedPrice.type == props.price.type);
+  //   }
+  // }, [selectedPrice]);
 
   return (
     <StyleRoot>

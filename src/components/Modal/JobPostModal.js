@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { useForm, Controller } from 'react-hook-form';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -17,15 +16,9 @@ import TextInput from '../TextInput/TextInput';
 import TextArea from '../TextArea/TextArea';
 import ProcessButton from '../Buttons/ProcessButton';
 import CloseButton from '../Buttons/CloseButton';
-import {
-  toggleJobPostModalAction,
-  createJobPostAction,
-  clearJobPostSuccessAction
-} from '../../actions/adminActions';
 import { FORM_FIELDS } from '../../constants/formConstants';
 
 const JobPostModal = () => {
-  const dispatch = useDispatch();
   const {
     formState: { errors },
     handleSubmit,
@@ -38,7 +31,7 @@ const JobPostModal = () => {
   });
 
   const onSubmit = (data, e) => {
-    dispatch(createJobPostAction(data));
+    // TODO: add submit function to create job post
   };
 
   const onError = (data, e) => {
@@ -47,7 +40,7 @@ const JobPostModal = () => {
 
   const closeModal = () => {
     reset();
-    dispatch(toggleJobPostModalAction());
+    // TODO: add close modal function
   };
 
   return (

@@ -7,15 +7,12 @@ import Header from './components/Header/Header';
 import Admin from './containers/Admin/Admin';
 import colors from './helpers/colors';
 import Top from './containers/Top/Top';
-import { UserContext } from './contexts/UserContext';
 import { useAuth } from './providers/CreateAuthProvider';
 
 const queryClient = new QueryClient();
 
 const App = () => {
   const [logged] = useAuth();
-  const [user, setUser] = useState();
-  const value = useMemo(() => ({ user, setUser }), [user, setUser]);
 
   // const location = useLocation().pathname
 
@@ -33,53 +30,51 @@ const App = () => {
         </div>
 
         <QueryClientProvider client={queryClient}>
-          <UserContext.Provider value={value}>
-            <Switch>
+          <Switch>
+            <>
+              <Route exact path="/">
+                <Home />
+              </Route>
+              <Route
+                path={[
+                  '/login',
+                  '/register',
+                  '/payment-info',
+                  '/step1',
+                  '/step2',
+                  '/step3'
+                ]}
+              >
+                <OnBoarding />
+              </Route>
+            </>
+            {logged && (
               <>
-                <Route exact path="/">
-                  <Home />
+                <Route
+                  path={[
+                    '/admin',
+                    '/admin-student',
+                    '/admin-career',
+                    '/admin-recruitment',
+                    '/admin-partner'
+                  ]}
+                >
+                  <Admin />
                 </Route>
                 <Route
                   path={[
-                    '/login',
-                    '/register',
-                    '/payment-info',
-                    '/step1',
-                    '/step2',
-                    '/step3'
+                    '/home',
+                    '/pricing',
+                    '/payment',
+                    '/home-subscribed',
+                    '/lesson'
                   ]}
                 >
-                  <OnBoarding />
+                  <Top />
                 </Route>
               </>
-              {logged && (
-                <>
-                  <Route
-                    path={[
-                      '/admin',
-                      '/admin-student',
-                      '/admin-career',
-                      '/admin-recruitment',
-                      '/admin-partner'
-                    ]}
-                  >
-                    <Admin />
-                  </Route>
-                  <Route
-                    path={[
-                      '/home',
-                      '/pricing',
-                      '/payment',
-                      '/home-subscribed',
-                      '/lesson'
-                    ]}
-                  >
-                    <Top />
-                  </Route>
-                </>
-              )}
-            </Switch>
-          </UserContext.Provider>
+            )}
+          </Switch>
         </QueryClientProvider>
       </BrowserRouter>
     </div>

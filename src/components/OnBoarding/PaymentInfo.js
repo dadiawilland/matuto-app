@@ -1,5 +1,4 @@
 import React, { useEffect, useContext } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
 import { useForm, Controller } from 'react-hook-form';
 import styles from './PaymentInfo.style';
 import common from './Common.style';
@@ -9,10 +8,6 @@ import NavButton from '../Buttons/NavButton';
 import TextInput from '../TextInput/TextInput';
 import { useLocation } from 'react-router-dom';
 import { FORM_FIELDS } from '../../constants/formConstants';
-import {
-  registerAccountAction,
-  registerAccountOnlyAction
-} from '../../actions/accountActions';
 import { StyleRoot } from 'radium';
 import Register from './Register';
 import { useHistory } from 'react-router-dom';

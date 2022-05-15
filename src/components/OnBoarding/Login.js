@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useContext } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
 import { useForm, Controller } from 'react-hook-form';
 import styles from './Login.style';
 import common from './Common.style';
@@ -11,7 +10,6 @@ import { FORM_FIELDS } from '../../constants/formConstants';
 import { useHistory } from 'react-router-dom';
 import { OnboardingErrorContext } from '../../contexts/OnboardingErrorContext';
 import { LoadingContext } from '../../contexts/LoadingContext';
-import { UserContext } from '../../contexts/UserContext';
 import { accountLoginService } from '../../services/account.service';
 import { login, roles, useAuth } from '../../providers/CreateAuthProvider';
 
@@ -22,7 +20,6 @@ const Login = (props) => {
     OnboardingErrorContext
   );
   const { loading, setLoading } = useContext(LoadingContext);
-  const { user, setUser } = useContext(UserContext);
   const {
     formState: { errors },
     handleSubmit,
@@ -37,7 +34,6 @@ const Login = (props) => {
     const res = await accountLoginService(data);
     if (res.status === 200) {
       setOnboardingError(null);
-      props.userContext.setUser(res.data);
       login(res.data);
 
       history.push('/register');
@@ -59,10 +55,7 @@ const Login = (props) => {
   useEffect(() => {
     setOnboardingError(null);
     console.log(roles());
-    console.log(props.userContext);
     console.log(logged);
-    if (user?.access_token == null) {
-    }
   }, []);
 
   return (

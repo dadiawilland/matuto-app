@@ -11,7 +11,6 @@ import Step2 from '../../components/OnBoarding/Step2';
 import Step3 from '../../components/OnBoarding/Step3';
 import { OnboardingErrorContext } from '../../contexts/OnboardingErrorContext';
 import { LoadingContext } from '../../contexts/LoadingContext';
-import { UserContext } from '../../contexts/UserContext';
 
 const SignIn = () => {
   const [onboardingError, setOnboardingError] = useState();
@@ -26,52 +25,46 @@ const SignIn = () => {
     [loading, setLoading]
   );
 
+  // TODO: add logged useEffect
+
   const location = useLocation().pathname;
 
   const renderBody = (loc, context) => {
     switch (loc) {
       case '/register':
-        return <Register userContext={context} title={'Register to Matuto'} />;
+        return <Register title={'Register to Matuto'} />;
       case '/payment-info':
         return (
-          <PaymentInfo
-            userContext={context}
-            title={'Register to Matuto'}
-            isRegistration={true}
-          />
+          <PaymentInfo title={'Register to Matuto'} isRegistration={true} />
         );
       case '/step1':
-        return <Step1 userContext={context} title={'Select an Avatar'} />;
+        return <Step1 title={'Select an Avatar'} />;
       case '/step2':
-        return <Step2 userContext={context} />;
+        return <Step2 />;
       case '/step3':
-        return <Step3 userContext={context} title={'Select an Avatar'} />;
+        return <Step3 title={'Select an Avatar'} />;
       default:
-        return <Login userContext={context} />;
+        return <Login />;
     }
   };
 
   return (
     <div style={styles().containerOnboarding}>
-      <UserContext.Consumer>
-        {(value) => (
-          <LoadingContext.Provider value={isLoading}>
-            {loading ? <LoadingModal /> : null}
-            <div style={styles().containerLeft}>
-              <span style={styles().copyFont}>
-                Lifelong learning is a journey together.
-              </span>
-              <img style={styles().imgBg} src={bg} alt="Matuto logo white" />
-            </div>
-            <div style={styles().containerRight}>
-              <OnboardingErrorContext.Provider value={error}>
-                <OnboardingErrorMessage />
-                {renderBody(location, value)}
-              </OnboardingErrorContext.Provider>
-            </div>
-          </LoadingContext.Provider>
-        )}
-      </UserContext.Consumer>
+      <LoadingContext.Provider value={isLoading}>
+        {loading ? <LoadingModal /> : null}
+        <div style={styles().containerLeft}>
+          <span style={styles().copyFont}>
+            Lifelong learning is a journey together.
+          </span>
+          <img style={styles().imgBg} src={bg} alt="Matuto logo white" />
+        </div>
+        <div style={styles().containerRight}>
+          <OnboardingErrorContext.Provider value={error}>
+            <OnboardingErrorMessage />
+            {renderBody(location)}
+          </OnboardingErrorContext.Provider>
+        </div>
+      </LoadingContext.Provider>
     </div>
   );
 };
