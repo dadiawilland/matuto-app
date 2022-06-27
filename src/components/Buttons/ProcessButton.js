@@ -11,7 +11,7 @@ const ProcessButton = (props) => {
     if (isNav) {
       history.push(dest);
     }
-    props.onClick();
+    onClick();
     //route to home subscribed
   };
 

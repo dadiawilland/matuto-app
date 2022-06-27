@@ -18,10 +18,8 @@ const Login = (props) => {
 
   const [logged] = useAuth();
   const history = useHistory();
-  const { onboardingError, setOnboardingError } = useContext(
-    OnboardingErrorContext
-  );
-  const { loading, setLoading } = useContext(LoadingContext);
+  const { setOnboardingError } = useContext(OnboardingErrorContext);
+  const { setLoading } = useContext(LoadingContext);
   const {
     formState: { errors },
     handleSubmit,
@@ -38,9 +36,8 @@ const Login = (props) => {
       setOnboardingError(null);
       login(res.data);
 
-      history.push('/register');
+      history.push('/step1');
     } else {
-      console.log(res);
       if (res.data.error === 'invalid_grant') {
         setOnboardingError('Incorrenct email or password');
       }

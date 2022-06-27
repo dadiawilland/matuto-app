@@ -100,7 +100,22 @@ export const APIService = () => {
       });
   };
 
+  const addAvatar = async (userId, avatarId) => {
+    console.log(`users/${userId}/avatar/${avatarId}`);
+    return await fetch(
+      endPoint + `/api/users/${userId}/avatar/${avatarId}`,
+      await oauthRequest(PUT)
+    )
+      .then((response) => {
+        return parseResponse(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return {
+    addAvatar,
     login,
     fetchOnboardingSurveyList,
     fetchRefreshToken,

@@ -53,9 +53,14 @@ export const createAuthProvider = () => {
     return getRolesMap(roleIdList);
   };
 
+  const getId = () => {
+    return tokenProvider.getId();
+  };
+
   return {
     authFetch,
     getAccessToken,
+    getId,
     login,
     logout,
     roles,
@@ -63,5 +68,12 @@ export const createAuthProvider = () => {
   };
 };
 
-export const { useAuth, getAccessToken, authFetch, login, logout, roles } =
-  createAuthProvider();
+export const {
+  useAuth,
+  getAccessToken,
+  getId,
+  authFetch,
+  login,
+  logout,
+  roles
+} = createAuthProvider();

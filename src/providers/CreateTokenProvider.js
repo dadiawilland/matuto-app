@@ -40,6 +40,14 @@ export const createTokenProvider = () => {
     return _token && _token.roles;
   };
 
+  const getId = () => {
+    if (!_token) {
+      return null;
+    }
+
+    return _token && _token.id;
+  };
+
   const isLoggedIn = () => {
     return !!_token;
   };
@@ -70,6 +78,7 @@ export const createTokenProvider = () => {
   };
 
   return {
+    getId,
     getRoles,
     getToken,
     isLoggedIn,
